@@ -7,6 +7,9 @@ Author:
 Supervisors:
 - Andre Nuno Souto (ansouto@fc.ul.pt)
 - Antonio Maria Ravara (aravara@fct.unl.pt)
+
+Acknowledgments:
+- Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
 # Import required Libraries and Packages
