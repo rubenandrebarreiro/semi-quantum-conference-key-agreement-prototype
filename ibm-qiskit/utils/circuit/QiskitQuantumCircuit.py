@@ -7,6 +7,9 @@ Author:
 Supervisors:
 - Andre Nuno Souto (ansouto@fc.ul.pt)
 - Antonio Maria Ravara (aravara@fct.unl.pt)
+
+Acknowledgments:
+- Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
 # Import required Libraries and Packages
@@ -163,4 +166,71 @@ class QiskitQuantumCircuit:
 
     # 2) Multi Qubit Gates:
 
-    # Apply
+    # Apply the SWAP Gate to given Qubits' indexes
+    def apply_swap(self, qubit_index_1, qubit_index_2):
+        self.quantum_circuit.swap(qubit_index_1, qubit_index_2)
+
+    # Apply the iSWAP Gate to given Qubits' indexes
+    def apply_i_swap(self, qubit_index_1, qubit_index_2):
+        self.quantum_circuit.iswap(qubit_index_1, qubit_index_2)
+
+    # Apply the Controlled-Pauli-X (CNOT) Gate to given Qubits' indexes (1 Control-Qubit and 1 Target-Qubit)
+    def apply_controlled_x(self, control_qubit_index, target_qubit_index):
+        self.quantum_circuit.cx(control_qubit_index, target_qubit_index)
+
+    # Apply the Controlled-Pauli-Y Gate to given Qubits' indexes (1 Control-Qubit and 1 Target-Qubit)
+    def apply_controlled_y(self, control_qubit_index, target_qubit_index):
+        self.quantum_circuit.cy(control_qubit_index, target_qubit_index)
+
+    # Apply the Controlled-Pauli-Z Gate to given Qubits' indexes (1 Control-Qubit and 1 Target-Qubit)
+    def apply_controlled_z(self, control_qubit_index, target_qubit_index):
+        self.quantum_circuit.cz(control_qubit_index, target_qubit_index)
+
+    # Apply the Controlled-Hadamard Gate to given Qubits' indexes (1 Control-Qubit and 1 Target-Qubit)
+    def apply_controlled_h(self, control_qubit_index, target_qubit_index):
+        self.quantum_circuit.ch(control_qubit_index, target_qubit_index)
+
+    # Apply the Controlled-S Gate (pi/2) to given Qubits' indexes (1 Control-Qubit and 1 Target-Qubit)
+    def apply_controlled_phase_s(self, control_qubit_index, target_qubit_index):
+        controlled_phase_s_unitary_operator = Operator([
+            [1, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, 1j]
+        ])
+
+        self.quantum_circuit.unitary(controlled_phase_s_unitary_operator, [control_qubit_index, target_qubit_index])
+
+    # Apply the Controlled-T Gate (pi/4) to given Qubits' indexes (1 Control-Qubit and 1 Target-Qubit)
+    def apply_controlled_phase_t(self, control_qubit_index, target_qubit_index):
+        controlled_phase_t_unitary_operator = Operator([
+            [1, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, exp((1/sqrt(2) * (1 + 1j)))]
+        ])
+
+        self.quantum_circuit.unitary(controlled_phase_t_unitary_operator, [control_qubit_index, target_qubit_index])
+
+    # Apply the Controlled-S-Adjoint Gate (-pi/2) to given Qubits' indexes (1 Control-Qubit and 1 Target-Qubit)
+    def apply_controlled_phase_s_adjoint(self, control_qubit_index, target_qubit_index):
+        controlled_phase_s_unitary_operator = Operator([
+            [1, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, -1j]
+        ])
+
+        self.quantum_circuit.unitary(controlled_phase_s_unitary_operator, [control_qubit_index, target_qubit_index])
+
+    # Apply the Controlled-T-Adjoint Gate (-pi/4) to given Qubits' indexes (1 Control-Qubit and 1 Target-Qubit)
+    def apply_controlled_phase_t_adjoint(self, control_qubit_index, target_qubit_index):
+        controlled_phase_t_unitary_operator = Operator([
+            [1, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, exp((1/sqrt(2) * (1 - 1j)))]
+        ])
+
+        self.quantum_circuit.unitary(controlled_phase_t_unitary_operator, [control_qubit_index, target_qubit_index])
+
