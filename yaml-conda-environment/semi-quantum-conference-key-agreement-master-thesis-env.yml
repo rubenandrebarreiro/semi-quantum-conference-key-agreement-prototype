@@ -1,5 +1,5 @@
 # Name of the Conda Environment
-name: semi-quantum-conference-key-agreement-master-thesis-env
+name: semi-registers-conference-key-agreement-master-thesis-env
 
 # Definition of the Conda's Channels
 channels:
@@ -112,6 +112,7 @@ dependencies:
   - tk
   - tornado
   - traitlets
+  - unittest2
   - wcwidth
   - wheel
   - widgetsnbextension
