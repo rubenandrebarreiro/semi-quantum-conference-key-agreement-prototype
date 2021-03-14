@@ -42,7 +42,7 @@ class QiskitQuantumCircuit:
         self.global_phase = global_phase
 
         # The Quantum Circuit of the Qiskit's Quantum Circuit
-        self.quantum_circuit = QuantumCircuit(quantum_registers, classical_registers,
+        self.quantum_circuit = QuantumCircuit(quantum_registers.quantumRegister, classical_registers.classicalRegister,
                                               name=name, global_phase=global_phase)
 
     # Methods:
