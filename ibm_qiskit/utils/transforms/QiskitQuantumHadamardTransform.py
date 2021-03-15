@@ -25,5 +25,11 @@ class QiskitQuantumHadamardTransform:
     # Apply the Quantum Hadamard Transform to
     # the respective given Qubits' indexes in the IBM Qiskit's Quantum Circuit
     def apply_transform(self):
+
+        # For each indexed Qubit
         for qubit_index in self.qubits_indexes:
-            self.quantum_circuit.apply_h(qubit_index)
+
+            # Apply the Hadamard Gate to the current Qubit index
+            self.quantum_circuit.apply_hadamard(qubit_index)
+
+        return self.quantum_circuit
