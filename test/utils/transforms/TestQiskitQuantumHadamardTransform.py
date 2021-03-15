@@ -17,17 +17,22 @@ import unittest
 
 # Import N-Dimensional Arrays and Squared Roots from NumPy
 from numpy import full, sqrt
+
 # Import Assert_All_Close from NumPy.Testing
 from numpy.testing import assert_allclose
+
 # Import Aer and execute from Qiskit
 from qiskit import Aer, execute
 
 # Import QiskitQuantumCircuit from IBM_Qiskit.Circuit
 from ibm_qiskit.circuit import QiskitQuantumCircuit
+
 # Import QiskitClassicalRegister from IBM_Qiskit.Circuit.Classical
 from ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
+
 # Import QiskitQuantumRegister from IBM_Qiskit.Circuit.Quantum
 from ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
+
 # Import QiskitQuantumHadamardTransform from IBM_Qiskit.Utils.Transforms
 from ibm_qiskit.utils.transforms import QiskitQuantumHadamardTransform
 
@@ -361,6 +366,116 @@ class QuantumHadamardTransformTests(unittest.TestCase):
         # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
         # after the Hadamard Gates be applied
         assert_allclose(final_state_vector, qiskit_quantum_hadamard_6_qubits_array, rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #7 for the Quantum Hadamard Transform
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 16 Qubits initialized in the state |0⟩;
+    # 2) It is applied the Hadamard Gate to all the Qubits, then, for each Qubit, |0⟩ ↦ |+⟩;
+    def test_quantum_hadamard_transform_16_qubits(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 16
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_hadamard_16_qubits = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrhadamard16qubits", num_qubits)
+        qiskit_classical_register_hadamard_16_qubits = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crhadamard16qubits", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_16_qubits = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qchadamard16qubits",
+                                                      qiskit_quantum_register_hadamard_16_qubits,
+                                                      qiskit_classical_register_hadamard_16_qubits,
+                                                      global_phase=0)
+
+        # Setup of the range of Qubits' indexes
+        qubit_indexes = range(0, num_qubits)
+
+        # Apply the Quantum Hadamard Transform for 16 Qubits
+        qiskit_quantum_hadamard_transform_16_qubits_circuit = QiskitQuantumHadamardTransform\
+            .QiskitQuantumHadamardTransform("quantum_hadamard_transform_16_qubits",
+                                            qiskit_quantum_circuit_16_qubits,
+                                            qubit_indexes).apply_transform()
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = \
+            execute(qiskit_quantum_hadamard_transform_16_qubits_circuit.quantum_circuit,
+                    state_vector_backend).result().get_statevector()
+
+        # Compute the number of possible outcomes (i.e., 2^(num_qubits))
+        num_possible_outcomes = (2 ** num_qubits)
+
+        # Create and fill an array with the Quantum Hadamard Transform values
+        qiskit_quantum_hadamard_16_qubits_array = full((num_possible_outcomes,),
+                                                       (1 / sqrt(num_possible_outcomes)) * (1. + 0.j))
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
+        # after the Hadamard Gates be applied
+        assert_allclose(final_state_vector, qiskit_quantum_hadamard_16_qubits_array, rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #8 for the Quantum Hadamard Transform
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 25 Qubits initialized in the state |0⟩;
+    # 2) It is applied the Hadamard Gate to all the Qubits, then, for each Qubit, |0⟩ ↦ |+⟩;
+    def test_quantum_hadamard_transform_25_qubits(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 25
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_hadamard_25_qubits = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrhadamard25qubits", num_qubits)
+        qiskit_classical_register_hadamard_25_qubits = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crhadamard25qubits", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_25_qubits = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qchadamard25qubits",
+                                                      qiskit_quantum_register_hadamard_25_qubits,
+                                                      qiskit_classical_register_hadamard_25_qubits,
+                                                      global_phase=0)
+
+        # Setup of the range of Qubits' indexes
+        qubit_indexes = range(0, num_qubits)
+
+        # Apply the Quantum Hadamard Transform for 25 Qubits
+        qiskit_quantum_hadamard_transform_25_qubits_circuit = QiskitQuantumHadamardTransform\
+            .QiskitQuantumHadamardTransform("quantum_hadamard_transform_25_qubits",
+                                            qiskit_quantum_circuit_25_qubits,
+                                            qubit_indexes).apply_transform()
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = \
+            execute(qiskit_quantum_hadamard_transform_25_qubits_circuit.quantum_circuit,
+                    state_vector_backend).result().get_statevector()
+
+        # Compute the number of possible outcomes (i.e., 2^(num_qubits))
+        num_possible_outcomes = (2 ** num_qubits)
+
+        # Create and fill an array with the Quantum Hadamard Transform values
+        qiskit_quantum_hadamard_25_qubits_array = full((num_possible_outcomes,),
+                                                       (1 / sqrt(num_possible_outcomes)) * (1. + 0.j))
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
+        # after the Hadamard Gates be applied
+        assert_allclose(final_state_vector, qiskit_quantum_hadamard_25_qubits_array, rtol=1e-7, atol=1e-7)
 
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
