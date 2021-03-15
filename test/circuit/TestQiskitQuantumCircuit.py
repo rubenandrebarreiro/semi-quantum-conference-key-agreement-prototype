@@ -15,23 +15,19 @@ Acknowledgments:
 # Import Unittest for Python's Unitary Tests
 import unittest
 
-# Import QiskitQuantumCircuit from IBM_Qiskit.Circuit
-from ibm_qiskit.circuit import QiskitQuantumCircuit
-
-# Import QiskitQuantumRegister from IBM_Qiskit.Circuit.Quantum
-from ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
-
-# Import QiskitClassicalRegister from IBM_Qiskit.Circuit.Classical
-from ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
-
+# Import N-Dimensional Arrays and Squared Roots from NumPy
+from numpy import array, sqrt
+# Import Assert_All_Close from NumPy.Testing
+from numpy.testing import assert_allclose
 # Import Aer and execute from Qiskit
 from qiskit import Aer, execute
 
-# Import N-Dimensional Arrays and Squared Roots from NumPy
-from numpy import array, sqrt
-
-# Import Assert_All_Close from NumPy.Testing
-from numpy.testing import assert_allclose
+# Import QiskitQuantumCircuit from IBM_Qiskit.Circuit
+from ibm_qiskit.circuit import QiskitQuantumCircuit
+# Import QiskitClassicalRegister from IBM_Qiskit.Circuit.Classical
+from ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
+# Import QiskitQuantumRegister from IBM_Qiskit.Circuit.Quantum
+from ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
 
 
 # Test Cases for the Pauli-I Gate
