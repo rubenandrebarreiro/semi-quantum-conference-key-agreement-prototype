@@ -29,6 +29,7 @@ class QiskitQuantumCircuit:
 
     # Constructor for IBM Qiskit's Quantum Circuit
     def __init__(self, name, quantum_registers, classical_registers, global_phase=0):
+
         # The name of the Qiskit's Quantum Circuit
         self.name = name
 
@@ -113,6 +114,8 @@ class QiskitQuantumCircuit:
 
             # Apply a Barrier to the current Qubit's index
             self.quantum_circuit.barrier(qubit_index)
+
+    # 2) Measurements:
 
     # Measure a given single Qubit's index
     def measure_single_qubit(self, qubit_index, bit_index):
@@ -201,7 +204,129 @@ class QiskitQuantumCircuit:
         # Measure all Qubits in the Quantum Circuit
         self.quantum_circuit.measure_all()
 
-    # 2) Single Qubit Gates:
+    # Measure a given Qubit's index in the X-Basis
+    def measure_single_qubit_in_x_basis(self, qubit_index, bit_index, is_final_measurement=True):
+
+        # Apply a Barrier to the given Qubit index, to ensure the previous operations were all performed
+        self.apply_barrier(qubit_index)
+
+        # Apply the Hadamard Gate to the given Qubit index, to prepare it in the X-Basis
+        self.apply_hadamard(qubit_index)
+
+        # If it is the final measurement, measure the given Qubit in the X-Basis
+        if is_final_measurement:
+
+            # Measure the given Qubit's index to the given Bit's index
+            self.measure_single_qubit(qubit_index, bit_index)
+
+        # Return the Quantum Circuit with all the Qubits prepared/measured in the X-Basis
+        return self.quantum_circuit
+
+    # Measure a given Qubit's index in the Y-Basis
+    def measure_single_qubit_in_y_basis(self, qubit_index, bit_index, is_final_measurement=True):
+
+        # Apply a Barrier to the given Qubit index, to ensure the previous operations were all performed
+        self.apply_barrier(qubit_index)
+
+        # Apply the Hadamard Gate to the given Qubit index, to prepare it in the X-Basis
+        self.apply_hadamard(qubit_index)
+
+        # Apply, then, the Phase S to the given Qubit index, to, finally, prepare it in the Y-Basis
+        self.apply_phase_s(qubit_index)
+
+        # If it is the final measurement, measure the given Qubit in the X-Basis
+        if is_final_measurement:
+
+            # Measure the given Qubit's index to the given Bit's index
+            self.measure_single_qubit(qubit_index, bit_index)
+
+        # Return the Quantum Circuit with all the Qubits prepared/measured in the X-Basis
+        return self.quantum_circuit
+
+    # Measure a given Qubit's index in the Z-Basis
+    def measure_single_qubit_in_z_basis(self, qubit_index, bit_index, is_final_measurement=True):
+
+        # Apply a Barrier to the given Qubit index, to ensure the previous operations were all performed
+        self.apply_barrier(qubit_index)
+
+        # Apply the Pauli-I Gate to the current Qubit index,
+        # to prepare it in the Z-Basis (i.e., the Standard Measurement)
+        self.apply_pauli_i(qubit_index)
+
+        # If it is the final measurement, measure the given Qubit in the X-Basis
+        if is_final_measurement:
+
+            # Measure the given Qubit's index to the given Bit's index
+            self.measure_single_qubit(qubit_index, bit_index)
+
+        # Return the Quantum Circuit with all the Qubits prepared/measured in the X-Basis
+        return self.quantum_circuit
+
+    # Measure all the Qubits in the X-Basis
+    def measure_all_qubits_in_x_basis(self, is_final_measurement=True):
+
+        # For each indexed Qubit
+        for qubit_index in range(self.get_num_qubits()):
+
+            # Apply a Barrier to the current Qubit index, to ensure the previous operations were all performed
+            self.apply_barrier(qubit_index)
+
+            # Apply the Hadamard Gate to the current Qubit index, to prepare it in the X-Basis
+            self.apply_hadamard(qubit_index)
+
+        # If it is the final measurement, measure all the Qubits in the X-Basis
+        if is_final_measurement:
+            # Measure all Qubits to their respective Bits
+            self.measure_all_qubits()
+
+        # Return the Quantum Circuit with all the Qubits prepared/measured in the X-Basis
+        return self.quantum_circuit
+
+    # Measure all the Qubits in the Y-Basis
+    def measure_all_qubits_in_y_basis(self, is_final_measurement=True):
+
+        # For each indexed Qubit
+        for qubit_index in range(self.get_num_qubits()):
+
+            # Apply a Barrier to the current Qubit index, to ensure the previous operations were all performed
+            self.apply_barrier(qubit_index)
+
+            # Apply the Hadamard Gate to the current Qubit index, to prepare it in the X-Basis
+            self.apply_hadamard(qubit_index)
+
+            # Apply, then, the Phase S to the current Qubit index, to, finally, prepare it in the Y-Basis
+            self.apply_phase_s(qubit_index)
+
+        # If it is the final measurement, measure all the Qubits in the Y-Basis
+        if is_final_measurement:
+            # Measure all Qubits to their respective Bits
+            self.measure_all_qubits()
+
+        # Return the Quantum Circuit with all the Qubits prepared/measured in the Y-Basis
+        return self.quantum_circuit
+
+    # Measure all the Qubits in the Y-Basis
+    def measure_all_qubits_in_z_basis(self, is_final_measurement=True):
+
+        # For each indexed Qubit
+        for qubit_index in range(self.get_num_qubits()):
+
+            # Apply a Barrier to the current Qubit index, to ensure the previous operations were all performed
+            self.apply_barrier(qubit_index)
+
+            # Apply the Pauli-I Gate to the current Qubit index,
+            # to prepare it in the Z-Basis (i.e., the Standard Measurement)
+            self.apply_pauli_i(qubit_index)
+
+        # If it is the final measurement, measure all the Qubits in the Z-Basis
+        if is_final_measurement:
+            # Measure all Qubits to their respective Bits
+            self.measure_all_qubits()
+
+        # Return the Quantum Circuit with all the Qubits prepared/measured in the Z-Basis
+        return self.quantum_circuit
+
+    # 3) Single Qubit Gates:
 
     # Apply the Pauli-I Gate to a given Qubit's index
     def apply_pauli_i(self, qubit_index):
