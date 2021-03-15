@@ -14,7 +14,7 @@ Acknowledgments:
 
 # Import required Libraries and Packages
 
-# Import Square Root and Exponential from NumPy
+# Import Squared Root and Exponential from NumPy
 from numpy import sqrt, exp
 
 # Import Quantum Circuit from IBM Qiskit
@@ -233,4 +233,3 @@ class QiskitQuantumCircuit:
         ])
 
         self.quantum_circuit.unitary(controlled_phase_t_unitary_operator, [control_qubit_index, target_qubit_index])
-
