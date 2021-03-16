@@ -34,6 +34,592 @@ from ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
 from ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
 
 
+# Test Cases for the Prepare/Measure in the X-Basis (Diagonal Basis)
+class PrepareMeasureXBasisTests(unittest.TestCase):
+
+    # Test #1 for the Prepare/Measure in the X-Basis (Diagonal Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) The Qubit is prepared/measured in the X-Basis (Diagonal Basis);
+    def test_prepare_measure_x_basis_1(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_x_basis_1 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeasxbasis1", num_qubits)
+        qiskit_classical_register_prepare_measure_x_basis_1 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeasxbasis1", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_x_basis_1 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeasxbasis1",
+                                                      qiskit_quantum_register_prepare_measure_x_basis_1,
+                                                      qiskit_classical_register_prepare_measure_x_basis_1,
+                                                      global_phase=0)
+
+        # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
+        qiskit_quantum_circuit_prepare_measure_x_basis_1 \
+            .prepare_measure_single_qubit_in_x_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_x_basis_1.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the X-Basis (Diagonal Basis) be performed
+        assert_allclose(final_state_vector, array([((1. / sqrt(2.)) + 0.j), ((1. / sqrt(2.)) + 0.j)]),
+                        rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #2 for the Prepare/Measure in the X-Basis (Diagonal Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) It is applied the Pauli-X Gate to the 1st Qubit, then, |0⟩ ↦ |1⟩;
+    # 3) The Qubit is prepared/measured in the X-Basis (Diagonal Basis);
+    def test_prepare_measure_x_basis_2(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_x_basis_2 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeasxbasis2", num_qubits)
+        qiskit_classical_register_prepare_measure_x_basis_2 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeasxbasis2", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_x_basis_2 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeasxbasis2",
+                                                      qiskit_quantum_register_prepare_measure_x_basis_2,
+                                                      qiskit_classical_register_prepare_measure_x_basis_2,
+                                                      global_phase=0)
+
+        # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
+        qiskit_quantum_circuit_prepare_measure_x_basis_2 \
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_x_basis_2.quantumRegister[0])
+
+        # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
+        qiskit_quantum_circuit_prepare_measure_x_basis_2 \
+            .prepare_measure_single_qubit_in_x_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_x_basis_2.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the X-Basis (Diagonal Basis) be performed
+        assert_allclose(final_state_vector, array([((1. / sqrt(2.)) + 0.j), (-(1. / sqrt(2.)) + 0.j)]),
+                        rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #3 for the Prepare/Measure in the X-Basis (Diagonal Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) It is applied the Hadamard Gate to the 1st Qubit, then, |0⟩ ↦ |+⟩;
+    # 3) The Qubit is prepared/measured in the X-Basis (Diagonal Basis);
+    def test_prepare_measure_x_basis_3(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_x_basis_3 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeasxbasis3", num_qubits)
+        qiskit_classical_register_prepare_measure_x_basis_3 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeasxbasis3", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_x_basis_3 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeasxbasis3",
+                                                      qiskit_quantum_register_prepare_measure_x_basis_3,
+                                                      qiskit_classical_register_prepare_measure_x_basis_3,
+                                                      global_phase=0)
+
+        # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
+        qiskit_quantum_circuit_prepare_measure_x_basis_3 \
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_x_basis_3.quantumRegister[0])
+
+        # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
+        qiskit_quantum_circuit_prepare_measure_x_basis_3 \
+            .prepare_measure_single_qubit_in_x_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_x_basis_3.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the X-Basis (Diagonal Basis) be performed
+        assert_allclose(final_state_vector, array([(1. + 0.j), (0. + 0.j)]), rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #4 for the Prepare/Measure in the X-Basis
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) It is applied the Pauli-X Gate to the 1st Qubit, then, |0⟩ ↦ |1⟩;
+    # 3) It is applied the Hadamard Gate to the 1st Qubit, then, |1⟩ ↦ |-⟩;
+    # 4) The Qubit is prepared/measured in the X-Basis;
+    def test_prepare_measure_x_basis_4(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_x_basis_4 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeasxbasis4", num_qubits)
+        qiskit_classical_register_prepare_measure_x_basis_4 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeasxbasis4", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_x_basis_4 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeasxbasis4",
+                                                      qiskit_quantum_register_prepare_measure_x_basis_4,
+                                                      qiskit_classical_register_prepare_measure_x_basis_4,
+                                                      global_phase=0)
+
+        # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
+        qiskit_quantum_circuit_prepare_measure_x_basis_4 \
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_x_basis_4.quantumRegister[0])
+
+        # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|1⟩ ↦ |-⟩)
+        qiskit_quantum_circuit_prepare_measure_x_basis_4 \
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_x_basis_4.quantumRegister[0])
+
+        # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
+        qiskit_quantum_circuit_prepare_measure_x_basis_4 \
+            .prepare_measure_single_qubit_in_x_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_x_basis_4.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the X-Basis be performed
+        assert_allclose(final_state_vector, array([(0. + 0.j), (1. + 0.j)]), rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+
+# Test Cases for the Prepare/Measure in the Y-Basis (Diagonal Basis)
+class PrepareMeasureYBasisTests(unittest.TestCase):
+
+    # Test #1 for the Prepare/Measure in the Y-Basis (Diagonal Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) The Qubit is prepared/measured in the Y-Basis (Diagonal Basis);
+    def test_prepare_measure_y_basis_1(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_y_basis_1 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeasybasis1", num_qubits)
+        qiskit_classical_register_prepare_measure_y_basis_1 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeasybasis1", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_y_basis_1 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeasybasis1",
+                                                      qiskit_quantum_register_prepare_measure_y_basis_1,
+                                                      qiskit_classical_register_prepare_measure_y_basis_1,
+                                                      global_phase=0)
+
+        # Prepare/Measure the Qubit in the Y-Basis (Computational Basis)
+        qiskit_quantum_circuit_prepare_measure_y_basis_1 \
+            .prepare_measure_single_qubit_in_y_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_y_basis_1.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the Y-Basis (Diagonal Basis) be performed
+        assert_allclose(final_state_vector, array([((1. / sqrt(2.)) + 0.j), (1. / sqrt(2.)) * (0. + 1.j)]),
+                        rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #2 for the Prepare/Measure in the Y-Basis (Diagonal Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) It is applied the Pauli-X Gate to the 1st Qubit, then, |0⟩ ↦ |1⟩;
+    # 3) The Qubit is prepared/measured in the Y-Basis (Diagonal Basis);
+    def test_prepare_measure_y_basis_2(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_y_basis_2 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeasybasis2", num_qubits)
+        qiskit_classical_register_prepare_measure_y_basis_2 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeasybasis2", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_y_basis_2 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeasybasis2",
+                                                      qiskit_quantum_register_prepare_measure_y_basis_2,
+                                                      qiskit_classical_register_prepare_measure_y_basis_2,
+                                                      global_phase=0)
+
+        # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
+        qiskit_quantum_circuit_prepare_measure_y_basis_2 \
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_y_basis_2.quantumRegister[0])
+
+        # Prepare/Measure the Qubit in the Y-Basis (Diagonal Basis)
+        qiskit_quantum_circuit_prepare_measure_y_basis_2 \
+            .prepare_measure_single_qubit_in_y_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_y_basis_2.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the Y-Basis (Diagonal Basis) be performed
+        assert_allclose(final_state_vector, array([((1. / sqrt(2.)) + 0.j), -(1. / sqrt(2.)) * (0. + 1.j)]),
+                        rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #3 for the Prepare/Measure in the Y-Basis (Diagonal Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) It is applied the Hadamard Gate to the 1st Qubit, then, |0⟩ ↦ |+⟩;
+    # 3) The Qubit is prepared/measured in the Y-Basis (Diagonal Basis);
+    def test_prepare_measure_y_basis_3(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_y_basis_3 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeasybasis3", num_qubits)
+        qiskit_classical_register_prepare_measure_y_basis_3 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeasybasis3", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_y_basis_3 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeasybasis3",
+                                                      qiskit_quantum_register_prepare_measure_y_basis_3,
+                                                      qiskit_classical_register_prepare_measure_y_basis_3,
+                                                      global_phase=0)
+
+        # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
+        qiskit_quantum_circuit_prepare_measure_y_basis_3 \
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_y_basis_3.quantumRegister[0])
+
+        # Prepare/Measure the Qubit in the Y-Basis (Diagonal Basis)
+        qiskit_quantum_circuit_prepare_measure_y_basis_3 \
+            .prepare_measure_single_qubit_in_y_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_y_basis_3.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the Y-Basis (Diagonal Basis) be performed
+        assert_allclose(final_state_vector, array([(1. + 0.j), (0. + 0.j)]),
+                        rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #4 for the Prepare/Measure in the Y-Basis (Diagonal Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) It is applied the Pauli-X Gate to the 1st Qubit, then, |0⟩ ↦ |1⟩;
+    # 3) It is applied the Hadamard Gate to the 1st Qubit, then, |1⟩ ↦ |-⟩;
+    # 4) The Qubit is prepared/measured in the Y-Basis (Diagonal Basis);
+    def test_prepare_measure_y_basis_4(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_y_basis_4 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeasybasis4", num_qubits)
+        qiskit_classical_register_prepare_measure_y_basis_4 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeasybasis4", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_y_basis_4 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeasybasis4",
+                                                      qiskit_quantum_register_prepare_measure_y_basis_4,
+                                                      qiskit_classical_register_prepare_measure_y_basis_4,
+                                                      global_phase=0)
+
+        # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
+        qiskit_quantum_circuit_prepare_measure_y_basis_4 \
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_y_basis_4.quantumRegister[0])
+
+        # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|1⟩ ↦ |-⟩)
+        qiskit_quantum_circuit_prepare_measure_y_basis_4 \
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_y_basis_4.quantumRegister[0])
+
+        # Prepare/Measure the Qubit in the Y-Basis (Diagonal Basis)
+        qiskit_quantum_circuit_prepare_measure_y_basis_4 \
+            .prepare_measure_single_qubit_in_y_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_y_basis_4.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the Y-Basis (Diagonal Basis) be performed
+        assert_allclose(final_state_vector, array([(0. + 0.j), (0. + 1.j)]),
+                        rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+
+# Test Cases for the Prepare/Measure in the Z-Basis (Computational Basis)
+class PrepareMeasureZBasisTests(unittest.TestCase):
+
+    # Test #1 for the Prepare/Measure in the Z-Basis (Computational Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) The Qubit is prepared/measured in the Z-Basis (Computational Basis);
+    def test_prepare_measure_z_basis_1(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_z_basis_1 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeaszbasis1", num_qubits)
+        qiskit_classical_register_prepare_measure_z_basis_1 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeaszbasis1", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_z_basis_1 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeaszbasis1",
+                                                      qiskit_quantum_register_prepare_measure_z_basis_1,
+                                                      qiskit_classical_register_prepare_measure_z_basis_1,
+                                                      global_phase=0)
+
+        # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
+        qiskit_quantum_circuit_prepare_measure_z_basis_1 \
+            .prepare_measure_single_qubit_in_z_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_z_basis_1.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the Z-Basis (Computational Basis) be performed
+        assert_allclose(final_state_vector, array([(1. + 0.j), (0. + 0.j)]),
+                        rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #2 for the Prepare/Measure in the Z-Basis (Computational Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) It is applied the Pauli-X Gate to the 1st Qubit, then, |0⟩ ↦ |1⟩;
+    # 3) The Qubit is prepared/measured in the Z-Basis (Computational Basis);
+    def test_prepare_measure_z_basis_2(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_z_basis_2 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeaszbasis2", num_qubits)
+        qiskit_classical_register_prepare_measure_z_basis_2 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeaszbasis2", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_z_basis_2 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeaszbasis2",
+                                                      qiskit_quantum_register_prepare_measure_z_basis_2,
+                                                      qiskit_classical_register_prepare_measure_z_basis_2,
+                                                      global_phase=0)
+
+        # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
+        qiskit_quantum_circuit_prepare_measure_z_basis_2 \
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_z_basis_2.quantumRegister[0])
+
+        # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
+        qiskit_quantum_circuit_prepare_measure_z_basis_2 \
+            .prepare_measure_single_qubit_in_z_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_z_basis_2.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the Z-Basis (Computational Basis) be performed
+        assert_allclose(final_state_vector, array([(0. + 0.j), (1. + 0.j)]),
+                        rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #3 for the Prepare/Measure in the Z-Basis (Computational Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) It is applied the Hadamard Gate to the 1st Qubit, then, |0⟩ ↦ |+⟩;
+    # 3) The Qubit is prepared/measured in the Z-Basis (Computational Basis);
+    def test_prepare_measure_z_basis_3(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_z_basis_3 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeaszbasis3", num_qubits)
+        qiskit_classical_register_prepare_measure_z_basis_3 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeaszbasis3", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_z_basis_3 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeaszbasis3",
+                                                      qiskit_quantum_register_prepare_measure_z_basis_3,
+                                                      qiskit_classical_register_prepare_measure_z_basis_3,
+                                                      global_phase=0)
+
+        # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
+        qiskit_quantum_circuit_prepare_measure_z_basis_3 \
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_z_basis_3.quantumRegister[0])
+
+        # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
+        qiskit_quantum_circuit_prepare_measure_z_basis_3 \
+            .prepare_measure_single_qubit_in_z_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_z_basis_3.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the Z-Basis (Computational Basis) be performed
+        assert_allclose(final_state_vector, array([((1. / sqrt(2.)) + 0.j), ((1. / sqrt(2.)) + 0.j)]),
+                        rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #4 for the Prepare/Measure in the Z-Basis (Computational Basis)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 1 Qubit initialized in the state |0⟩;
+    # 2) It is applied the Pauli-X Gate to the 1st Qubit, then, |0⟩ ↦ |1⟩;
+    # 3) It is applied the Hadamard Gate to the 1st Qubit, then, |1⟩ ↦ |-⟩;
+    # 4) The Qubit is prepared/measured in the Z-Basis (Computational Basis);
+    def test_prepare_measure_z_basis_4(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 1
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_prepare_measure_z_basis_4 = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrmeaszbasis4", num_qubits)
+        qiskit_classical_register_prepare_measure_z_basis_4 = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crmeaszbasis4", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_prepare_measure_z_basis_4 = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcmeaszbasis4",
+                                                      qiskit_quantum_register_prepare_measure_z_basis_4,
+                                                      qiskit_classical_register_prepare_measure_z_basis_4,
+                                                      global_phase=0)
+
+        # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
+        qiskit_quantum_circuit_prepare_measure_z_basis_4 \
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_z_basis_4.quantumRegister[0])
+
+        # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|1⟩ ↦ |-⟩)
+        qiskit_quantum_circuit_prepare_measure_z_basis_4 \
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_z_basis_4.quantumRegister[0])
+
+        # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
+        qiskit_quantum_circuit_prepare_measure_z_basis_4 \
+            .prepare_measure_single_qubit_in_z_basis(0, 0, is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = execute(qiskit_quantum_circuit_prepare_measure_z_basis_4.quantum_circuit,
+                                     state_vector_backend).result().get_statevector()
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubit,
+        # after the Prepare/Measure in the Z-Basis (Computational Basis) be performed
+        assert_allclose(final_state_vector, array([((1. / sqrt(2.)) + 0.j), -((1. / sqrt(2.)) + 0.j)]),
+                        rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+
 # Test Cases for the Pauli-I Gate
 class PauliIGateTests(unittest.TestCase):
 
@@ -83,7 +669,6 @@ class PauliIGateTests(unittest.TestCase):
     # 2) It is applied the Pauli-I Gate to the 1st Qubit, then, |0⟩ ↦ |0⟩;
     # 3) It is applied, again, the Pauli-I Gate to the 1st Qubit, then, |0⟩ ↦ |0⟩;
     def test_apply_pauli_i_2(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -129,7 +714,6 @@ class PauliXGateTests(unittest.TestCase):
     #    with 1 Qubit initialized in the state |0⟩;
     # 2) It is applied the Pauli-X Gate to the 1st Qubit, then, |0⟩ ↦ |1⟩;
     def test_apply_pauli_x_1(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -169,7 +753,6 @@ class PauliXGateTests(unittest.TestCase):
     # 2) It is applied the Pauli-X Gate to the 1st Qubit, then, |0⟩ ↦ |1⟩;
     # 3) It is applied, again, the Pauli-X Gate to the 1st Qubit, then, |1⟩ ↦ |0⟩;
     def test_apply_pauli_x_2(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -210,7 +793,6 @@ class PauliXGateTests(unittest.TestCase):
     # 2) It is applied the Hadamard Gate to the 1st Qubit, then, |0⟩ ↦ |+⟩;
     # 3) It is applied the Pauli-X Gate to the 1st Qubit, then, |+⟩ ↦ |+⟩;
     def test_apply_pauli_x_3(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -255,7 +837,6 @@ class PauliXGateTests(unittest.TestCase):
     # 3) It is applied the Pauli-X Gate to the 1st Qubit, then, |+⟩ ↦ |+⟩;
     # 4) It is applied, again, the Hadamard Gate to the 1st Qubit, then, |+⟩ ↦ |0⟩;
     def test_apply_pauli_x_4(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -305,7 +886,6 @@ class PauliYGateTests(unittest.TestCase):
     #    with 1 Qubit initialized in the state |0⟩;
     # 2) It is applied the Pauli-Y Gate to the 1st Qubit, then, |0⟩ ↦ |+i⟩;
     def test_apply_pauli_y_1(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -345,7 +925,6 @@ class PauliYGateTests(unittest.TestCase):
     # 2) It is applied the Pauli-Y Gate to the 1st Qubit, then, |0⟩ ↦ |+i⟩;
     # 3) It is applied, again, the Pauli-Y Gate to the 1st Qubit, then, |+i⟩ ↦ |0⟩;
     def test_apply_pauli_y_2(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -388,7 +967,6 @@ class PauliYGateTests(unittest.TestCase):
     # 2) It is applied the Pauli-X Gate to the 1st Qubit, then, |0⟩ ↦ |1⟩;
     # 3) It is applied the Pauli-Y Gate to the 1st Qubit, then, |1⟩ ↦ -i|0⟩;
     def test_apply_pauli_y_3(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -431,7 +1009,6 @@ class PauliYGateTests(unittest.TestCase):
     # 2) It is applied the Hadamard Gate to the 1st Qubit, then, |0⟩ ↦ |+⟩;
     # 3) It is applied the Pauli-Y Gate to the 1st Qubit, then, |+⟩ ↦ 1/sqrt(2)i x (-|0⟩ + |1⟩);
     def test_apply_pauli_y_4(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -478,7 +1055,6 @@ class PauliZGateTests(unittest.TestCase):
     #    with 1 Qubit initialized in the state |0⟩;
     # 2) It is applied the Pauli-Z Gate to the 1st Qubit, then, |0⟩ ↦ |0⟩;
     def test_apply_pauli_z_1(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -518,7 +1094,6 @@ class PauliZGateTests(unittest.TestCase):
     # 2) It is applied the Pauli-Z Gate to the 1st Qubit, then, |0⟩ ↦ |0⟩;
     # 3) It is applied, again, the Pauli-Z Gate to the 1st Qubit, then, |0⟩ ↦ |0⟩;
     def test_apply_pauli_z_2(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -564,7 +1139,6 @@ class HadamardGateTests(unittest.TestCase):
     #    with 1 Qubit initialized in the state |0⟩;
     # 2) It is applied the Hadamard Gate to the 1st Qubit, then, |0⟩ ↦ |+⟩;
     def test_apply_hadamard_1(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -605,7 +1179,6 @@ class HadamardGateTests(unittest.TestCase):
     # 2) It is applied the Hadamard Gate to the 1st Qubit, then, |0⟩ ↦ |+⟩;
     # 3) It is applied, again, the Hadamard Gate to the 1st Qubit, then, |+⟩ ↦ |1⟩;
     def test_apply_hadamard_2(self):
-
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -642,7 +1215,13 @@ class HadamardGateTests(unittest.TestCase):
         self.assertEqual(True, True)
 
 
+# Configuration of the Test Suites
 if __name__ == '__main__':
+
+    # Test Cases for the Measurements in the X-, Y- and Z-Basis
+    prepare_measure_x_basis_tests_suite = unittest.TestLoader().loadTestsFromTestCase(PrepareMeasureXBasisTests)
+    prepare_measure_y_basis_tests_suite = unittest.TestLoader().loadTestsFromTestCase(PrepareMeasureYBasisTests)
+    prepare_measure_z_basis_tests_suite = unittest.TestLoader().loadTestsFromTestCase(PrepareMeasureZBasisTests)
 
     # Test Cases for the Pauli Gates
     pauli_i_gate_tests_suite = unittest.TestLoader().loadTestsFromTestCase(PauliIGateTests)
@@ -654,6 +1233,9 @@ if __name__ == '__main__':
     hadamard_gate_tests_suite = unittest.TestLoader().loadTestsFromTestCase(HadamardGateTests)
 
     # Create a Global for all the Test Cases established
-    all_test_cases = unittest.TestSuite([pauli_i_gate_tests_suite, pauli_x_gate_tests_suite,
+    all_test_cases = unittest.TestSuite([prepare_measure_x_basis_tests_suite,
+                                         prepare_measure_y_basis_tests_suite,
+                                         prepare_measure_z_basis_tests_suite,
+                                         pauli_i_gate_tests_suite, pauli_x_gate_tests_suite,
                                          pauli_y_gate_tests_suite, pauli_z_gate_tests_suite,
                                          hadamard_gate_tests_suite])
