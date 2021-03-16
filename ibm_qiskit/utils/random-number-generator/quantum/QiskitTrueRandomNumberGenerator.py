@@ -38,13 +38,13 @@ class QiskitQuantumTrueRandomNumberGenerator:
         self.number_lower_bound = number_lower_bound
         self.number_upper_bound = number_upper_bound
 
-        delta = (self.number_upper_bound - self.number_lower_bound)
+        delta_interval = (self.number_upper_bound - self.number_lower_bound)
 
-        if number_type == "INTEGER":
-            self.binary_length = (floor(log(delta, 2)) + 1)
-        elif number_type == "FLOATING_POINT_16_EXPONENT":
+        if self.number_type == "INTEGER":
+            self.binary_length = (floor(log(delta_interval, 2)) + 1)
+        elif self.number_type == "FLOATING_POINT_16_EXPONENT":
             self.binary_length = (floor(log(16, 2)) + 1)
-        elif number_type == "FLOATING_POINT_8_EXPONENT":
+        elif self.number_type == "FLOATING_POINT_8_EXPONENT":
             self.binary_length = (floor(log(8, 2)) + 1)
 
     # Generate a True Random Number
