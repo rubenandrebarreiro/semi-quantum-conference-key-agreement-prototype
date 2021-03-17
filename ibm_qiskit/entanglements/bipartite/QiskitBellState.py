@@ -44,7 +44,7 @@ class QiskitBellState:
             # Raise the Value Error exception
             raise ValueError("The configuration for the Bell State is not valid!!!")
 
-    # Create the bipartite entanglement for the Bell State configured
+    # Prepare the bipartite entanglement for the Bell State configured
     def prepare_bipartite_entanglement(self):
 
         # If the Bell State is |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
@@ -55,6 +55,9 @@ class QiskitBellState:
 
             # Apply the Controlled-Pauli-X (CNOT) Gate to the given Control-Qubit and Target-Qubit
             self.quantum_circuit.apply_controlled_x(self.control_qubit_index, self.target_qubit_index)
+
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
 
         # If the Bell State is |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
         elif self.bell_state_type == "BELL_STATE_PHI_MINUS":
@@ -68,6 +71,9 @@ class QiskitBellState:
             # Apply the Controlled-Pauli-X (CNOT) Gate to the given Control-Qubit and Target-Qubit
             self.quantum_circuit.apply_controlled_x(self.control_qubit_index, self.target_qubit_index)
 
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
+
         # If the Bell State is |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
         elif self.bell_state_type == "BELL_STATE_PSI_PLUS":
 
@@ -79,6 +85,9 @@ class QiskitBellState:
 
             # Apply the Controlled-Pauli-X (CNOT) Gate to the given Control-Qubit and Target-Qubit
             self.quantum_circuit.apply_controlled_x(self.control_qubit_index, self.target_qubit_index)
+
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
 
         # If the Bell State is |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
         elif self.bell_state_type == "BELL_STATE_PSI_MINUS":
@@ -95,6 +104,106 @@ class QiskitBellState:
             # Apply the Pauli-Z (Phase Flip) Gate to the Target-Qubit index
             self.quantum_circuit.apply_pauli_z(self.target_qubit_index)
 
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
+
         # Return the IBM Qiskit's Bell State, as a bipartite entanglement
         return self.quantum_circuit
 
+    # Measure the bipartite entanglement for the Bell State configured
+    def measure_bipartite_entanglement(self, is_final_measurement=True):
+
+        # Set the Control-Bit and Target-Bit,
+        # for the measurement of the Control-Qubit and Target-Qubit, respectively
+        control_bit_index, target_bit_index = self.control_qubit_index, self.target_qubit_index
+
+        # If the Bell State is |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
+        if self.bell_state_type == "EPR_PAIR_STATE" or self.bell_state_type == "BELL_STATE_PHI_PLUS":
+
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
+
+            # Apply the Controlled-Pauli-X (CNOT) Gate to the given Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_controlled_x(self.control_qubit_index, self.target_qubit_index)
+
+            # Apply the Hadamard Gate to the Control-Qubit index
+            self.quantum_circuit.apply_hadamard(self.control_qubit_index)
+
+            # If is a final measurement
+            if is_final_measurement:
+
+                # Measure the Control-Qubit and Target-Qubit of the Quantum Circuit, for the Bell State
+                self.quantum_circuit.measure_qubits_interval([self.control_qubit_index, self.target_qubit_index],
+                                                             [control_bit_index, target_bit_index])
+
+        # If the Bell State is |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
+        elif self.bell_state_type == "BELL_STATE_PHI_MINUS":
+
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
+
+            # Apply the Controlled-Pauli-X (CNOT) Gate to the given Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_controlled_x(self.control_qubit_index, self.target_qubit_index)
+
+            # Apply the Pauli-Z (Phase Flip) to the Control-Qubit index
+            self.quantum_circuit.apply_pauli_z(self.control_qubit_index)
+
+            # Apply the Hadamard Gate to the Control-Qubit index
+            self.quantum_circuit.apply_hadamard(self.control_qubit_index)
+
+            # If is a final measurement
+            if is_final_measurement:
+
+                # Measure the Control-Qubit and Target-Qubit of the Quantum Circuit, for the Bell State
+                self.quantum_circuit.measure_qubits_interval([self.control_qubit_index, self.target_qubit_index],
+                                                             [control_bit_index, target_bit_index])
+
+        # If the Bell State is |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
+        elif self.bell_state_type == "BELL_STATE_PSI_PLUS":
+
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
+
+            # Apply the Controlled-Pauli-X (CNOT) Gate to the given Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_controlled_x(self.control_qubit_index, self.target_qubit_index)
+
+            # Apply the Pauli-X (NOT/Bit Flip) Gate to the Target-Qubit index
+            self.quantum_circuit.apply_pauli_x(self.target_qubit_index)
+
+            # Apply the Hadamard Gate to the Control-Qubit index
+            self.quantum_circuit.apply_hadamard(self.control_qubit_index)
+
+            # If is a final measurement
+            if is_final_measurement:
+
+                # Measure the Control-Qubit and Target-Qubit of the Quantum Circuit, for the Bell State
+                self.quantum_circuit.measure_qubits_interval([self.control_qubit_index, self.target_qubit_index],
+                                                             [control_bit_index, target_bit_index])
+
+        # If the Bell State is |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
+        elif self.bell_state_type == "BELL_STATE_PSI_MINUS":
+
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
+
+            # Apply the Pauli-Z (Phase Flip) Gate to the Target-Qubit index
+            self.quantum_circuit.apply_pauli_z(self.target_qubit_index)
+
+            # Apply the Controlled-Pauli-X (CNOT) Gate to the given Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_controlled_x(self.control_qubit_index, self.target_qubit_index)
+
+            # Apply the Pauli-X (NOT/Bit Flip) Gate to the Target-Qubit index
+            self.quantum_circuit.apply_pauli_x(self.target_qubit_index)
+
+            # Apply the Hadamard Gate to the Control-Qubit index
+            self.quantum_circuit.apply_hadamard(self.control_qubit_index)
+
+            # If is a final measurement
+            if is_final_measurement:
+
+                # Measure the Control-Qubit and Target-Qubit of the Quantum Circuit, for the Bell State
+                self.quantum_circuit.measure_qubits_interval([self.control_qubit_index, self.target_qubit_index],
+                                                             [control_bit_index, target_bit_index])
+
+        # Return the IBM Qiskit's Bell State, as a bipartite entanglement
+        return self.quantum_circuit
