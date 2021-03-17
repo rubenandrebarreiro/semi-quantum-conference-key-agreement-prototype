@@ -45,7 +45,7 @@ class QiskitBellState:
             raise ValueError("The configuration for the Bell State is not valid!!!")
 
     # Create the bipartite entanglement for the Bell State configured
-    def create_bipartite_entanglement(self):
+    def prepare_bipartite_entanglement(self):
 
         # If the Bell State is |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
         if self.bell_state_type == "EPR_PAIR_STATE" or self.bell_state_type == "BELL_STATE_PHI_PLUS":
@@ -94,4 +94,7 @@ class QiskitBellState:
 
             # Apply the Pauli-Z (Phase Flip) Gate to the Target-Qubit index
             self.quantum_circuit.apply_pauli_z(self.target_qubit_index)
+
+        # Return the IBM Qiskit's Bell State, as a bipartite entanglement
+        return self.quantum_circuit
 
