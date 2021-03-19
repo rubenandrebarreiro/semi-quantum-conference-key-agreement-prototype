@@ -15,7 +15,7 @@ Acknowledgments:
 # Import Unittest for Python's Unitary Tests
 import unittest
 
-# Import N-Dimensional Arrays and Squared Roots from NumPy
+# Import the Fulfillment Array function and Squared Roots from NumPy
 from numpy import full, sqrt
 
 # Import Assert_All_Close from NumPy.Testing
@@ -34,7 +34,7 @@ from src.ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
 from src.ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
 
 # Import QiskitQuantumHadamardTransform from IBM_Qiskit.Utils.Transforms
-from src.ibm_qiskit import QiskitQuantumHadamardTransform
+from src.ibm_qiskit.utils.transforms import QiskitQuantumHadamardTransform
 
 
 # Test Cases for the Quantum Hadamard Transform
