@@ -13,10 +13,10 @@ Acknowledgments:
 """
 
 
-# Class for IBM Qiskit's Bell State
+# Class for IBM Qiskit's GHZ State
 class QiskitGHZState:
 
-    # Constructor for IBM Qiskit's Bell State
+    # Constructor for IBM Qiskit's GHZ State
     def __init__(self, name, quantum_circuit, control_qubit_index, target_qubits_indexes):
         self.name = name
         self.quantum_circuit = quantum_circuit
@@ -26,7 +26,7 @@ class QiskitGHZState:
         # The number of Qubits of the given IBM Qiskit's Quantum Circuit
         num_qubits_quantum_circuit = quantum_circuit.get_num_qubits()
 
-        # If the number of Qubits of the given IBM Qiskit's Quantum Circuit is strictly lower than 2,
+        # If the number of Qubits of the given IBM Qiskit's Quantum Circuit is strictly lower than 3,
         # a Value Error exception will be raised
         if num_qubits_quantum_circuit < 3:
 
@@ -34,7 +34,7 @@ class QiskitGHZState:
             raise ValueError("It is impossible to create a GHZ State, from a IBM Qiskit's Quantum Circuit with "
                              "less than 3 Qubits!!!")
 
-    # Prepare the multipartite entanglement for the Bell State configured
+    # Prepare the multipartite entanglement for the GHZ State configured
     def prepare_multipartite_entanglement(self):
 
         # Apply a Barrier to the Control-Qubit
@@ -58,7 +58,7 @@ class QiskitGHZState:
         # Apply Barriers to the interval of Target-Qubits
         self.quantum_circuit.apply_barriers_interval(self.target_qubits_indexes)
 
-        # Return the IBM Qiskit's Bell State, as a multipartite entanglement
+        # Return the IBM Qiskit's GHZ State, as a multipartite entanglement
         return self.quantum_circuit
 
     # Measure the multipartite entanglement for the GHZ State configured
