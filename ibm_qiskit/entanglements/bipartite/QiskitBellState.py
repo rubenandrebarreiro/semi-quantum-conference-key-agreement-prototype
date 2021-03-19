@@ -50,6 +50,9 @@ class QiskitBellState:
         # If the Bell State is |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
         if self.bell_state_type == "EPR_PAIR_STATE" or self.bell_state_type == "BELL_STATE_PHI_PLUS":
 
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
+
             # Apply the Hadamard Gate to the Control-Qubit index
             self.quantum_circuit.apply_hadamard(self.control_qubit_index)
 
@@ -61,6 +64,9 @@ class QiskitBellState:
 
         # If the Bell State is |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
         elif self.bell_state_type == "BELL_STATE_PHI_MINUS":
+
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
 
             # Apply the Hadamard Gate to the Control-Qubit index
             self.quantum_circuit.apply_hadamard(self.control_qubit_index)
@@ -77,6 +83,9 @@ class QiskitBellState:
         # If the Bell State is |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
         elif self.bell_state_type == "BELL_STATE_PSI_PLUS":
 
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
+
             # Apply the Hadamard Gate to the Control-Qubit index
             self.quantum_circuit.apply_hadamard(self.control_qubit_index)
 
@@ -91,6 +100,9 @@ class QiskitBellState:
 
         # If the Bell State is |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
         elif self.bell_state_type == "BELL_STATE_PSI_MINUS":
+
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
 
             # Apply the Hadamard Gate to the Control-Qubit index
             self.quantum_circuit.apply_hadamard(self.control_qubit_index)
@@ -129,6 +141,9 @@ class QiskitBellState:
             # Apply the Hadamard Gate to the Control-Qubit index
             self.quantum_circuit.apply_hadamard(self.control_qubit_index)
 
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
+
             # If is a final measurement
             if is_final_measurement:
 
@@ -151,6 +166,9 @@ class QiskitBellState:
             # Apply the Hadamard Gate to the Control-Qubit index
             self.quantum_circuit.apply_hadamard(self.control_qubit_index)
 
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
+
             # If is a final measurement
             if is_final_measurement:
 
@@ -172,6 +190,9 @@ class QiskitBellState:
 
             # Apply the Hadamard Gate to the Control-Qubit index
             self.quantum_circuit.apply_hadamard(self.control_qubit_index)
+
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
 
             # If is a final measurement
             if is_final_measurement:
@@ -197,6 +218,9 @@ class QiskitBellState:
 
             # Apply the Hadamard Gate to the Control-Qubit index
             self.quantum_circuit.apply_hadamard(self.control_qubit_index)
+
+            # Apply Barriers to the interval of Control-Qubit and Target-Qubit
+            self.quantum_circuit.apply_barriers_interval([self.control_qubit_index, self.target_qubit_index])
 
             # If is a final measurement
             if is_final_measurement:
