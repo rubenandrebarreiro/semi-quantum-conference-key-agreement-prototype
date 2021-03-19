@@ -27,16 +27,16 @@ from numpy.testing import assert_allclose
 from qiskit import Aer, execute
 
 # Import QiskitQuantumCircuit from IBM_Qiskit.Circuit
-from ibm_qiskit.circuit import QiskitQuantumCircuit
+from src.ibm_qiskit.circuit import QiskitQuantumCircuit
 
 # Import QiskitClassicalRegister from IBM_Qiskit.Circuit.Classical
-from ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
+from src.ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
 
 # Import QiskitQuantumRegister from IBM_Qiskit.Circuit.Quantum
-from ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
+from src.ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
 
 # Import QiskitBellState from IBM_Qiskit.Entanglements.Bipartite
-from ibm_qiskit.entanglements.bipartite import QiskitBellState
+from src.ibm_qiskit.entanglements.bipartite import QiskitBellState
 
 
 # Test Cases for prepare the Bell States

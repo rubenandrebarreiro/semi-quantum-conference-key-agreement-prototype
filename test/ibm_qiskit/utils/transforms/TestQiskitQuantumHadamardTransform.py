@@ -25,16 +25,16 @@ from numpy.testing import assert_allclose
 from qiskit import Aer, execute
 
 # Import QiskitQuantumCircuit from IBM_Qiskit.Circuit
-from ibm_qiskit.circuit import QiskitQuantumCircuit
+from src.ibm_qiskit.circuit import QiskitQuantumCircuit
 
 # Import QiskitClassicalRegister from IBM_Qiskit.Circuit.Classical
-from ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
+from src.ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
 
 # Import QiskitQuantumRegister from IBM_Qiskit.Circuit.Quantum
-from ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
+from src.ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
 
 # Import QiskitQuantumHadamardTransform from IBM_Qiskit.Utils.Transforms
-from ibm_qiskit.utils.transforms import QiskitQuantumHadamardTransform
+from src.ibm_qiskit import QiskitQuantumHadamardTransform
 
 
 # Test Cases for the Quantum Hadamard Transform
@@ -67,7 +67,7 @@ class QuantumHadamardTransformTests(unittest.TestCase):
         qubit_indexes = range(0, num_qubits)
 
         # Apply the Quantum Hadamard Transform for 1 Qubit
-        qiskit_quantum_hadamard_transform_1_qubit_circuit = QiskitQuantumHadamardTransform\
+        qiskit_quantum_hadamard_transform_1_qubit_circuit = QiskitQuantumHadamardTransform \
             .QiskitQuantumHadamardTransform("quantum_hadamard_transform_1_qubit",
                                             qiskit_quantum_circuit_1_qubit,
                                             qubit_indexes).apply_transform()
@@ -122,7 +122,7 @@ class QuantumHadamardTransformTests(unittest.TestCase):
         qubit_indexes = range(0, num_qubits)
 
         # Apply the Quantum Hadamard Transform for 2 Qubits
-        qiskit_quantum_hadamard_transform_2_qubits_circuit = QiskitQuantumHadamardTransform\
+        qiskit_quantum_hadamard_transform_2_qubits_circuit = QiskitQuantumHadamardTransform \
             .QiskitQuantumHadamardTransform("quantum_hadamard_transform_2_qubits",
                                             qiskit_quantum_circuit_2_qubits,
                                             qubit_indexes).apply_transform()
@@ -177,7 +177,7 @@ class QuantumHadamardTransformTests(unittest.TestCase):
         qubit_indexes = range(0, num_qubits)
 
         # Apply the Quantum Hadamard Transform for 3 Qubits
-        qiskit_quantum_hadamard_transform_3_qubits_circuit = QiskitQuantumHadamardTransform\
+        qiskit_quantum_hadamard_transform_3_qubits_circuit = QiskitQuantumHadamardTransform \
             .QiskitQuantumHadamardTransform("quantum_hadamard_transform_3_qubits",
                                             qiskit_quantum_circuit_3_qubits,
                                             qubit_indexes).apply_transform()
@@ -232,7 +232,7 @@ class QuantumHadamardTransformTests(unittest.TestCase):
         qubit_indexes = range(0, num_qubits)
 
         # Apply the Quantum Hadamard Transform for 4 Qubits
-        qiskit_quantum_hadamard_transform_4_qubits_circuit = QiskitQuantumHadamardTransform\
+        qiskit_quantum_hadamard_transform_4_qubits_circuit = QiskitQuantumHadamardTransform \
             .QiskitQuantumHadamardTransform("quantum_hadamard_transform_4_qubits",
                                             qiskit_quantum_circuit_4_qubits,
                                             qubit_indexes).apply_transform()
@@ -287,7 +287,7 @@ class QuantumHadamardTransformTests(unittest.TestCase):
         qubit_indexes = range(0, num_qubits)
 
         # Apply the Quantum Hadamard Transform for 5 Qubits
-        qiskit_quantum_hadamard_transform_5_qubits_circuit = QiskitQuantumHadamardTransform\
+        qiskit_quantum_hadamard_transform_5_qubits_circuit = QiskitQuantumHadamardTransform \
             .QiskitQuantumHadamardTransform("quantum_hadamard_transform_5_qubits",
                                             qiskit_quantum_circuit_5_qubits,
                                             qubit_indexes).apply_transform()
@@ -342,7 +342,7 @@ class QuantumHadamardTransformTests(unittest.TestCase):
         qubit_indexes = range(0, num_qubits)
 
         # Apply the Quantum Hadamard Transform for 6 Qubits
-        qiskit_quantum_hadamard_transform_6_qubits_circuit = QiskitQuantumHadamardTransform\
+        qiskit_quantum_hadamard_transform_6_qubits_circuit = QiskitQuantumHadamardTransform \
             .QiskitQuantumHadamardTransform("quantum_hadamard_transform_6_qubits",
                                             qiskit_quantum_circuit_6_qubits,
                                             qubit_indexes).apply_transform()
@@ -397,7 +397,7 @@ class QuantumHadamardTransformTests(unittest.TestCase):
         qubit_indexes = range(0, num_qubits)
 
         # Apply the Quantum Hadamard Transform for 16 Qubits
-        qiskit_quantum_hadamard_transform_16_qubits_circuit = QiskitQuantumHadamardTransform\
+        qiskit_quantum_hadamard_transform_16_qubits_circuit = QiskitQuantumHadamardTransform \
             .QiskitQuantumHadamardTransform("quantum_hadamard_transform_16_qubits",
                                             qiskit_quantum_circuit_16_qubits,
                                             qubit_indexes).apply_transform()
@@ -452,7 +452,7 @@ class QuantumHadamardTransformTests(unittest.TestCase):
         qubit_indexes = range(0, num_qubits)
 
         # Apply the Quantum Hadamard Transform for 25 Qubits
-        qiskit_quantum_hadamard_transform_25_qubits_circuit = QiskitQuantumHadamardTransform\
+        qiskit_quantum_hadamard_transform_25_qubits_circuit = QiskitQuantumHadamardTransform \
             .QiskitQuantumHadamardTransform("quantum_hadamard_transform_25_qubits",
                                             qiskit_quantum_circuit_25_qubits,
                                             qubit_indexes).apply_transform()

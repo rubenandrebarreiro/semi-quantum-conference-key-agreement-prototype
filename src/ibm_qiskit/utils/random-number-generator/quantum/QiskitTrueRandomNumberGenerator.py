@@ -16,16 +16,16 @@ Acknowledgments:
 from math import floor, log
 
 # Import QiskitQuantumCircuit from IBM_Qiskit.Circuit
-from ibm_qiskit.circuit import QiskitQuantumCircuit
+from src.ibm_qiskit.circuit import QiskitQuantumCircuit
 
 # Import QiskitClassicalRegister from IBM_Qiskit.Circuit.Classical
-from ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
+from src.ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
 
 # Import QiskitQuantumRegister from IBM_Qiskit.Circuit.Quantum
-from ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
+from src.ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
 
 # Class for the IBM Qiskit's Quantum True Random Number Generator (TRNG)
-from ibm_qiskit.utils.transforms import QiskitQuantumHadamardTransform
+from src.ibm_qiskit.utils.transforms import QiskitQuantumHadamardTransform
 
 
 # Class for IBM Qiskit's Quantum True Random Number Generator (TRNG)
