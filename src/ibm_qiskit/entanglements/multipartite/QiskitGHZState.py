@@ -74,8 +74,11 @@ class QiskitGHZState:
         # Apply Barriers to the interval of Target-Qubits
         self.quantum_circuit.apply_barriers_interval(self.target_qubits_indexes)
 
-        # Reverse the list of Target-Qubits
-        target_qubits_indexes_reversed = self.target_qubits_indexes.reverse()
+        # Duplicate the list of Target-Qubits
+        target_qubits_indexes_reversed = self.target_qubits_indexes.copy()
+
+        # Reverse the list of duplicated Target-Qubits
+        target_qubits_indexes_reversed.reverse()
 
         # For each Target-Qubit
         for target_qubit_index_reversed in target_qubits_indexes_reversed:
