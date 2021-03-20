@@ -598,7 +598,7 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         # Compute the number of possible outcomes (i.e., 2^(num_qubits))
         num_possible_outcomes = (2 ** num_qubits)
 
-        # Create and fill an array with the complex values, of GHZ State, for 3 Qubits
+        # Create and fill an array with the complex values, of GHZ State, for 4 Qubits
         qiskit_ghz_state_4_qubits_array_0000 = full((num_possible_outcomes,),
                                                     (0. + 0.j))
 
@@ -666,7 +666,7 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         # Compute the number of possible outcomes (i.e., 2^(num_qubits))
         num_possible_outcomes = (2 ** num_qubits)
 
-        # Create and fill an array with the complex values, of GHZ State, for 3 Qubits
+        # Create and fill an array with the complex values, of GHZ State, for 4 Qubits
         qiskit_ghz_state_4_qubits_array_0100 = full((num_possible_outcomes,),
                                                     (0. + 0.j))
 
@@ -675,7 +675,7 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         qiskit_ghz_state_4_qubits_array_0100[4] = (1. + 0.j)
 
         # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
-        # after the GHZ State, for 3 Qubits, be prepared
+        # after the GHZ State, for 4 Qubits, be prepared
         assert_allclose(final_state_vector, qiskit_ghz_state_4_qubits_array_0100, rtol=1e-7, atol=1e-7)
 
         # Dummy Assert Equal for Unittest
@@ -718,9 +718,9 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
                             qiskit_quantum_circuit_4_qubits,
                             0, [1, 2, 3]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
         qiskit_quantum_circuit_ghz_state_1011_measured = QiskitGHZState \
-            .QiskitGHZState("ghz_state_3_qubits_1011",
+            .QiskitGHZState("ghz_state_4_qubits_1011",
                             qiskit_quantum_circuit_ghz_state_4_qubits_prepared,
                             0, [1, 2, 3]).measure_multipartite_entanglement(is_final_measurement=False)
 
@@ -807,7 +807,7 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         # Compute the number of possible outcomes (i.e., 2^(num_qubits))
         num_possible_outcomes = (2 ** num_qubits)
 
-        # Create and fill an array with the complex values, of GHZ State, for 3 Qubits
+        # Create and fill an array with the complex values, of GHZ State, for 4 Qubits
         qiskit_ghz_state_4_qubits_array_1111 = full((num_possible_outcomes,),
                                                     (0. + 0.j))
 
@@ -818,6 +818,284 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
         # after the GHZ State, for 4 Qubits, be prepared
         assert_allclose(final_state_vector, qiskit_ghz_state_4_qubits_array_1111, rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+
+# Test Cases for prepare and measure the GHZ States, for 5 Qubits, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
+class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
+
+    # Test #1 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 5 Qubits initialized in the state |00000⟩;
+    # 2) Prepare of the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 3) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    def test_prepare_and_measure_ghz_state_4_qubits_0000(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 5
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_ghz_state_5_qubits = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate5qubits", num_qubits)
+        qiskit_classical_register_ghz_state_5_qubits = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate5qubits", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_5_qubits = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcghzstate5qubits",
+                                                      qiskit_quantum_register_ghz_state_5_qubits,
+                                                      qiskit_classical_register_ghz_state_5_qubits,
+                                                      global_phase=0)
+
+        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        qiskit_quantum_circuit_ghz_state_5_qubits_prepared = QiskitGHZState \
+            .QiskitGHZState("ghz_state_5_qubits",
+                            qiskit_quantum_circuit_5_qubits,
+                            0, [1, 2, 3, 4]).prepare_multipartite_entanglement()
+
+        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        qiskit_quantum_circuit_ghz_state_00000_measured = QiskitGHZState \
+            .QiskitGHZState("ghz_state_5_qubits_00000",
+                            qiskit_quantum_circuit_ghz_state_5_qubits_prepared,
+                            0, [1, 2, 3, 4]).measure_multipartite_entanglement(is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = \
+            execute(qiskit_quantum_circuit_ghz_state_00000_measured.quantum_circuit,
+                    state_vector_backend).result().get_statevector()
+
+        # Compute the number of possible outcomes (i.e., 2^(num_qubits))
+        num_possible_outcomes = (2 ** num_qubits)
+
+        # Create and fill an array with the complex values, of GHZ State, for 3 Qubits
+        qiskit_ghz_state_5_qubits_array_00000 = full((num_possible_outcomes,),
+                                                     (0. + 0.j))
+
+        # Set the first index of the State Vector of the Qubits (i.e., |0000⟩),
+        # of the GHZ State, for 5 Qubits, with the Complex Number value, (1 + 0j)
+        qiskit_ghz_state_5_qubits_array_00000[0] = (1. + 0.j)
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
+        # after the GHZ State, for 5 Qubits, be prepared
+        assert_allclose(final_state_vector, qiskit_ghz_state_5_qubits_array_00000, rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #2 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 5 Qubits initialized in the state |00000⟩;
+    # 2) Prepare the Quantum State, |01000⟩, by applying the Pauli-X Gate on the forth Qubit;
+    # 3) Prepare of the GHZ State, for 5 Qubits, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    def test_prepare_and_measure_ghz_state_5_qubits_01000(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 5
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_ghz_state_5_qubits = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate5qubits", num_qubits)
+        qiskit_classical_register_ghz_state_5_qubits = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate5qubits", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_5_qubits = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcghzstate5qubits",
+                                                      qiskit_quantum_register_ghz_state_5_qubits,
+                                                      qiskit_classical_register_ghz_state_5_qubits,
+                                                      global_phase=0)
+
+        # Prepare the Quantum State, |01000⟩, by applying the Pauli-X Gate, on the forth Qubit
+        qiskit_quantum_circuit_5_qubits.apply_pauli_x(3)
+
+        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        qiskit_quantum_circuit_ghz_state_5_qubits_prepared = QiskitGHZState \
+            .QiskitGHZState("ghz_state_5_qubits",
+                            qiskit_quantum_circuit_5_qubits,
+                            0, [1, 2, 3, 4]).prepare_multipartite_entanglement()
+
+        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 5 Qubits
+        qiskit_quantum_circuit_ghz_state_01000_measured = QiskitGHZState \
+            .QiskitGHZState("ghz_state_5_qubits_01000",
+                            qiskit_quantum_circuit_ghz_state_5_qubits_prepared,
+                            0, [1, 2, 3, 4]).measure_multipartite_entanglement(is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = \
+            execute(qiskit_quantum_circuit_ghz_state_01000_measured.quantum_circuit,
+                    state_vector_backend).result().get_statevector()
+
+        # Compute the number of possible outcomes (i.e., 2^(num_qubits))
+        num_possible_outcomes = (2 ** num_qubits)
+
+        # Create and fill an array with the complex values, of GHZ State, for 5 Qubits
+        qiskit_ghz_state_5_qubits_array_01000 = full((num_possible_outcomes,),
+                                                     (0. + 0.j))
+
+        # Set the third index of the State Vector of the Qubits (i.e., |01000⟩),
+        # of the GHZ State, for 5 Qubits, with the Complex Number value, (1 + 0j)
+        qiskit_ghz_state_5_qubits_array_01000[8] = (1. + 0.j)
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
+        # after the GHZ State, for 5 Qubits, be prepared
+        assert_allclose(final_state_vector, qiskit_ghz_state_5_qubits_array_01000, rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #3 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 5 Qubits initialized in the state |00000⟩;
+    # 2) Prepare the Quantum State, |10011⟩, by applying the Pauli-X Gate on the first, second and fifth Qubits;
+    # 3) Prepare of the GHZ State, for 5 Qubits, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    def test_prepare_and_measure_ghz_state_5_qubits_10011(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 5
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_ghz_state_5_qubits = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate5qubits", num_qubits)
+        qiskit_classical_register_ghz_state_5_qubits = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate5qubits", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_5_qubits = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcghzstate5qubits",
+                                                      qiskit_quantum_register_ghz_state_5_qubits,
+                                                      qiskit_classical_register_ghz_state_5_qubits,
+                                                      global_phase=0)
+
+        # Prepare the Quantum State, |10011⟩, by applying the Pauli-X Gate, on the first, second and fifth Qubits
+        qiskit_quantum_circuit_5_qubits.apply_pauli_x(0)
+        qiskit_quantum_circuit_5_qubits.apply_pauli_x(1)
+        qiskit_quantum_circuit_5_qubits.apply_pauli_x(4)
+
+        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        qiskit_quantum_circuit_ghz_state_5_qubits_prepared = QiskitGHZState \
+            .QiskitGHZState("ghz_state_5_qubits",
+                            qiskit_quantum_circuit_5_qubits,
+                            0, [1, 2, 3, 4]).prepare_multipartite_entanglement()
+
+        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 5 Qubits
+        qiskit_quantum_circuit_ghz_state_10011_measured = QiskitGHZState \
+            .QiskitGHZState("ghz_state_5_qubits_10011",
+                            qiskit_quantum_circuit_ghz_state_5_qubits_prepared,
+                            0, [1, 2, 3, 4]).measure_multipartite_entanglement(is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = \
+            execute(qiskit_quantum_circuit_ghz_state_10011_measured.quantum_circuit,
+                    state_vector_backend).result().get_statevector()
+
+        # Compute the number of possible outcomes (i.e., 2^(num_qubits))
+        num_possible_outcomes = (2 ** num_qubits)
+
+        # Create and fill an array with the complex values, of GHZ State, for 5 Qubits
+        qiskit_ghz_state_5_qubits_array_10011 = full((num_possible_outcomes,),
+                                                     (0. + 0.j))
+
+        # Set the fifth index of the State Vector of the Qubits (i.e., |10011⟩),
+        # of the GHZ State, for 5 Qubits, with the Complex Number value, (1 + 0j)
+        qiskit_ghz_state_5_qubits_array_10011[19] = (1. + 0.j)
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
+        # after the GHZ State, for 5 Qubits, be prepared
+        assert_allclose(final_state_vector, qiskit_ghz_state_5_qubits_array_10011, rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #4 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 5 Qubits initialized in the state |00000⟩;
+    # 2) Prepare the Quantum State, |11111⟩, by applying the Pauli-X in all the Qubits;
+    # 3) Prepare of the GHZ State, for 5 Qubits, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    def test_prepare_and_measure_ghz_state_5_qubits_1111(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 5
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_ghz_state_5_qubits = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate5qubits", num_qubits)
+        qiskit_classical_register_ghz_state_5_qubits = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate5qubits", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_5_qubits = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcghzstate5qubits",
+                                                      qiskit_quantum_register_ghz_state_5_qubits,
+                                                      qiskit_classical_register_ghz_state_5_qubits,
+                                                      global_phase=0)
+
+        # Prepare the Quantum State, |11111⟩, by applying the Pauli-X Gate, on all the Qubits
+        qiskit_quantum_circuit_5_qubits.apply_pauli_x(0)
+        qiskit_quantum_circuit_5_qubits.apply_pauli_x(1)
+        qiskit_quantum_circuit_5_qubits.apply_pauli_x(2)
+        qiskit_quantum_circuit_5_qubits.apply_pauli_x(3)
+        qiskit_quantum_circuit_5_qubits.apply_pauli_x(4)
+
+        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        qiskit_quantum_circuit_ghz_state_5_qubits_prepared = QiskitGHZState \
+            .QiskitGHZState("ghz_state_5_qubits",
+                            qiskit_quantum_circuit_5_qubits,
+                            0, [1, 2, 3, 4]).prepare_multipartite_entanglement()
+
+        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        qiskit_quantum_circuit_ghz_state_11111_measured = QiskitGHZState \
+            .QiskitGHZState("ghz_state_5_qubits_1111",
+                            qiskit_quantum_circuit_ghz_state_5_qubits_prepared,
+                            0, [1, 2, 3, 4]).measure_multipartite_entanglement(is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = \
+            execute(qiskit_quantum_circuit_ghz_state_11111_measured.quantum_circuit,
+                    state_vector_backend).result().get_statevector()
+
+        # Compute the number of possible outcomes (i.e., 2^(num_qubits))
+        num_possible_outcomes = (2 ** num_qubits)
+
+        # Create and fill an array with the complex values, of GHZ State, for 5 Qubits
+        qiskit_ghz_state_5_qubits_array_11111 = full((num_possible_outcomes,),
+                                                     (0. + 0.j))
+
+        # Set the last index of the State Vector of the Qubits (i.e., |11111⟩),
+        # of the GHZ State, for 5 Qubits, with the Complex Number value, (1 + 0j)
+        qiskit_ghz_state_5_qubits_array_11111[(num_possible_outcomes - 1)] = (1. + 0.j)
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
+        # after the GHZ State, for 5 Qubits, be prepared
+        assert_allclose(final_state_vector, qiskit_ghz_state_5_qubits_array_11111, rtol=1e-7, atol=1e-7)
 
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
@@ -836,7 +1114,12 @@ if __name__ == '__main__':
     ghz_states_4_qubits_prepare_tests_suite = unittest.TestLoader()\
         .loadTestsFromTestCase(PrepareAndMeasureGHZState4Qubits)
 
+    # Test Cases for prepare and measure the GHZ State, for 5 Qubits
+    ghz_states_5_qubits_prepare_tests_suite = unittest.TestLoader()\
+        .loadTestsFromTestCase(PrepareAndMeasureGHZState5Qubits)
+
     # Create a Global for all the Test Cases established
     all_test_cases = unittest.TestSuite([ghz_states_prepare_tests_suite,
                                          ghz_states_3_qubits_prepare_tests_suite,
-                                         ghz_states_4_qubits_prepare_tests_suite])
+                                         ghz_states_4_qubits_prepare_tests_suite,
+                                         ghz_states_5_qubits_prepare_tests_suite])
