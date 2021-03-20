@@ -251,10 +251,10 @@ class PrepareBellStateTests(unittest.TestCase):
         self.assertEqual(True, True)
 
 
-# Test Cases for prepare and measure the Bell States (EPR Pairs), |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
+# Test Cases for prepare and measure the Bell State (EPR Pairs), |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
 class PrepareAndMeasureEPRPairBellStatePhiPlusTests(unittest.TestCase):
 
-    # Test #1 for prepare and measure the Bell States (EPR Pairs), |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
+    # Test #1 for prepare and measure the Bell State (EPR Pairs), |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -315,7 +315,7 @@ class PrepareAndMeasureEPRPairBellStatePhiPlusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #2 for prepare and measure the Bell States (EPR Pairs), |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
+    # Test #2 for prepare and measure the Bell State (EPR Pairs), |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -380,7 +380,7 @@ class PrepareAndMeasureEPRPairBellStatePhiPlusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #3 for prepare and measure the Bell States (EPR Pairs), |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
+    # Test #3 for prepare and measure the Bell State (EPR Pairs), |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -445,7 +445,7 @@ class PrepareAndMeasureEPRPairBellStatePhiPlusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #4 for prepare and measure the Bell States (EPR Pairs), |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
+    # Test #4 for prepare and measure the Bell State (EPR Pairs), |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -513,10 +513,10 @@ class PrepareAndMeasureEPRPairBellStatePhiPlusTests(unittest.TestCase):
         self.assertEqual(True, True)
 
 
-# Test Cases for prepare and measure the Bell States, |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
+# Test Cases for prepare and measure the Bell State, |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
 class PrepareAndMeasureBellStatePhiMinusTests(unittest.TestCase):
 
-    # Test #1 for prepare and measure the Bell States, |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
+    # Test #1 for prepare and measure the Bell State, |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -577,7 +577,7 @@ class PrepareAndMeasureBellStatePhiMinusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #2 for prepare and measure the Bell States, |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
+    # Test #2 for prepare and measure the Bell State, |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -642,7 +642,7 @@ class PrepareAndMeasureBellStatePhiMinusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #3 for prepare and measure the Bell States, |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
+    # Test #3 for prepare and measure the Bell State, |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -707,7 +707,7 @@ class PrepareAndMeasureBellStatePhiMinusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #4 for prepare and measure the Bell States, |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
+    # Test #4 for prepare and measure the Bell State, |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -775,10 +775,10 @@ class PrepareAndMeasureBellStatePhiMinusTests(unittest.TestCase):
         self.assertEqual(True, True)
 
 
-# Test Cases for prepare and measure the Bell States, |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
+# Test Cases for prepare and measure the Bell State, |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
 class PrepareAndMeasureBellStatePsiPlusTests(unittest.TestCase):
 
-    # Test #1 for prepare and measure the Bell States, |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
+    # Test #1 for prepare and measure the Bell State, |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -839,7 +839,7 @@ class PrepareAndMeasureBellStatePsiPlusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #2 for prepare and measure the Bell States, |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
+    # Test #2 for prepare and measure the Bell State, |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -904,7 +904,7 @@ class PrepareAndMeasureBellStatePsiPlusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #3 for prepare and measure the Bell States, |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
+    # Test #3 for prepare and measure the Bell State, |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -969,7 +969,7 @@ class PrepareAndMeasureBellStatePsiPlusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #4 for prepare and measure the Bell States, |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
+    # Test #4 for prepare and measure the Bell State, |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -1037,10 +1037,10 @@ class PrepareAndMeasureBellStatePsiPlusTests(unittest.TestCase):
         self.assertEqual(True, True)
 
 
-# Test Cases for prepare and measure the Bell States, |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
+# Test Cases for prepare and measure the Bell State, |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
 class PrepareAndMeasureBellStatePsiMinusTests(unittest.TestCase):
 
-    # Test #1 for prepare and measure the Bell States, |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
+    # Test #1 for prepare and measure the Bell State, |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -1101,7 +1101,7 @@ class PrepareAndMeasureBellStatePsiMinusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #2 for prepare and measure the Bell States, |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
+    # Test #2 for prepare and measure the Bell State, |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -1166,7 +1166,7 @@ class PrepareAndMeasureBellStatePsiMinusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #3 for prepare and measure the Bell States, |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
+    # Test #3 for prepare and measure the Bell State, |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -1231,7 +1231,7 @@ class PrepareAndMeasureBellStatePsiMinusTests(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #4 for prepare and measure the Bell States, |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
+    # Test #4 for prepare and measure the Bell State, |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 2 Qubits initialized in the state |00⟩;
@@ -1304,7 +1304,7 @@ if __name__ == '__main__':
     # Test Cases for prepare the Bell States
     bell_states_prepare_tests_suite = unittest.TestLoader().loadTestsFromTestCase(PrepareBellStateTests)
 
-    # Test Cases for prepare and measure the Bell States
+    # Test Cases for prepare and measure the Bell State
     epr_pair_bell_states_phi_plus_prepare_and_measure_tests_suite = \
         unittest.TestLoader().loadTestsFromTestCase(PrepareAndMeasureEPRPairBellStatePhiPlusTests)
     bell_states_phi_minus_prepare_and_measure_tests_suite = \

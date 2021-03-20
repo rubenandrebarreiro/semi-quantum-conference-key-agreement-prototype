@@ -669,6 +669,7 @@ class PauliIGateTests(unittest.TestCase):
     # 2) It is applied the Pauli-I Gate to the 1st Qubit, then, |0⟩ ↦ |0⟩;
     # 3) It is applied, again, the Pauli-I Gate to the 1st Qubit, then, |0⟩ ↦ |0⟩;
     def test_apply_pauli_i_2(self):
+
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
@@ -1139,6 +1140,7 @@ class HadamardGateTests(unittest.TestCase):
     #    with 1 Qubit initialized in the state |0⟩;
     # 2) It is applied the Hadamard Gate to the 1st Qubit, then, |0⟩ ↦ |+⟩;
     def test_apply_hadamard_1(self):
+
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 1
 
