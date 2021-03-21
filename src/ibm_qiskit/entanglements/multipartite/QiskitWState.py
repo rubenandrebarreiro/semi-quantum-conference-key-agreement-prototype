@@ -39,16 +39,13 @@ class QiskitWState:
     def prepare_multipartite_entanglement(self):
 
         # Compute the number of Qubits of the W State
-        num_qubits = self.qubits_indexes.length
-
-        # Compute the number of possible outcomes (i.e., 2^(num_qubits))
-        num_possible_outcomes = (2 ** self.qubits_indexes.length)
+        num_qubits = len(self.qubits_indexes)
 
         # Apply Barriers to the interval of Qubits
         self.quantum_circuit.apply_barriers_interval(self.qubits_indexes)
 
         # Apply the Pauli-X Gate to the last Qubit index
-        self.quantum_circuit.apply_pauli_x(self.qubits_indexes[(num_possible_outcomes - 1)])
+        self.quantum_circuit.apply_pauli_x(self.qubits_indexes[(num_qubits - 1)])
 
         # For each Operator's Index
         for operator_index in range(num_qubits - 1):
@@ -73,6 +70,17 @@ class QiskitWState:
             # Apply a Barrier, to the Qubit of the current Operator's Index, counting from the end
             self.quantum_circuit.apply_barrier(self.qubits_indexes[(num_qubits - operator_index - 1)])
 
+        # For each Operator's Index
+        for operator_index in range(num_qubits - 1):
+
+            # Apply the Controlled-X Gate, regarding the Qubit of the previous Operator's Index and the current Qubit,
+            # counting from the end, as the Control-Qubit and Target-Qubit, respectively
+            self.quantum_circuit.apply_controlled_x(self.qubits_indexes[(num_qubits - operator_index - 2)],
+                                                    self.qubits_indexes[(num_qubits - operator_index - 1)])
+
+        # Apply Barriers to the interval of Qubits
+        self.quantum_circuit.apply_barriers_interval(self.qubits_indexes)
+
         # Return the IBM Qiskit's W State, as a multipartite entanglement
         return self.quantum_circuit
 
@@ -80,10 +88,7 @@ class QiskitWState:
     def measure_multipartite_entanglement(self, is_final_measurement=True):
 
         # Compute the number of Qubits of the W State
-        num_qubits = self.qubits_indexes.length
-
-        # Compute the number of possible outcomes (i.e., 2^(num_qubits))
-        num_possible_outcomes = (2 ** self.qubits_indexes.length)
+        num_qubits = len(self.qubits_indexes)
 
         # Set the Bits for the measurement of the Qubits, respectively
         bits_indexes = self.qubits_indexes
@@ -98,7 +103,7 @@ class QiskitWState:
             theta = arccos(sqrt(1 / operator_index))
 
             # Apply the Ry Gate, regarding the theta angle and the current Operator's Index
-            self.quantum_circuit.apply_ry(+theta, self.qubits_indexes[operator_index])
+            self.quantum_circuit.apply_ry(theta, self.qubits_indexes[operator_index])
 
             # Apply the Controlled-Z Gate, regarding the Qubit of the next Operator's Index and the current Qubit,
             # as the Control-Qubit and Target-Qubit, respectively
@@ -110,7 +115,7 @@ class QiskitWState:
             self.quantum_circuit.apply_ry(-theta, self.qubits_indexes[operator_index])
 
         # Apply the Pauli-X Gate to the last Qubit index
-        self.quantum_circuit.apply_pauli_x(self.qubits_indexes[(num_possible_outcomes - 1)])
+        self.quantum_circuit.apply_pauli_x(self.qubits_indexes[(num_qubits - 1)])
 
         # Apply Barriers to the interval of Qubits
         self.quantum_circuit.apply_barriers_interval(self.qubits_indexes)
