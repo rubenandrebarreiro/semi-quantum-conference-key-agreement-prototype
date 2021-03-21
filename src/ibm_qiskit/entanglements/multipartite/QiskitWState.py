@@ -47,7 +47,7 @@ class QiskitWState:
         # Apply the Pauli-X Gate to the last Qubit index
         self.quantum_circuit.apply_pauli_x(self.qubits_indexes[(num_qubits - 1)])
 
-        # For each Operator's Index
+        # For each Operator's Index, with exception of the last one
         for operator_index in range(num_qubits - 1):
 
             # Compute the theta angle of the arc-cosine, for the current Operator's Index,
@@ -70,7 +70,7 @@ class QiskitWState:
             # Apply a Barrier, to the Qubit of the current Operator's Index, counting from the end
             self.quantum_circuit.apply_barrier(self.qubits_indexes[(num_qubits - operator_index - 1)])
 
-        # For each Operator's Index
+        # For each Operator's Index, with exception of the last one
         for operator_index in range(num_qubits - 1):
 
             # Apply the Controlled-X Gate, regarding the Qubit of the previous Operator's Index and the current Qubit,
@@ -93,7 +93,18 @@ class QiskitWState:
         # Set the Bits for the measurement of the Qubits, respectively
         bits_indexes = self.qubits_indexes
 
-        # For each Operator's Index
+        # Apply Barriers to the interval of Qubits
+        self.quantum_circuit.apply_barriers_interval(self.qubits_indexes)
+
+        # For each Operator's Index, with exception of the last one
+        for operator_index in range(num_qubits - 1):
+
+            # Apply the Controlled-X Gate, regarding the Qubit of the previous Operator's Index and the current Qubit,
+            # counting from the end, as the Control-Qubit and Target-Qubit, respectively
+            self.quantum_circuit.apply_controlled_x(self.qubits_indexes[operator_index],
+                                                    self.qubits_indexes[(operator_index + 1)])
+
+        # For each Operator's Index, with exception of the last one
         for operator_index in range(num_qubits - 1):
 
             # Apply a Barrier, to the Qubit of the current Operator's Index
