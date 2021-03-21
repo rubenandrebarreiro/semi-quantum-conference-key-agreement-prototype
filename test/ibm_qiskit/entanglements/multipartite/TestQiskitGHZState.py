@@ -1036,7 +1036,7 @@ class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
     # 3) Prepare of the GHZ State, for 5 Qubits, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
     # 4) Measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
     #    by inverting the Quantum Circuit of GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
-    def test_prepare_and_measure_ghz_state_5_qubits_1111(self):
+    def test_prepare_and_measure_ghz_state_5_qubits_11111(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 5
