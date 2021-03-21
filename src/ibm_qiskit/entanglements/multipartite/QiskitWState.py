@@ -11,7 +11,9 @@ Supervisors:
 Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
+# Import Libraries and Packages
 
+# Import the Arc-cosine function and Squared Roots from NumPy
 from numpy import arccos, sqrt
 
 
@@ -58,7 +60,7 @@ class QiskitWState:
             # less two indexes counting from the end
             self.quantum_circuit.apply_ry(-theta, self.qubits_indexes[(num_qubits - operator_index - 2)])
 
-            # Apply the Controlled-Z Gate, regarding the Qubit of the current Operator's Index and the previous Qubit,
+            # Apply the Controlled-Z Gate, regarding the Qubit of the current Operator's Index and the previous one,
             # counting from the end, as the Control-Qubit and Target-Qubit, respectively
             self.quantum_circuit.apply_controlled_z(self.qubits_indexes[(num_qubits - operator_index - 1)],
                                                     self.qubits_indexes[(num_qubits - operator_index - 2)])
@@ -73,7 +75,7 @@ class QiskitWState:
         # For each Operator's Index, with exception of the last one
         for operator_index in range(num_qubits - 1):
 
-            # Apply the Controlled-X Gate, regarding the Qubit of the previous Operator's Index and the current Qubit,
+            # Apply the Controlled-X Gate, regarding the Qubit of the previous Operator's Index and the current one,
             # counting from the end, as the Control-Qubit and Target-Qubit, respectively
             self.quantum_circuit.apply_controlled_x(self.qubits_indexes[(num_qubits - operator_index - 2)],
                                                     self.qubits_indexes[(num_qubits - operator_index - 1)])
@@ -99,31 +101,30 @@ class QiskitWState:
         # For each Operator's Index, with exception of the last one
         for operator_index in range(num_qubits - 1):
 
-            # Apply the Controlled-X Gate, regarding the Qubit of the previous Operator's Index and the current Qubit,
-            # counting from the end, as the Control-Qubit and Target-Qubit, respectively
+            # Apply the Controlled-X Gate, regarding the Qubit of the current Operator's Index and the next one,
+            # as the Control-Qubit and Target-Qubit, respectively
             self.quantum_circuit.apply_controlled_x(self.qubits_indexes[operator_index],
                                                     self.qubits_indexes[(operator_index + 1)])
 
         # For each Operator's Index, with exception of the last one
         for operator_index in range(num_qubits - 1):
 
-            # Apply a Barrier, to the Qubit of the current Operator's Index
+            # Compute the theta angle of the arc-cosine, for the current Operator's Index, plus two indexes
+            theta = arccos(sqrt(1 / (operator_index + 2)))
+
+            # Apply a Barrier, to the Qubit of the current Operator's Index, plus one index
             self.quantum_circuit.apply_barrier(self.qubits_indexes[(operator_index + 1)])
 
-            # Compute the theta angle of the arc-cosine, for the current Operator's Index
-            theta = arccos(sqrt(1 / operator_index))
-
             # Apply the Ry Gate, regarding the theta angle and the current Operator's Index
-            self.quantum_circuit.apply_ry(theta, self.qubits_indexes[operator_index])
+            self.quantum_circuit.apply_ry(-theta, self.qubits_indexes[operator_index])
 
-            # Apply the Controlled-Z Gate, regarding the Qubit of the next Operator's Index and the current Qubit,
+            # Apply the Controlled-Z Gate, regarding the Qubit of the next Operator's Index and the current one,
             # as the Control-Qubit and Target-Qubit, respectively
             self.quantum_circuit.apply_controlled_z(self.qubits_indexes[(operator_index + 1)],
                                                     self.qubits_indexes[operator_index])
 
             # Apply the Ry Gate, regarding the theta angle and the current Operator's Index,
-            # less one index counting from the end
-            self.quantum_circuit.apply_ry(-theta, self.qubits_indexes[operator_index])
+            self.quantum_circuit.apply_ry(theta, self.qubits_indexes[operator_index])
 
         # Apply the Pauli-X Gate to the last Qubit index
         self.quantum_circuit.apply_pauli_x(self.qubits_indexes[(num_qubits - 1)])
@@ -134,9 +135,9 @@ class QiskitWState:
         # If is a final measurement
         if is_final_measurement:
 
-            # Measure the Target-Qubits of the Quantum Circuit, for the W State
+            # Measure the Qubits of the Quantum Circuit, for the W State
             self.quantum_circuit.measure_qubits_interval(self.qubits_indexes,
                                                          bits_indexes)
 
-        # Return the IBM Qiskit's GHZ State, as a multipartite entanglement
+        # Return the IBM Qiskit's W State, as a multipartite entanglement
         return self.quantum_circuit
