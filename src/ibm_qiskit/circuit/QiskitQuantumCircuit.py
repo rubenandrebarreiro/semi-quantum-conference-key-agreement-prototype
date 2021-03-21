@@ -417,27 +417,27 @@ class QiskitQuantumCircuit:
         self.quantum_circuit.unitary(squared_root_phase_t_unitary_operator, qubit_index)
 
     # Apply the Rotate X Gate to a given Qubit's index, by a given theta angle argument
-    def apply_rx(self, qubit_index, theta):
+    def apply_rx(self, theta, qubit_index):
         self.quantum_circuit.rx(theta, qubit_index)
 
     # Apply the Rotate Y Gate to a given Qubit's index, by a given theta angle argument
-    def apply_ry(self, qubit_index, theta):
+    def apply_ry(self, theta, qubit_index):
         self.quantum_circuit.ry(theta, qubit_index)
 
     # Apply the Rotate Z Gate to a given Qubit's index, by a given phi angle argument
-    def apply_rz(self, qubit_index, phi):
+    def apply_rz(self, phi, qubit_index):
         self.quantum_circuit.rz(phi, qubit_index)
 
     # Apply the U1 Gate to a given Qubit's index, by a given theta angle argument
-    def apply_u1(self, qubit_index, theta):
+    def apply_u1(self, theta, qubit_index):
         self.quantum_circuit.u1(theta, qubit_index)
 
     # Apply the U2 Gate to a given Qubit's index, by a given phi and lambda angle arguments
-    def apply_u2(self, qubit_index, phi, lamb):
+    def apply_u2(self, phi, lamb, qubit_index):
         self.quantum_circuit.u2(phi, lamb, qubit_index)
 
     # Apply the U3 Gate to a given Qubit's index, by a given theta, phi and lambda angle arguments
-    def apply_u3(self, qubit_index, theta, phi, lamb):
+    def apply_u3(self, theta, phi, lamb, qubit_index):
         self.quantum_circuit.u3(theta, phi, lamb, qubit_index)
 
     # 2) Multi Qubit Gates:
