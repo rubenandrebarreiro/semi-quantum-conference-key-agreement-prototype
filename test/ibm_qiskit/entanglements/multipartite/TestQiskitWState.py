@@ -292,10 +292,150 @@ class PrepareWStateTests(unittest.TestCase):
         self.assertEqual(True, True)
 
 
+# Test Cases for prepare and measure the W States, for 3 Qubits, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩)
+class PrepareAndMeasureWState3Qubits(unittest.TestCase):
+
+    # Test #1 for prepare and measure the W State, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 3 Qubits initialized in the state |000⟩;
+    # 2) Prepare of the W State, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩);
+    # 3) Measure the GHZ State, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩),
+    #    by inverting the Quantum Circuit of W State, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩);
+    def test_prepare_and_measure_ghz_state_3_qubits_000(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 3
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_w_state_3_qubits = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrwstate3qubits", num_qubits)
+        qiskit_classical_register_w_state_3_qubits = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crwstate3qubits", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_3_qubits = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcwstate3qubits",
+                                                      qiskit_quantum_register_w_state_3_qubits,
+                                                      qiskit_classical_register_w_state_3_qubits,
+                                                      global_phase=0)
+
+        # Prepare the W State, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩), for 3 Qubits
+        qiskit_quantum_circuit_w_state_3_qubits_prepared = QiskitWState \
+            .QiskitWState("w_state_3_qubits",
+                          qiskit_quantum_circuit_3_qubits,
+                          [0, 1, 2]).prepare_multipartite_entanglement()
+
+        # Measure the W State, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩), for 3 Qubits
+        qiskit_quantum_circuit_w_state_000_measured = QiskitWState \
+            .QiskitWState("w_state_3_qubits_000",
+                          qiskit_quantum_circuit_w_state_3_qubits_prepared,
+                          [0, 1, 2]).measure_multipartite_entanglement(is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = \
+            execute(qiskit_quantum_circuit_w_state_000_measured.quantum_circuit,
+                    state_vector_backend).result().get_statevector()
+
+        # Compute the number of possible outcomes (i.e., 2^(num_qubits))
+        num_possible_outcomes = (2 ** num_qubits)
+
+        # Create and fill an array with the complex values, of W State, for 3 Qubits
+        qiskit_w_state_3_qubits_array_000 = full((num_possible_outcomes,),
+                                                 (0. + 0.j))
+
+        # Set the first index of the State Vector of the Qubits (i.e., |000⟩),
+        # of the W State, for 3 Qubits, with the Complex Number value, (1 + 0j)
+        qiskit_w_state_3_qubits_array_000[0] = (1. + 0.j)
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
+        # after the GHZ State, for 3 Qubits, be prepared
+        assert_allclose(final_state_vector, qiskit_w_state_3_qubits_array_000, rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+    # Test #2 for prepare and measure the W State, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩)
+    # Description of the Test Case:
+    # 1) The Quantum Circuit is created with a Quantum Register,
+    #    with 3 Qubits initialized in the state |000⟩;
+    # 2) Prepare the Quantum State, |010⟩, by applying the Pauli-X Gate on the second Qubit;
+    # 3) Prepare of the W State, for 3 Qubits, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩);
+    # 4) Measure the W State, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩),
+    #    by inverting the Quantum Circuit of W State, |ψ⟩ = 1/sqrt(3) x (|001⟩ + |010⟩ + |100⟩);
+    def test_prepare_and_measure_w_state_3_qubits_010(self):
+
+        # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
+        num_qubits = num_bits = 3
+
+        # Creation of the IBM Qiskit's Quantum and Classical Registers
+        qiskit_quantum_register_w_state_3_qubits = \
+            QiskitQuantumRegister.QiskitQuantumRegister("qrwstate3qubits", num_qubits)
+        qiskit_classical_register_w_state_3_qubits = \
+            QiskitClassicalRegister.QiskitClassicalRegister("crwstate3qubits", num_bits)
+
+        # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
+        qiskit_quantum_circuit_3_qubits = \
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcwstate3qubits",
+                                                      qiskit_quantum_register_w_state_3_qubits,
+                                                      qiskit_classical_register_w_state_3_qubits,
+                                                      global_phase=0)
+
+        # Prepare the Quantum State, |010⟩, by applying the Pauli-X Gate, on the second Qubit
+        qiskit_quantum_circuit_3_qubits.apply_pauli_x(1)
+
+        # Prepare the W State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        qiskit_quantum_circuit_w_state_3_qubits_prepared = QiskitWState \
+            .QiskitWState("w_state_3_qubits",
+                          qiskit_quantum_circuit_3_qubits,
+                          [0, 1, 2]).prepare_multipartite_entanglement()
+
+        # Measure the W State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        qiskit_quantum_circuit_w_state_010_measured = QiskitWState \
+            .QiskitWState("w_state_3_qubits_010",
+                          qiskit_quantum_circuit_w_state_3_qubits_prepared,
+                          [0, 1, 2]).measure_multipartite_entanglement(is_final_measurement=False)
+
+        # Getting the Backend for the State Vector Representation
+        # (i.e., the Quantum State represented as State Vector)
+        state_vector_backend = Aer.get_backend('statevector_simulator')
+
+        # Execute the Quantum Circuit and store the Quantum State in a final state vector
+        final_state_vector = \
+            execute(qiskit_quantum_circuit_w_state_010_measured.quantum_circuit,
+                    state_vector_backend).result().get_statevector()
+
+        # Compute the number of possible outcomes (i.e., 2^(num_qubits))
+        num_possible_outcomes = (2 ** num_qubits)
+
+        # Create and fill an array with the complex values, of GHZ State, for 3 Qubits
+        qiskit_w_state_3_qubits_array_010 = full((num_possible_outcomes,),
+                                                 (0. + 0.j))
+
+        # Set the third index of the State Vector of the Qubits (i.e., |010⟩),
+        # of the W State, for 3 Qubits, with the Complex Number value, (1 + 0j)
+        qiskit_w_state_3_qubits_array_010[2] = (1. + 0.j)
+
+        # Assert All Close, from NumPy's Testing, for the State Vector of the Qubits,
+        # after the W State, for 3 Qubits, be prepared
+        assert_allclose(final_state_vector, qiskit_w_state_3_qubits_array_010, rtol=1e-7, atol=1e-7)
+
+        # Dummy Assert Equal for Unittest
+        self.assertEqual(True, True)
+
+
 if __name__ == '__main__':
 
     # Test Cases for prepare the W States
     w_states_prepare_tests_suite = unittest.TestLoader().loadTestsFromTestCase(PrepareWStateTests)
+
+    # Test Cases for prepare and measure the W State, for 3 Qubits
+    w_states_3_qubits_prepare_tests_suite = unittest.TestLoader() \
+        .loadTestsFromTestCase(PrepareAndMeasureWState3Qubits)
 
     # Create a Global for all the Test Cases established
     all_test_cases = unittest.TestSuite([w_states_prepare_tests_suite])
