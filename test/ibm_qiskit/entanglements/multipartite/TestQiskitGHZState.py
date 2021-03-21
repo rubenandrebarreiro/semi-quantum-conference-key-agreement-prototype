@@ -375,7 +375,7 @@ class PrepareAndMeasureGHZState3Qubits(unittest.TestCase):
 
         # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
         qiskit_quantum_circuit_ghz_state_000_measured = QiskitGHZState \
-            .QiskitGHZState("ghz_state_3_qubits_000",
+            .QiskitGHZState("ghz_state_3_qubits_010",
                             qiskit_quantum_circuit_ghz_state_3_qubits_prepared,
                             0, [1, 2]).measure_multipartite_entanglement(is_final_measurement=False)
 
