@@ -271,16 +271,16 @@ class PrepareGHZStateTests(unittest.TestCase):
         self.assertEqual(True, True)
 
 
-# Test Cases for prepare and measure the GHZ States, for 3 Qubits, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩)
+# Test Cases for prepare and measure the GHZ States, for 3 Qubits, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩)
 class PrepareAndMeasureGHZState3Qubits(unittest.TestCase):
 
-    # Test #1 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩)
+    # Test #1 for prepare and measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 3 Qubits initialized in the state |000⟩;
-    # 2) Prepare of the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
-    # 3) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
+    # 2) Prepare of the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
+    # 3) Measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
     def test_prepare_and_measure_ghz_state_3_qubits_000(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -299,13 +299,13 @@ class PrepareAndMeasureGHZState3Qubits(unittest.TestCase):
                                                       qiskit_classical_register_ghz_state_3_qubits,
                                                       global_phase=0)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        # Prepare the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
         qiskit_quantum_circuit_ghz_state_3_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_3_qubits",
                             qiskit_quantum_circuit_3_qubits,
                             0, [1, 2]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        # Measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
         qiskit_quantum_circuit_ghz_state_000_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_3_qubits_000",
                             qiskit_quantum_circuit_ghz_state_3_qubits_prepared,
@@ -338,14 +338,14 @@ class PrepareAndMeasureGHZState3Qubits(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #2 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩)
+    # Test #2 for prepare and measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 3 Qubits initialized in the state |000⟩;
     # 2) Prepare the Quantum State, |010⟩, by applying the Pauli-X Gate on the second Qubit;
-    # 3) Prepare of the GHZ State, for 3 Qubits, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
-    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
+    # 3) Prepare of the GHZ State, for 3 Qubits, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
+    # 4) Measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
     def test_prepare_and_measure_ghz_state_3_qubits_010(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -367,13 +367,13 @@ class PrepareAndMeasureGHZState3Qubits(unittest.TestCase):
         # Prepare the Quantum State, |010⟩, by applying the Pauli-X Gate, on the second Qubit
         qiskit_quantum_circuit_3_qubits.apply_pauli_x(1)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        # Prepare the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
         qiskit_quantum_circuit_ghz_state_3_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_3_qubits",
                             qiskit_quantum_circuit_3_qubits,
                             0, [1, 2]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        # Measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
         qiskit_quantum_circuit_ghz_state_000_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_3_qubits_010",
                             qiskit_quantum_circuit_ghz_state_3_qubits_prepared,
@@ -406,14 +406,14 @@ class PrepareAndMeasureGHZState3Qubits(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #3 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩)
+    # Test #3 for prepare and measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 3 Qubits initialized in the state |000⟩;
     # 2) Prepare the Quantum State, |101⟩, by applying the Pauli-X Gate on the first and third Qubits;
-    # 3) Prepare of the GHZ State, for 3 Qubits, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
-    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
+    # 3) Prepare of the GHZ State, for 3 Qubits, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
+    # 4) Measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
     def test_prepare_and_measure_ghz_state_3_qubits_101(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -436,13 +436,13 @@ class PrepareAndMeasureGHZState3Qubits(unittest.TestCase):
         qiskit_quantum_circuit_3_qubits.apply_pauli_x(0)
         qiskit_quantum_circuit_3_qubits.apply_pauli_x(2)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        # Prepare the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
         qiskit_quantum_circuit_ghz_state_3_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_3_qubits",
                             qiskit_quantum_circuit_3_qubits,
                             0, [1, 2]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        # Measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
         qiskit_quantum_circuit_ghz_state_101_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_3_qubits_101",
                             qiskit_quantum_circuit_ghz_state_3_qubits_prepared,
@@ -475,14 +475,14 @@ class PrepareAndMeasureGHZState3Qubits(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #4 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩)
+    # Test #4 for prepare and measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 3 Qubits initialized in the state |000⟩;
     # 2) Prepare the Quantum State, |111⟩, by applying the Pauli-X in all the Qubits;
-    # 3) Prepare of the GHZ State, for 3 Qubits, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
-    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
+    # 3) Prepare of the GHZ State, for 3 Qubits, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
+    # 4) Measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩);
     def test_prepare_and_measure_ghz_state_3_qubits_111(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -506,13 +506,13 @@ class PrepareAndMeasureGHZState3Qubits(unittest.TestCase):
         qiskit_quantum_circuit_3_qubits.apply_pauli_x(1)
         qiskit_quantum_circuit_3_qubits.apply_pauli_x(2)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        # Prepare the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
         qiskit_quantum_circuit_ghz_state_3_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_3_qubits",
                             qiskit_quantum_circuit_3_qubits,
                             0, [1, 2]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
+        # Measure the GHZ State, |GHZ_3⟩ = 1/sqrt(2) x (|000⟩ + |111⟩), for 3 Qubits
         qiskit_quantum_circuit_ghz_state_111_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_3_qubits_111",
                             qiskit_quantum_circuit_ghz_state_3_qubits_prepared,
@@ -546,16 +546,16 @@ class PrepareAndMeasureGHZState3Qubits(unittest.TestCase):
         self.assertEqual(True, True)
 
 
-# Test Cases for prepare and measure the GHZ States, for 4 Qubits, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩)
+# Test Cases for prepare and measure the GHZ States, for 4 Qubits, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩)
 class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
 
-    # Test #1 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩)
+    # Test #1 for prepare and measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 4 Qubits initialized in the state |0000⟩;
-    # 2) Prepare of the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
-    # 3) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
+    # 2) Prepare of the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
+    # 3) Measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
     def test_prepare_and_measure_ghz_state_4_qubits_0000(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -574,13 +574,13 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
                                                       qiskit_classical_register_ghz_state_4_qubits,
                                                       global_phase=0)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
+        # Prepare the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
         qiskit_quantum_circuit_ghz_state_4_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_4_qubits",
                             qiskit_quantum_circuit_4_qubits,
                             0, [1, 2, 3]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
+        # Measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
         qiskit_quantum_circuit_ghz_state_0000_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_4_qubits_0000",
                             qiskit_quantum_circuit_ghz_state_4_qubits_prepared,
@@ -613,14 +613,14 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #2 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩)
+    # Test #2 for prepare and measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 4 Qubits initialized in the state |0000⟩;
     # 2) Prepare the Quantum State, |0100⟩, by applying the Pauli-X Gate on the third Qubit;
-    # 3) Prepare of the GHZ State, for 4 Qubits, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
-    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
+    # 3) Prepare of the GHZ State, for 4 Qubits, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
+    # 4) Measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
     def test_prepare_and_measure_ghz_state_4_qubits_0100(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -642,13 +642,13 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         # Prepare the Quantum State, |0100⟩, by applying the Pauli-X Gate, on the third Qubit
         qiskit_quantum_circuit_4_qubits.apply_pauli_x(2)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
+        # Prepare the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
         qiskit_quantum_circuit_ghz_state_4_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_4_qubits",
                             qiskit_quantum_circuit_4_qubits,
                             0, [1, 2, 3]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
+        # Measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
         qiskit_quantum_circuit_ghz_state_0100_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_4_qubits_0100",
                             qiskit_quantum_circuit_ghz_state_4_qubits_prepared,
@@ -681,14 +681,14 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #3 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩)
+    # Test #3 for prepare and measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 4 Qubits initialized in the state |0000⟩;
     # 2) Prepare the Quantum State, |1011⟩, by applying the Pauli-X Gate on the first and third Qubits;
-    # 3) Prepare of the GHZ State, for 4 Qubits, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
-    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
+    # 3) Prepare of the GHZ State, for 4 Qubits, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
+    # 4) Measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
     def test_prepare_and_measure_ghz_state_4_qubits_1011(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -712,13 +712,13 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         qiskit_quantum_circuit_4_qubits.apply_pauli_x(1)
         qiskit_quantum_circuit_4_qubits.apply_pauli_x(3)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
+        # Prepare the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
         qiskit_quantum_circuit_ghz_state_4_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_4_qubits",
                             qiskit_quantum_circuit_4_qubits,
                             0, [1, 2, 3]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
+        # Measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
         qiskit_quantum_circuit_ghz_state_1011_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_4_qubits_1011",
                             qiskit_quantum_circuit_ghz_state_4_qubits_prepared,
@@ -751,14 +751,14 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #4 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩)
+    # Test #4 for prepare and measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 4 Qubits initialized in the state |0000⟩;
     # 2) Prepare the Quantum State, |1111⟩, by applying the Pauli-X in all the Qubits;
-    # 3) Prepare of the GHZ State, for 4 Qubits, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
-    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
+    # 3) Prepare of the GHZ State, for 4 Qubits, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
+    # 4) Measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩);
     def test_prepare_and_measure_ghz_state_4_qubits_1111(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -783,13 +783,13 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         qiskit_quantum_circuit_4_qubits.apply_pauli_x(2)
         qiskit_quantum_circuit_4_qubits.apply_pauli_x(3)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
+        # Prepare the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
         qiskit_quantum_circuit_ghz_state_4_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_4_qubits",
                             qiskit_quantum_circuit_4_qubits,
                             0, [1, 2, 3]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
+        # Measure the GHZ State, |GHZ_4⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 4 Qubits
         qiskit_quantum_circuit_ghz_state_1111_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_4_qubits_1111",
                             qiskit_quantum_circuit_ghz_state_4_qubits_prepared,
@@ -823,17 +823,17 @@ class PrepareAndMeasureGHZState4Qubits(unittest.TestCase):
         self.assertEqual(True, True)
 
 
-# Test Cases for prepare and measure the GHZ States, for 5 Qubits, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
+# Test Cases for prepare and measure the GHZ States, for 5 Qubits, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
 class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
 
-    # Test #1 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
+    # Test #1 for prepare and measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 5 Qubits initialized in the state |00000⟩;
-    # 2) Prepare of the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
-    # 3) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
-    def test_prepare_and_measure_ghz_state_4_qubits_0000(self):
+    # 2) Prepare of the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 3) Measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    def test_prepare_and_measure_ghz_state_5_qubits_00000(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = 5
@@ -851,13 +851,13 @@ class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
                                                       qiskit_classical_register_ghz_state_5_qubits,
                                                       global_phase=0)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        # Prepare the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
         qiskit_quantum_circuit_ghz_state_5_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_5_qubits",
                             qiskit_quantum_circuit_5_qubits,
                             0, [1, 2, 3, 4]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        # Measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
         qiskit_quantum_circuit_ghz_state_00000_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_5_qubits_00000",
                             qiskit_quantum_circuit_ghz_state_5_qubits_prepared,
@@ -875,7 +875,7 @@ class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
         # Compute the number of possible outcomes (i.e., 2^(num_qubits))
         num_possible_outcomes = (2 ** num_qubits)
 
-        # Create and fill an array with the complex values, of GHZ State, for 3 Qubits
+        # Create and fill an array with the complex values, of GHZ State, for 5 Qubits
         qiskit_ghz_state_5_qubits_array_00000 = full((num_possible_outcomes,),
                                                      (0. + 0.j))
 
@@ -890,14 +890,14 @@ class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #2 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
+    # Test #2 for prepare and measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 5 Qubits initialized in the state |00000⟩;
     # 2) Prepare the Quantum State, |01000⟩, by applying the Pauli-X Gate on the forth Qubit;
-    # 3) Prepare of the GHZ State, for 5 Qubits, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
-    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 3) Prepare of the GHZ State, for 5 Qubits, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 4) Measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
     def test_prepare_and_measure_ghz_state_5_qubits_01000(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -919,13 +919,13 @@ class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
         # Prepare the Quantum State, |01000⟩, by applying the Pauli-X Gate, on the forth Qubit
         qiskit_quantum_circuit_5_qubits.apply_pauli_x(3)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        # Prepare the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
         qiskit_quantum_circuit_ghz_state_5_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_5_qubits",
                             qiskit_quantum_circuit_5_qubits,
                             0, [1, 2, 3, 4]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 5 Qubits
+        # Measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 5 Qubits
         qiskit_quantum_circuit_ghz_state_01000_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_5_qubits_01000",
                             qiskit_quantum_circuit_ghz_state_5_qubits_prepared,
@@ -958,14 +958,14 @@ class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #3 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
+    # Test #3 for prepare and measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 5 Qubits initialized in the state |00000⟩;
     # 2) Prepare the Quantum State, |10011⟩, by applying the Pauli-X Gate on the first, second and fifth Qubits;
-    # 3) Prepare of the GHZ State, for 5 Qubits, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
-    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 3) Prepare of the GHZ State, for 5 Qubits, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 4) Measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
     def test_prepare_and_measure_ghz_state_5_qubits_10011(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -989,13 +989,13 @@ class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
         qiskit_quantum_circuit_5_qubits.apply_pauli_x(1)
         qiskit_quantum_circuit_5_qubits.apply_pauli_x(4)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        # Prepare the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
         qiskit_quantum_circuit_ghz_state_5_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_5_qubits",
                             qiskit_quantum_circuit_5_qubits,
                             0, [1, 2, 3, 4]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 5 Qubits
+        # Measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|0000⟩ + |1111⟩), for 5 Qubits
         qiskit_quantum_circuit_ghz_state_10011_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_5_qubits_10011",
                             qiskit_quantum_circuit_ghz_state_5_qubits_prepared,
@@ -1028,14 +1028,14 @@ class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
-    # Test #4 for prepare and measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
+    # Test #4 for prepare and measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩)
     # Description of the Test Case:
     # 1) The Quantum Circuit is created with a Quantum Register,
     #    with 5 Qubits initialized in the state |00000⟩;
     # 2) Prepare the Quantum State, |11111⟩, by applying the Pauli-X in all the Qubits;
-    # 3) Prepare of the GHZ State, for 5 Qubits, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
-    # 4) Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
-    #    by inverting the Quantum Circuit of GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 3) Prepare of the GHZ State, for 5 Qubits, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
+    # 4) Measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩),
+    #    by inverting the Quantum Circuit of GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩);
     def test_prepare_and_measure_ghz_state_5_qubits_1111(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -1061,13 +1061,13 @@ class PrepareAndMeasureGHZState5Qubits(unittest.TestCase):
         qiskit_quantum_circuit_5_qubits.apply_pauli_x(3)
         qiskit_quantum_circuit_5_qubits.apply_pauli_x(4)
 
-        # Prepare the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        # Prepare the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
         qiskit_quantum_circuit_ghz_state_5_qubits_prepared = QiskitGHZState \
             .QiskitGHZState("ghz_state_5_qubits",
                             qiskit_quantum_circuit_5_qubits,
                             0, [1, 2, 3, 4]).prepare_multipartite_entanglement()
 
-        # Measure the GHZ State, |ψ⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
+        # Measure the GHZ State, |GHZ_5⟩ = 1/sqrt(2) x (|00000⟩ + |11111⟩), for 5 Qubits
         qiskit_quantum_circuit_ghz_state_11111_measured = QiskitGHZState \
             .QiskitGHZState("ghz_state_5_qubits_1111",
                             qiskit_quantum_circuit_ghz_state_5_qubits_prepared,
@@ -1107,19 +1107,19 @@ if __name__ == '__main__':
     ghz_states_prepare_tests_suite = unittest.TestLoader().loadTestsFromTestCase(PrepareGHZStateTests)
 
     # Test Cases for prepare and measure the GHZ State, for 3 Qubits
-    ghz_states_3_qubits_prepare_tests_suite = unittest.TestLoader()\
+    ghz_states_3_qubits_prepare_and_measure_tests_suite = unittest.TestLoader()\
         .loadTestsFromTestCase(PrepareAndMeasureGHZState3Qubits)
 
     # Test Cases for prepare and measure the GHZ State, for 4 Qubits
-    ghz_states_4_qubits_prepare_tests_suite = unittest.TestLoader()\
+    ghz_states_4_qubits_prepare_and_measure_tests_suite = unittest.TestLoader()\
         .loadTestsFromTestCase(PrepareAndMeasureGHZState4Qubits)
 
     # Test Cases for prepare and measure the GHZ State, for 5 Qubits
-    ghz_states_5_qubits_prepare_tests_suite = unittest.TestLoader()\
+    ghz_states_5_qubits_prepare_and_measure_tests_suite = unittest.TestLoader()\
         .loadTestsFromTestCase(PrepareAndMeasureGHZState5Qubits)
 
     # Create a Global for all the Test Cases established
     all_test_cases = unittest.TestSuite([ghz_states_prepare_tests_suite,
-                                         ghz_states_3_qubits_prepare_tests_suite,
-                                         ghz_states_4_qubits_prepare_tests_suite,
-                                         ghz_states_5_qubits_prepare_tests_suite])
+                                         ghz_states_3_qubits_prepare_and_measure_tests_suite,
+                                         ghz_states_4_qubits_prepare_and_measure_tests_suite,
+                                         ghz_states_5_qubits_prepare_and_measure_tests_suite])
