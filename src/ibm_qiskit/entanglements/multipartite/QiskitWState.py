@@ -11,6 +11,7 @@ Supervisors:
 Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
+
 # Import Libraries and Packages
 
 # Import the Arc-cosine function and Squared Roots from NumPy
