@@ -13,10 +13,10 @@ Acknowledgments:
 """
 
 
-# Class for IBM Qiskit's Graph State
+# Class for IBM Qiskit's Graph State (Resource State)
 class QiskitGraphState:
 
-    # Constructor for IBM Qiskit's Graph State
+    # Constructor for IBM Qiskit's Graph State (Resource State)
     def __init__(self, name, quantum_circuit, qubits_vertices_indexes, qubits_edges_indexes):
         self.name = name
         self.quantum_circuit = quantum_circuit
@@ -31,10 +31,11 @@ class QiskitGraphState:
         if num_qubits_quantum_circuit < 2:
 
             # Raise the Value Error exception
-            raise ValueError("It is impossible to create a Graph State, from a IBM Qiskit's Quantum Circuit with "
+            raise ValueError("It is impossible to create a Graph State (Resource State),"
+                             "from a IBM Qiskit's Quantum Circuit with "
                              "less than 2 Qubits!!!")
 
-    # Prepare the multipartite entanglement for the Graph State configured
+    # Prepare the multipartite entanglement for the Graph State (Resource State) configured
     def prepare_multipartite_entanglement(self):
 
         # Apply Barriers to the interval of Qubits, representing the Vertices of the Graph
@@ -59,10 +60,10 @@ class QiskitGraphState:
         # Apply Barriers to the interval of Qubits, representing the Vertices of the Graph
         self.quantum_circuit.apply_barriers_interval(self.qubits_vertices_indexes)
 
-        # Return the IBM Qiskit's Graph State State, as a multipartite entanglement
+        # Return the IBM Qiskit's Graph State (Resource State) State, as a multipartite entanglement
         return self.quantum_circuit
 
-    # Measure the multipartite entanglement for the Graph State configured
+    # Measure the multipartite entanglement for the Graph State (Resource State) configured
     def measure_multipartite_entanglement(self, is_final_measurement=True):
 
         # Set the Bits, representing the Vertices of the Graph,
@@ -106,9 +107,10 @@ class QiskitGraphState:
         # If is a final measurement
         if is_final_measurement:
 
-            # Measure the Qubits, representing the vertices of the Graph, of the Quantum Circuit, for the Graph State
+            # Measure the Qubits, representing the vertices of the Graph, of the Quantum Circuit,
+            # for the Graph State (Resource State)
             self.quantum_circuit.measure_qubits_interval(self.qubits_vertices_indexes,
                                                          bits_vertices_indexes)
 
-        # Return the IBM Qiskit's Graph State, as a multipartite entanglement
+        # Return the IBM Qiskit's Graph State (Resource State), as a multipartite entanglement
         return self.quantum_circuit
