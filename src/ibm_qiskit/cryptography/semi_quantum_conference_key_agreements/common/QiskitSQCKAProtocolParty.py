@@ -13,21 +13,21 @@ Acknowledgments:
 """
 
 
-# Class for IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol Party
+# Class for IBM Qiskit's Party for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
 class QiskitSQCKAProtocolParty:
 
-    # Constructor for IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Party
+    # Constructor for IBM Qiskit's Party for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
     def __init__(self, party_name, master_status):
 
         # Set the Party's name
         self.party_name = party_name
 
         # Set the boolean flag, responsible to keep the information about if the Party is
-        # the Master of the Protocol or not
+        # the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
         self.master_status = master_status
 
     # Return the boolean flag, responsible to keep the information about if the Party is
-    # the Master of the Protocol or not
+    # the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
     def is_master(self):
 
         return self.master_status
