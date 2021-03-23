@@ -12,8 +12,8 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
-POSSIBLE_CONFIGURATIONS_BELL_STATES = ["EPR_PAIR_STATE", "BELL_STATE_PHI_PLUS", "BELL_STATE_PHI_MINUS",
-                                       "BELL_STATE_PSI_PLUS", "BELL_STATE_PSI_MINUS"]
+# Import the Bipartite and Multipartite Quantum Entanglement Types
+from src.ibm_qiskit.common.QuantumEntanglementTypes import POSSIBLE_CONFIGURATIONS_BELL_STATES
 
 
 # Class for IBM Qiskit's Bell State
