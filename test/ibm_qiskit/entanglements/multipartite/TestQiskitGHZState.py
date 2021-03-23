@@ -54,13 +54,13 @@ class PrepareGHZStateTests(unittest.TestCase):
 
         # Creation of the IBM Qiskit's Quantum and Classical Registers
         qiskit_quantum_register_ghz_state_3_qubits = \
-            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate3", num_qubits)
+            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate3qubits", num_qubits)
         qiskit_classical_register_ghz_state_3_qubits = \
-            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate3", num_bits)
+            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate3qubits", num_bits)
 
         # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
         qiskit_quantum_circuit_3_qubits = \
-            QiskitQuantumCircuit.QiskitQuantumCircuit("qcghzstate3",
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcghzstate3qubits",
                                                       qiskit_quantum_register_ghz_state_3_qubits,
                                                       qiskit_classical_register_ghz_state_3_qubits,
                                                       global_phase=0)
@@ -111,9 +111,9 @@ class PrepareGHZStateTests(unittest.TestCase):
 
         # Creation of the IBM Qiskit's Quantum and Classical Registers
         qiskit_quantum_register_ghz_state_4_qubits = \
-            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate4", num_qubits)
+            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate4qubits", num_qubits)
         qiskit_classical_register_ghz_state_4_qubits = \
-            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate4", num_bits)
+            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate4qubits", num_bits)
 
         # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
         qiskit_quantum_circuit_4_qubits = \
@@ -168,13 +168,13 @@ class PrepareGHZStateTests(unittest.TestCase):
 
         # Creation of the IBM Qiskit's Quantum and Classical Registers
         qiskit_quantum_register_ghz_state_5_qubits = \
-            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate5", num_qubits)
+            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate5qubits", num_qubits)
         qiskit_classical_register_ghz_state_5_qubits = \
-            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate5", num_bits)
+            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate5qubits", num_bits)
 
         # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
         qiskit_quantum_circuit_5_qubits = \
-            QiskitQuantumCircuit.QiskitQuantumCircuit("qcghzstate5",
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcghzstate5qubits",
                                                       qiskit_quantum_register_ghz_state_5_qubits,
                                                       qiskit_classical_register_ghz_state_5_qubits,
                                                       global_phase=0)
@@ -225,13 +225,13 @@ class PrepareGHZStateTests(unittest.TestCase):
 
         # Creation of the IBM Qiskit's Quantum and Classical Registers
         qiskit_quantum_register_ghz_state_6_qubits = \
-            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate6", num_qubits)
+            QiskitQuantumRegister.QiskitQuantumRegister("qrghzstate6qubits", num_qubits)
         qiskit_classical_register_ghz_state_6_qubits = \
-            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate6", num_bits)
+            QiskitClassicalRegister.QiskitClassicalRegister("crghzstate6qubits", num_bits)
 
         # Creation of the IBM Qiskit's Quantum Circuit with one Quantum and Classical Registers
         qiskit_quantum_circuit_6_qubits = \
-            QiskitQuantumCircuit.QiskitQuantumCircuit("qcghzstate6",
+            QiskitQuantumCircuit.QiskitQuantumCircuit("qcghzstate6qubits",
                                                       qiskit_quantum_register_ghz_state_6_qubits,
                                                       qiskit_classical_register_ghz_state_6_qubits,
                                                       global_phase=0)
