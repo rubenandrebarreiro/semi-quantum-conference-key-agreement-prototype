@@ -12,6 +12,12 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
+# Import Packages and Libraries
+
+# Import the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Party from
+from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreements.common.QiskitSQCKAProtocolParty import \
+    QiskitSQCKAProtocolParty
+
 
 # Class for IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA)
 class QiskitSemiQuantumConferenceKeyAgreement:
@@ -32,53 +38,54 @@ class QiskitSemiQuantumConferenceKeyAgreement:
             # Append the Party Name, in uppercase, to the list of Parties' Names
             parties_names_upper.append(party_name.upper())
 
-        # Set the Parties' Names
-        self.parties_names = parties_names_upper
-
-        # Set the number of Parties
-        self.num_parties = len(self.parties_names)
-
         # Change the Party's Name, for the uppercase
         party_name_master_upper = party_name_master.upper()
 
         # If the Party Name, responsible for the distribution of the Common Secret Key (Conference Key),
         # is not present in the list of Parties' Names involved
-        if party_name_master_upper not in self.parties_names:
+        if party_name_master_upper not in parties_names_upper:
 
             # Raise the Value Error exception
             raise ValueError("The Party Name specified to be the Master "
                              "(i.e., the party responsible for the distribution of the Common Secret Key "
                              "(Conference Key) between the parties involved is not present in "
-                             "the list of Parties' Names involved!!!")
+                             "the list of Parties' Names involved on the Protocol!!!")
 
-        # If the Party Name, responsible for the distribution of the Common Secret Key (Conference Key),
-        # is present in the list of Parties' Names involved
-        else:
+        # Retrieve the number of parties involved in the Protocol
+        num_parties = len(parties_names_upper)
 
-            # Set the Party's Name being the Master of the protocol
-            self.party_name_master = party_name_master
+        # The Dictionary for the Parties involved in the Protocol
+        self.parties = {}
+
+        # For each Party involved in the Protocol
+        for current_num_party in range(num_parties):
+
+            # Retrieve the name of the current Party
+            current_party_name = parties_names_upper[current_num_party]
+
+            # If the current Party is the Master Party
+            if current_party_name.upper() == party_name_master_upper.upper():
+
+                # Initialize the object of the Party, as the Master Party
+                self.parties[current_num_party] = QiskitSQCKAProtocolParty(current_party_name.upper(), True)
+
+            # If the current Party is not the Master Party
+            else:
+
+                # Initialize the object of the Party, as a normal Party
+                self.parties[current_num_party] = QiskitSQCKAProtocolParty(current_party_name.upper(), False)
 
         # The number of Quantum Communication Channels
         self.num_quantum_communication_channels = num_quantum_communication_channels
 
-        # If the number of Quantum Communication Channels used is just one,
-        # it is necessary to established time slots for each particle of the Party, in each round of the protocol
-        if self.num_quantum_communication_channels == 1:
+        # The Dictionary for the Protocol Rounds
+        self.protocols_rounds = {}
 
-            # Set the total number of time slots
-            self.num_time_slots = ((self.num_parties - 1) * self.num_rounds)
+        # For each round of the Protocol
+        for current_num_round in range(num_rounds):
 
-        # If the number of Quantum Communication Channels used is equal to the number of parties involved,
-        # it is necessary to established time slots for each particle of the Party, in each round of the protocol
-        elif self.num_quantum_communication_channels == self.num_parties:
-
-            # Set the total number of time slots, as the number of rounds
-            self.num_time_slots = num_rounds
-
-        # TODO - Something else, regarding the number of time slots
-
-        # The attribution of the Time Slots, for the several rounds of the protocol
-        self.time_slots_attributions = []
+            # Initialize the object of the Round as None
+            self.protocols_rounds[current_num_round] = None
 
         # Create the list of Preparing/Measurement Bases used for the protocol (i.e., X-, Y- and/or Z-Basis)
         preparing_bases_upper = []
