@@ -102,3 +102,4 @@ class QiskitSemiQuantumConferenceKeyAgreement:
 
         # The type of Entanglement used for the protocol (i.e., GHZ, W or Graph States)
         self.quantum_entanglement_type = quantum_entanglement_type.upper()
+
