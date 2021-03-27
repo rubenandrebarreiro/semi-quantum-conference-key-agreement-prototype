@@ -1,5 +1,5 @@
 # Name of the Conda Environment
-name: semi-registers-conference-key-agreement-master-thesis-env
+name: semi-quantum-conference-key-agreement-master-thesis-env
 
 # Definition of the Conda's Channels
 channels:
@@ -44,8 +44,11 @@ dependencies:
   - spacy
   # Image Processing
   - pillow
-  # Quantum Computing (IBM Q Experience/Qiskit and QuTiP)
+  # Quantum Computing (Google AI Quantum/Cirq, Xanadu's StrawberryFields,
+  # IBM Q Experience/Qiskit and QuTiP)
   - pip:
+    - cirq
+    - StrawberryFields
     - qiskit
     - qiskit[visualization]
     - qutip
