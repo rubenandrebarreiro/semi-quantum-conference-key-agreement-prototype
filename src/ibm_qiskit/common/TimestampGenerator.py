@@ -31,14 +31,20 @@ class TimestampGenerator:
         self.now = date_time.now()
         self.timestamp_generator_name = timestamp_generator_name
 
+    # Retrieve the current Timestamp
+    def get_now_timestamp(self):
+
+        # Return the current Timestamp, as DateTime
+        return date_time(self.now.year, self.now.month, self.now.day,
+                         self.now.hour, self.now.minute, self.now.second)
+
     # Generate multiple Pseudo Random Timestamps
     def generate_random_timestamps(self, num_timestamps_to_generate, weeks_delta, days_delta,
                                    hours_delta, minutes_delta, seconds_delta,
                                    milliseconds_delta, microseconds_delta):
 
         # Retrieve the current Timestamp
-        now_timestamp = date_time(self.now.year, self.now.month, self.now.day,
-                                  self.now.hour, self.now.minute, self.now.second)
+        now_timestamp = self.get_now_timestamp()
 
         # While there are still Pseudo Random Timestamps to be generated
         while num_timestamps_to_generate > 0:
