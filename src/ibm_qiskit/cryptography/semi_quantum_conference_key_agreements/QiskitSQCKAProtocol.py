@@ -14,7 +14,8 @@ Acknowledgments:
 
 # Import Packages and Libraries
 
-# Import the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Party from
+# Import the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Party
+# from IBM Qiskit's Cryptography Module
 from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreements.common.QiskitSQCKAProtocolParty import \
     QiskitSQCKAProtocolParty
 
@@ -102,4 +103,3 @@ class QiskitSemiQuantumConferenceKeyAgreement:
 
         # The type of Entanglement used for the protocol (i.e., GHZ, W or Graph States)
         self.quantum_entanglement_type = quantum_entanglement_type.upper()
-
