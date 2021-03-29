@@ -26,7 +26,7 @@ from src.ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
 # Import QiskitQuantumRegister from IBM_Qiskit.Circuit.Quantum
 from src.ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
 
-# Class for the IBM Qiskit's Quantum True Random Number Generator (TRNG)
+# Import QiskitQuantumHadamardTransform from IBM_Qiskit.Utils.Transforms
 from src.ibm_qiskit.utils.transforms import QiskitQuantumHadamardTransform
 
 
@@ -43,17 +43,17 @@ class QiskitQuantumTrueRandomNumberGenerator:
         delta_interval = (self.number_upper_bound - self.number_lower_bound)
 
         if self.number_type == "INTEGER":
-            self.binary_length = (floor(log(delta_interval, 2)) + 1)
+            self.binary_string_length = (floor(log(delta_interval, 2)) + 1)
         elif self.number_type == "FLOATING_POINT_16_EXPONENT":
-            self.binary_length = (floor(log(16, 2)) + 1)
+            self.binary_string_length = (floor(log(16, 2)) + 1)
         elif self.number_type == "FLOATING_POINT_8_EXPONENT":
-            self.binary_length = (floor(log(8, 2)) + 1)
+            self.binary_string_length = (floor(log(8, 2)) + 1)
 
-    # Generate a True Random Number
+    # Generate a True Random Number (TRN)
     def generate_true_random_number(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
-        num_qubits = num_bits = self.binary_length
+        num_qubits = num_bits = self.binary_string_length
 
         # Creation of the IBM Qiskit's Quantum and Classical Registers
         qiskit_quantum_register_true_random_number = \
