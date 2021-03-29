@@ -15,16 +15,16 @@ Acknowledgments:
 # Import Packages and Libraries
 
 # Import the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Party
-# from IBM Qiskit's Cryptography Module
+# from IBM Qiskit's Cryptography.Semi_Quantum_Conference_Key_Agreement.Common Module
 from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreements.common.QiskitSQCKAProtocolParty import \
     QiskitSQCKAProtocolParty
 
 
 # Class for IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA)
-class QiskitSemiQuantumConferenceKeyAgreement:
+class QiskitSQCKAProtocol:
 
     # Constructor for IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA)
-    def __init__(self, num_rounds, parties_names, party_name_master, pre_shared_key,
+    def __init__(self, num_rounds, parties_names, party_name_master, bipartite_pre_shared_keys,
                  num_quantum_communication_channels, preparing_bases, quantum_entanglement_type):
 
         # The number of the rounds for the protocol
@@ -59,24 +59,26 @@ class QiskitSemiQuantumConferenceKeyAgreement:
         self.parties = {}
 
         # For each Party involved in the Protocol
-        for current_num_party in range(num_parties):
+        for current_party_id in range(num_parties):
 
             # Retrieve the name of the current Party
-            current_party_name = parties_names_upper[current_num_party]
+            current_party_name = parties_names_upper[current_party_id]
 
             # If the current Party is the Master Party
             if current_party_name.upper() == party_name_master_upper.upper():
 
                 # Initialize the object of the Party, as the Master Party
-                self.parties[current_num_party] = QiskitSQCKAProtocolParty(current_party_name.upper(),
-                                                                           True, pre_shared_key)
+                self.parties[current_party_id] = QiskitSQCKAProtocolParty(current_party_id, current_party_name.upper(),
+                                                                          True,
+                                                                          bipartite_pre_shared_keys[current_party_id])
 
             # If the current Party is not the Master Party
             else:
 
                 # Initialize the object of the Party, as a Normal Party
-                self.parties[current_num_party] = QiskitSQCKAProtocolParty(current_party_name.upper(),
-                                                                           False, pre_shared_key)
+                self.parties[current_party_id] = QiskitSQCKAProtocolParty(current_party_id, current_party_name.upper(),
+                                                                          False,
+                                                                          bipartite_pre_shared_keys[current_party_id])
 
         # The number of Quantum Communication Channels
         self.num_quantum_communication_channels = num_quantum_communication_channels
