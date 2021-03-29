@@ -51,10 +51,11 @@ class QiskitSQCKAProtocolParty:
         # Set the Pre-Shared Key, previously established between the parties
         self.bipartite_pre_shared_keys = bipartite_pre_shared_keys
 
-    # Return the boolean flag, responsible to keep the information about if the Party is
+    # Retrieve the boolean flag, responsible to keep the information about if the Party is
     # the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
     def is_master(self):
 
+        # Return the associated boolean flag
         return self.master_status_flag
 
     # Prepare a Bipartite or Multipartite Quantum Entanglement
