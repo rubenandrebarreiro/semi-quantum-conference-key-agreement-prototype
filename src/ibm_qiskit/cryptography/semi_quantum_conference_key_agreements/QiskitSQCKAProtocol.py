@@ -24,7 +24,7 @@ from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreements.common.Q
 class QiskitSemiQuantumConferenceKeyAgreement:
 
     # Constructor for IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA)
-    def __init__(self, num_rounds, parties_names, party_name_master,
+    def __init__(self, num_rounds, parties_names, party_name_master, pre_shared_key,
                  num_quantum_communication_channels, preparing_bases, quantum_entanglement_type):
 
         # The number of the rounds for the protocol
@@ -68,13 +68,15 @@ class QiskitSemiQuantumConferenceKeyAgreement:
             if current_party_name.upper() == party_name_master_upper.upper():
 
                 # Initialize the object of the Party, as the Master Party
-                self.parties[current_num_party] = QiskitSQCKAProtocolParty(current_party_name.upper(), True)
+                self.parties[current_num_party] = QiskitSQCKAProtocolParty(current_party_name.upper(),
+                                                                           True, pre_shared_key)
 
             # If the current Party is not the Master Party
             else:
 
-                # Initialize the object of the Party, as a normal Party
-                self.parties[current_num_party] = QiskitSQCKAProtocolParty(current_party_name.upper(), False)
+                # Initialize the object of the Party, as a Normal Party
+                self.parties[current_num_party] = QiskitSQCKAProtocolParty(current_party_name.upper(),
+                                                                           False, pre_shared_key)
 
         # The number of Quantum Communication Channels
         self.num_quantum_communication_channels = num_quantum_communication_channels
@@ -99,7 +101,7 @@ class QiskitSemiQuantumConferenceKeyAgreement:
             preparing_bases_upper.append(preparing_base.upper())
 
         # Set the Preparing/Measurement Bases used for the protocol (i.e., X-, Y- and/or Z-Basis)
-        self.preparing_bases_upper = preparing_bases_upper
+        self.preparing_bases_upper = list(set(preparing_bases_upper))
 
         # The type of Entanglement used for the protocol (i.e., GHZ, W or Graph States)
         self.quantum_entanglement_type = quantum_entanglement_type.upper()

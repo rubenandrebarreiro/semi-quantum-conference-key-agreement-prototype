@@ -36,27 +36,33 @@ from src.ibm_qiskit.entanglements.multipartite.resource_states import QiskitGrap
 class QiskitSQCKAProtocolParty:
 
     # Constructor for IBM Qiskit's Party for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-    def __init__(self, party_name, master_status):
+    def __init__(self, party_id, party_name, master_status_flag, bipartite_pre_shared_keys):
+
+        # Set the Party's ID
+        self.party_id = party_id
 
         # Set the Party's name
         self.party_name = party_name
 
         # Set the boolean flag, responsible to keep the information about if the Party is
         # the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
-        self.master_status = master_status
+        self.master_status_flag = master_status_flag
+
+        # Set the Pre-Shared Key, previously established between the parties
+        self.bipartite_pre_shared_keys = bipartite_pre_shared_keys
 
     # Return the boolean flag, responsible to keep the information about if the Party is
     # the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
     def is_master(self):
 
-        return self.master_status
+        return self.master_status_flag
 
     # Prepare a Bipartite or Multipartite Quantum Entanglement
     def prepare_quantum_entanglement(self, quantum_entanglement_type, num_parties, quantum_circuit,
-                                     bell_state_type=None):
+                                     bell_state_type=None, qubits_edges_indexes_for_resource_state=None):
 
         # If the Party is not the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-        if not self.master_status:
+        if not self.master_status_flag:
 
             # Raise the Value Error exception
             raise ValueError("The Party Name specified to be the Master "
@@ -216,11 +222,59 @@ class QiskitSQCKAProtocolParty:
                 # If the Quantum Entanglement to prepare is a Resource State
                 elif quantum_entanglement_type.upper() == "RESOURCE_STATE":
 
-                    # TODO - Handle this situation
-                    return
+                    # If the number of parties involved is higher than 1
+                    if num_parties > 1:
+
+                        # Set the list of Qubits
+                        qubits_indexes = list(range(0, num_parties))
+
+                        # Prepare the Resource State, as a Graph State by default, for multiple Qubits
+                        qiskit_quantum_circuit_resource_state = QiskitGraphState \
+                            .QiskitGraphState("resource_state_qubits",
+                                              quantum_circuit,
+                                              qubits_indexes,
+                                              qubits_edges_indexes_for_resource_state)\
+                            .prepare_multipartite_entanglement()
+
+                    # If the number of parties involved is equal or lower than 2
+                    else:
+
+                        # Raise a Value Error
+                        raise ValueError("It is impossible to use Resource States for "
+                                         "Semi-Quantum Conference Key Agreement (SQCKA) with less than 2 Parties!!!")
+
+                    # Return the Quantum Circuit for the Resource State for n parties
+                    return qiskit_quantum_circuit_resource_state
 
                 # If the Quantum Entanglement to prepare is a Graph State
                 elif quantum_entanglement_type.upper() == "GRAPH_STATE":
+
+                    # If the number of parties involved is higher than 1
+                    if num_parties > 1:
+
+                        # Set the list of Qubits
+                        qubits_indexes = list(range(0, num_parties))
+
+                        # Prepare the Resource State, as a Graph State by default, for multiple Qubits
+                        qiskit_quantum_circuit_graph_state = QiskitGraphState \
+                            .QiskitGraphState("graph_state_qubits",
+                                              quantum_circuit,
+                                              qubits_indexes,
+                                              qubits_edges_indexes_for_resource_state)\
+                            .prepare_multipartite_entanglement()
+
+                    # If the number of parties involved is equal or lower than 2
+                    else:
+
+                        # Raise a Value Error
+                        raise ValueError("It is impossible to use Graph States for "
+                                         "Semi-Quantum Conference Key Agreement (SQCKA) with less than 2 Parties!!!")
+
+                    # Return the Quantum Circuit for the Graph State for n parties
+                    return qiskit_quantum_circuit_graph_state
+
+                # If the Quantum Entanglement to prepare is a Cluster State
+                elif quantum_entanglement_type.upper() == "CLUSTER_STATE":
 
                     # TODO - Handle this situation
                     return
@@ -231,3 +285,39 @@ class QiskitSQCKAProtocolParty:
 
                 # Raise a Value Error
                 raise ValueError("The Quantum Entanglement specified for the Protocol is not possible to use!!!")
+
+    # Measure and Resend the Qubit, or just Reflect it, according to the Pre-Shared Key
+    def measure_and_resend_or_reflect_qubit(self, quantum_circuit, num_round, timestamp):
+
+        # If the Party is not the Master of the Protocol and the Party possesses only
+        # one Pre-Shared Key between itself and the Master of the Protocol
+        if (not self.master_status_flag) and (len(self.bipartite_pre_shared_keys) == 1):
+
+            # Retrieve the bipartite Pre-Shared Key, with the Master of the Protocol
+            pre_shared_key_bits = self.bipartite_pre_shared_keys[0][1]
+
+            # It is a SIFT Round, thus, the Normal Party, will Measure and Resend the Qubit
+            # back again to the Master of the Protocol (more probable)
+            if pre_shared_key_bits[num_round] == 0:
+
+                # Prepare and Measure the Qubit in the Z-Basis (Computational Basis),
+                # according to the Party's ID
+                quantum_circuit.prepare_measure_single_qubit_in_z_basis((self.party_id - 1),
+                                                                        (self.party_id - 1),
+                                                                        is_final_measurement=True)
+
+            # It is a CTRL Round, thus, the Normal Party, will just Reflect the Qubit,
+            # to the Master of the Protocol, without measure it (less probable)
+            elif pre_shared_key_bits[num_round] == 1:
+
+                # Apply the Pauli-I to the Qubit,
+                # according to the Party's ID
+                quantum_circuit.apply_pauli_i(self.party_id - 1)
+
+        # If the Party is the Master of the Protocol and the Party possesses
+        # all the bipartite Pre-Shared Keys between itself and the other PARTIES
+        else:
+
+            # Raise the Value Error exception
+            raise ValueError("The Master Party cannot Measure and Resend (SIFT Rounds) or "
+                             "just Reflect the Qubits (CTRL Rounds)!!!")

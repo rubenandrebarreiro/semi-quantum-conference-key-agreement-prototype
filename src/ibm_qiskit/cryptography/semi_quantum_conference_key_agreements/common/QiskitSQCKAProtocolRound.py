@@ -17,8 +17,7 @@ Acknowledgments:
 class QiskitSQCKAProtocolRound:
 
     # Constructor for IBM Qiskit's Round for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-    def __init__(self, num_current_round, quantum_circuit, time_slots, owner_times):
+    def __init__(self, num_current_round, quantum_circuit, party_owner_times):
         self.num_current_round = num_current_round
         self.quantum_circuit = quantum_circuit
-        self.time_slots = time_slots
-        self.party_owner_times = owner_times
+        self.party_owner_times = party_owner_times

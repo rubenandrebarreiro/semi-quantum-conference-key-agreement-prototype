@@ -31,10 +31,10 @@ class TimestampGenerator:
         self.now = date_time.now()
         self.timestamp_generator_name = timestamp_generator_name
 
-    # Retrieve the current Timestamp
+    # Retrieve the current Timestamp, as a custom DateTime
     def get_now_timestamp(self):
 
-        # Return the current Timestamp, as DateTime
+        # Return the current Timestamp, as a custom DateTime
         return date_time(self.now.year, self.now.month, self.now.day,
                          self.now.hour, self.now.minute, self.now.second)
 

@@ -12,6 +12,8 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
+# Import Packages and Libraries
+
 # Import Mathematics
 from math import floor, log
 
