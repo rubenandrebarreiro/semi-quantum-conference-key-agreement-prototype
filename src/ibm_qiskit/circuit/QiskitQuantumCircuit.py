@@ -132,7 +132,8 @@ class QiskitQuantumCircuit:
                              .format(num_qubits_quantum_circuit))
 
         # Measure the given Qubit's index to the given Bit's index
-        self.quantum_circuit.measure(self.quantum_registers[qubit_index], self.classical_registers[bit_index])
+        self.quantum_circuit.measure(self.quantum_registers.quantumRegister[qubit_index],
+                                     self.classical_registers.classicalRegister[bit_index])
 
     # Measure a given interval of Qubits' indexes
     def measure_qubits_interval(self, qubit_indexes, bit_indexes):
@@ -181,7 +182,8 @@ class QiskitQuantumCircuit:
         for qubit_index, bit_index in zip(qubit_indexes, bit_indexes):
 
             # Measure the given Qubit's index to the given Bit's index
-            self.quantum_circuit.measure(self.quantum_registers[qubit_index], self.classical_registers[bit_index])
+            self.quantum_circuit.measure(self.quantum_registers.quantumRegister[qubit_index],
+                                         self.classical_registers.classicalRegister[bit_index])
 
     # Measure all Qubits' indexes to all Bits' indexes
     def measure_all_qubits(self):
@@ -196,7 +198,8 @@ class QiskitQuantumCircuit:
         for qubit_index, bit_index in zip(range(num_qubits_quantum_circuit), range(num_bits_quantum_circuit)):
 
             # Measure the given Qubit's index to the given Bit's index
-            self.quantum_circuit.measure(self.quantum_registers[qubit_index], self.classical_registers[bit_index])
+            self.quantum_circuit.measure(self.quantum_registers.quantumRegister[qubit_index],
+                                         self.classical_registers.classicalRegister[bit_index])
 
     # Measure all Qubits' (predefined by IBM Qiskit)
     def measure_all_qubits_predefined(self):

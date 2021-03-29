@@ -12,6 +12,8 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
+# Import required Libraries and Packages
+
 # Import Unittest for Python's Unitary Tests
 import unittest
 
@@ -37,8 +39,8 @@ from src.ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
 from src.ibm_qiskit.utils.transforms import QiskitQuantumHadamardTransform
 
 
-# Test Cases for the Quantum Hadamard Transform
-class QuantumHadamardTransformTests(unittest.TestCase):
+# Test Cases for the IBM Qiskit's Quantum Hadamard Transform
+class QiskitQuantumHadamardTransformTests(unittest.TestCase):
 
     # Test #1 for the Quantum Hadamard Transform
     # Description of the Test Case:
@@ -483,8 +485,9 @@ class QuantumHadamardTransformTests(unittest.TestCase):
 
 if __name__ == '__main__':
 
-    # Test Cases for the Quantum Hadamard Transforms
-    quantum_hadamard_transform_tests_suite = unittest.TestLoader().loadTestsFromTestCase(QuantumHadamardTransformTests)
+    # Test Cases for the IBM Qiskit's Quantum Hadamard Transforms
+    quantum_hadamard_transform_tests_suite = unittest.TestLoader()\
+        .loadTestsFromTestCase(QiskitQuantumHadamardTransformTests)
 
     # Create a Global for all the Test Cases established
     all_test_cases = unittest.TestSuite([quantum_hadamard_transform_tests_suite])
