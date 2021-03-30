@@ -18,26 +18,26 @@ Acknowledgments:
 from src.ibm_qiskit.common import TimestampGenerator
 
 
-# Class of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Pre-Shared Key
-class QiskitSQCKAProtocolPreSharedKey:
+# Class of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Pre-Shared Key Pair
+class QiskitSQCKAProtocolPreSharedKeyPair:
 
     # Constructor of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Pre-Shared Key
-    def __init__(self, party_num_1, party_num_2, bipartite_pre_shared_key):
-        self.party_num_1 = party_num_1
-        self.party_num_2 = party_num_2
+    def __init__(self, party_name_1, party_name_2, bipartite_pre_shared_key):
+        self.party_name_1 = party_name_1
+        self.party_name_2 = party_name_2
         self.bipartite_pre_shared_key = bipartite_pre_shared_key
         self.timestamp = \
             TimestampGenerator.TimestampGenerator("pre-shared-key-{}-{}"
-                                                  .format(self.party_num_1.get_name().lower(),
-                                                          self.party_num_2.get_name().lower())).get_now_timestamp()
+                                                  .format(self.party_name_1.lower(),
+                                                          self.party_name_2.lower())).get_now_timestamp()
 
-    # Return the Party #1
-    def get_party_num_1(self):
-        return self.party_num_1
+    # Return the name of the Party #1
+    def get_party_name_1(self):
+        return self.party_name_1
 
-    # Return the Party #2
-    def get_party_num_2(self):
-        return self.party_num_2
+    # Return the name of the Party #2
+    def get_party_name_2(self):
+        return self.party_name_2
 
     # Return the Bipartite Pre-Shared Key
     def get_bipartite_pre_shared_key(self):

@@ -13,11 +13,17 @@ Acknowledgments:
 """
 
 
-# Class for IBM Qiskit's Configuration for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-class QiskitSQCKAProtocolConfiguration:
+# Class for IBM Qiskit's Parameters for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+class QiskitSQCKAProtocolParameters:
 
     # Constructor for IBM Qiskit's Configuration for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-    def __init__(self, num_quantum_communication_channels, preparing_bases, quantum_entanglement_type):
+    def __init__(self, num_parties, num_rounds, num_quantum_communication_channels, preparing_bases, quantum_entanglement_type):
+
+        # Set the number of Parties
+        self.num_parties = num_parties
+
+        # Set the Number of Rounds
+        self.num_rounds = num_rounds
 
         # Set the number of Quantum Communication Channels
         self.num_quantum_communication_channels = num_quantum_communication_channels
@@ -36,6 +42,14 @@ class QiskitSQCKAProtocolConfiguration:
 
         # Set the Quantum Entanglement Type to be used
         self.quantum_entanglement_type = quantum_entanglement_type.upper()
+
+    # Return the number of Parties
+    def get_num_parties(self):
+        return self.num_parties
+
+    # Return the number of Rounds
+    def get_num_rounds(self):
+        return self.num_rounds
 
     # Return the number of Quantum Communication Channels
     def get_num_quantum_communication_channels(self):
