@@ -17,7 +17,8 @@ Acknowledgments:
 class QiskitSQCKAProtocolParameters:
 
     # Constructor for IBM Qiskit's Configuration for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-    def __init__(self, num_parties, num_rounds, num_quantum_communication_channels, preparing_bases, quantum_entanglement_type):
+    def __init__(self, num_parties, num_rounds, num_quantum_communication_channels,
+                 preparing_bases, quantum_entanglement_type):
 
         # Set the number of Parties
         self.num_parties = num_parties
