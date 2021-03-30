@@ -23,8 +23,8 @@ class QiskitSQCKAProtocolPreSharedKeyPair:
 
     # Constructor of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Pre-Shared Key
     def __init__(self, party_name_1, party_name_2, bipartite_pre_shared_key):
-        self.party_name_1 = party_name_1
-        self.party_name_2 = party_name_2
+        self.party_name_1 = party_name_1.lower()
+        self.party_name_2 = party_name_2.lower()
         self.bipartite_pre_shared_key = bipartite_pre_shared_key
         self.timestamp = \
             TimestampGenerator.TimestampGenerator("pre-shared-key-{}-{}"
@@ -46,3 +46,9 @@ class QiskitSQCKAProtocolPreSharedKeyPair:
     # Return the Timestamp of the generation of the Bipartite Pre-Shared Key
     def get_timestamp(self):
         return self.timestamp
+
+    # Print the information about
+    # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Bipartite Pre-Shared Key Pair
+    def print_info(self):
+        print(" - ( {} , {} ) [{}]: {}".format(self.party_name_1, self.party_name_2,
+                                               self.timestamp, self.bipartite_pre_shared_key))

@@ -165,8 +165,8 @@ class QiskitSQCKAProtocolExecutorService:
                              "be configured in the Protocol!!!")
 
     # Add a Bipartite Pre-Shared Key to the Protocol
-    def add_protocol_bipartite_pre_shared_keys(self, party_name_1, party_name_2,
-                                               bipartite_pre_shared_key_binary_string):
+    def add_protocol_bipartite_pre_shared_key(self, party_name_1, party_name_2,
+                                              bipartite_pre_shared_key_binary_string):
 
         # If the Parameters of the Protocol were already configured
         if self.qiskit_sqcka_protocol_parameters_initialised:
@@ -199,6 +199,24 @@ class QiskitSQCKAProtocolExecutorService:
             raise ValueError("The Parameters of the Protocol need to "
                              "be configured before add any Bipartite Pre-Shared Key!!!")
 
+    # Return all the Bipartite Pre-Shared Key of the Protocol
+    def get_protocol_bipartite_pre_shared_keys(self):
+
+        # If the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's
+        # Bipartite Pre-Shared Keys were already initialised
+        if self.qiskit_sqcka_protocol_bipartite_pre_shared_keys_initialised:
+
+            # Return the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's
+            # Bipartite Pre-Shared Keys
+            return self.qiskit_sqcka_protocol_bipartite_pre_shared_keys
+
+        # If the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's
+        # Bipartite Pre-Shared Keys were not initialised yet
+        else:
+
+            # Return none
+            return None
+
     # Configure the Parameters of the Protocol
     def configure_protocol_parameters(self, num_parties, num_rounds, num_quantum_communication_channels,
                                       preparing_bases, quantum_entanglement_type):
@@ -211,6 +229,23 @@ class QiskitSQCKAProtocolExecutorService:
 
         # Set the boolean flag for the initialisation of Parameters of the Protocol, as True
         self.qiskit_sqcka_protocol_parameters_initialised = True
+
+    # Return the Parameters of the Protocol
+    def get_protocol_parameters(self):
+
+        # If the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's
+        # Parameters were already initialised
+        if self.qiskit_sqcka_protocol_parameters_initialised:
+
+            # Return the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Parameters
+            return self.qiskit_sqcka_protocol_parameters
+
+        # If the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's
+        # Parameters were not initialised yet
+        else:
+
+            # Return none
+            return None
 
     # Initialise the Protocol, as its initial version, ready to be executed
     def initialise_protocol(self):
