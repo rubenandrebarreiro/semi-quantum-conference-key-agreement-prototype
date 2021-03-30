@@ -12,12 +12,15 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
-# Import Packages and Libraries
+# Import Enumerations and Constants
 
 # Import the possible Bipartite and Multipartite Quantum Entanglement Types and
 # the Possible Configurations for Bell States
 from src.ibm_qiskit.common.QuantumEntanglementTypes \
     import POSSIBLE_QUANTUM_ENTANGLEMENT_TYPES, POSSIBLE_CONFIGURATIONS_BELL_STATES
+
+
+# Import Packages and Libraries
 
 # Import QiskitBellState from IBM_Qiskit.Entanglements.Bipartite
 from src.ibm_qiskit.entanglements.bipartite import QiskitBellState
@@ -30,6 +33,15 @@ from src.ibm_qiskit.entanglements.multipartite import QiskitWState
 
 # Import QiskitGraphState from IBM_Qiskit.Entanglements.Multipartite.Resource_States
 from src.ibm_qiskit.entanglements.multipartite.resource_states import QiskitGraphState
+
+# Import QiskitQuantumTrueRandomBinaryStringGenerator from IBM_Qiskit.Utils.Random_Generator.Binary.Quantum
+from src.ibm_qiskit.utils.random_generator.binary.quantum import QiskitQuantumTrueRandomBinaryStringGenerator
+
+
+# Constants
+
+# The number of counts for simulation
+NUM_COUNTS_FOR_SIMULATION = 1000
 
 
 # Class for IBM Qiskit's Party for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
@@ -51,12 +63,53 @@ class QiskitSQCKAProtocolParty:
         # Set the Pre-Shared Key, previously established between the parties
         self.bipartite_pre_shared_keys = bipartite_pre_shared_keys
 
+    # Return the ID of the Party
+    def get_id(self):
+        return self.party_id
+
+    # Return the Name of the Party
+    def get_name(self):
+        return self.party_name
+
     # Retrieve the boolean flag, responsible to keep the information about if the Party is
     # the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
     def is_master(self):
-
-        # Return the associated boolean flag
         return self.master_status_flag
+
+    # Return the Bipartite Pre-Shared Keys that the Party possesses with other Parties
+    def get_bipartite_pre_shared_keys(self):
+        return self.bipartite_pre_shared_keys
+
+    # Generate the True Random String for the Master Party's Raw Key
+    def generate_true_random_binary_string_for_master_party_raw_key(
+        self, true_random_binary_string_for_master_party_raw_key_length
+    ):
+
+        # If the Party is the Master of the Protocol
+        if self.is_master():
+
+            # Create the True Random Binary String Generator for the SQCKA's
+            true_random_binary_string_generator_for_master_party_raw_key = \
+                QiskitQuantumTrueRandomBinaryStringGenerator\
+                .QiskitQuantumTrueRandomBinaryStringGenerator(
+                    "true_random_binary_string_generator_for_master_party_raw_key",
+                    true_random_binary_string_for_master_party_raw_key_length,
+                    NUM_COUNTS_FOR_SIMULATION
+                )
+
+            # Generate the final True Random Binary String from the Generator, previously created,
+            # for the initial Raw Key of the Protocol's Master Party
+            initial_true_random_binary_string_for_master_party_raw_key = \
+                true_random_binary_string_generator_for_master_party_raw_key.generate_true_random_binary_string()
+
+            # Return the initial Raw Key of the Protocol's Master Party
+            return initial_true_random_binary_string_for_master_party_raw_key
+
+        # If the Party is not the Master of the Protocol
+        else:
+
+            # Raise a Value Error
+            raise ValueError("Only the Master Party can generate the initial Raw Key!!!")
 
     # Prepare a Bipartite or Multipartite Quantum Entanglement
     def prepare_quantum_entanglement(self, quantum_entanglement_type, num_parties, quantum_circuit,
