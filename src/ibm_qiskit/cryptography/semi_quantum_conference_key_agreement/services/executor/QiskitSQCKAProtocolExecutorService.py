@@ -12,6 +12,7 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
+from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreement import QiskitSQCKAProtocol
 from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreement.common import QiskitSQCKAProtocolParameters
 
 from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreement.common.QiskitSQCKAProtocolParty import \
@@ -303,6 +304,23 @@ class QiskitSQCKAProtocolExecutorService:
             # If all the conditions for the initialisation of the Protocol are verified
             if protocol_initialisation_flag:
 
+                # Retrieve the Parties' objects involved in the Protocol
+                parties = self.get_protocol_parties()
+
+                # Retrieve the Master Party's objects involved in the Protocol
+                master_party = self.get_protocol_master_party()
+
+                # Retrieve the Bipartite Pre-Shared Keys involved in the Protocol
+                bipartite_pre_shared_keys = self.get_protocol_bipartite_pre_shared_keys()
+
+                # Retrieve the Parameters' configuration of the Protocol
+                parameters = self.get_protocol_parameters()
+
+                # Set the final object for the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol,
+                # given its respective arguments
+                self.qiskit_sqcka_protocol = QiskitSQCKAProtocol\
+                    .QiskitSQCKAProtocol(parties, master_party, bipartite_pre_shared_keys, parameters)
+
                 # Delete obsolete attributes of the Class
                 self.delete_obsolete_attributes()
 
@@ -310,7 +328,7 @@ class QiskitSQCKAProtocolExecutorService:
                 # putting the respective boolean flag as True
                 self.qiskit_sqcka_protocol_initialised = True
 
-            # If some conditions for the initialisation of the Protocol is not verified
+            # If some condition for the initialisation of the Protocol is not verified
             else:
 
                 # Raise the Value Error

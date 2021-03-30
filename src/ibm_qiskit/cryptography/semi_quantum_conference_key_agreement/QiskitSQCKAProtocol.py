@@ -17,10 +17,7 @@ Acknowledgments:
 class QiskitSQCKAProtocol:
 
     # Constructor for IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-    def __init__(self, num_rounds, parties, master_party, bipartite_pre_shared_keys, configuration):
-
-        # The number of the rounds for the protocol
-        self.num_rounds = num_rounds
+    def __init__(self, parties, master_party, bipartite_pre_shared_keys, parameters):
 
         # The Parties involved in the Protocol
         self.parties = parties
@@ -31,12 +28,8 @@ class QiskitSQCKAProtocol:
         # The Bipartite Pre-Shared Keys used between the Parties, involved in the Protocol
         self.bipartite_pre_shared_keys = bipartite_pre_shared_keys
 
-        # The Configuration of the Protocol
-        self.configuration = configuration
-
-    # Return the number of rounds of the Protocol
-    def get_num_rounds(self):
-        return self.num_rounds
+        # The Parameters of the Protocol
+        self.parameters = parameters
 
     # Return the Parties of the Protocol
     def get_parties(self):
@@ -50,6 +43,6 @@ class QiskitSQCKAProtocol:
     def get_bipartite_pre_shared_keys(self):
         return self.bipartite_pre_shared_keys
 
-    # Return the Configuration of the Protocol
-    def get_configuration(self):
-        return self.configuration
+    # Return the Parameters of the Protocol
+    def get_parameters(self):
+        return self.parameters
