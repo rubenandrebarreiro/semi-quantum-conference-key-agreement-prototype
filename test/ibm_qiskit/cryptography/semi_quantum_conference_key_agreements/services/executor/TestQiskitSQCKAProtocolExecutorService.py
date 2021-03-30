@@ -251,7 +251,8 @@ class MyTestCase(unittest.TestCase):
             for current_num_bipartite_pre_shared_key in range(num_bipartite_pre_shared_keys):
 
                 # Print the sub-header for the current Bipartite Pre-Shared Key
-                print("Bipartite Pre-Shared Key Pair #{}:".format((current_num_bipartite_pre_shared_key + 1)))
+                print("Bipartite Pre-Shared Key Pair #{} (Hamming Weight = {}):"
+                      .format((current_num_bipartite_pre_shared_key + 1), qiskit_sqcka_protocol_num_reflect_rounds))
 
                 # Retrieve the current Bipartite Pre-Shared Key
                 current_bipartite_pre_shared_key = \
@@ -262,8 +263,53 @@ class MyTestCase(unittest.TestCase):
                 # current Bipartite Pre-Shared Key
                 current_bipartite_pre_shared_key.print_info()
 
-                # Dummy print, to add a blank line
-                print()
+        """ 3) Creation of the Parties involved on the Protocol """
+
+        # Retrieve the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's
+        # Bipartite Pre-Shared Keys
+        bipartite_pre_shared_keys = \
+            qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state \
+            .get_protocol_bipartite_pre_shared_keys()
+
+        # Set the Parties (including the Master Party) of
+        # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol,
+        # alongside the Bipartite Pre-Shared Keys they own/possess
+        qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state\
+            .set_protocol_parties(parties_names, master_party_name, bipartite_pre_shared_keys)
+
+        # If the boolean flag for the Logging printing is set to True
+        if LOGGING_FLAG:
+
+            # Retrieve the Parties of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            protocol_parties = \
+                qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state\
+                .get_protocol_parties()
+
+            # Retrieve the number of Parties of
+            # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            num_protocol_parties = len(protocol_parties)
+
+            # Print the header of the 3rd Logging
+            print("\n\n--- 3) PARTIES INVOLVED IN THE PROTOCOL ---\n")
+
+            # For each Party of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            for current_num_protocol_party in range(num_protocol_parties):
+
+                # Print the information about the current Party of the
+                # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+                protocol_parties[current_num_protocol_party].print_info()
+
+            # Retrieve the Master Party of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            protocol_master_party = \
+                qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state\
+                .get_protocol_master_party()
+
+            # Print the header of the 4th Logging
+            print("\n\n--- 4) MASTER PARTY INVOLVED IN THE PROTOCOL ---\n")
+
+            # Print the information about the Master Party of the
+            # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            protocol_master_party.print_info()
 
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
