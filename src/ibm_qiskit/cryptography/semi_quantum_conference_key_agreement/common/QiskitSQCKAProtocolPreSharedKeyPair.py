@@ -50,5 +50,5 @@ class QiskitSQCKAProtocolPreSharedKeyPair:
     # Print the information about
     # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Bipartite Pre-Shared Key Pair
     def print_info(self):
-        print(" - ( {} , {} ) [{}]: {}".format(self.party_name_1, self.party_name_2,
-                                               self.timestamp, self.bipartite_pre_shared_key))
+        print(" - ( {} , {} ) [{}]: {}\n".format(self.party_name_1, self.party_name_2,
+                                                 self.timestamp, self.bipartite_pre_shared_key))
