@@ -34,20 +34,18 @@ from src.ibm_qiskit.utils.transforms import QiskitQuantumHadamardTransform
 
 # Import some important constant values, regarding some parameters of the IBM's Qiskit
 
-# Import the maximum number of Qubits for the IBM's Qiskit QASM Simulator
-from src.ibm_qiskit.common.QiskitLibraryParameters import QISKIT_LIBRARY_QASM_SIMULATOR_MAX_NUM_QUBITS
-
-# Constants
-
-# The default number of counts for the Final Result
-NUM_COUNTS = 1
+# Import the maximum number of Qubits and the default number of Counts for
+# the executions or simulations of Quantum Circuits on the IBM's Qiskit QASM Simulator
+from src.ibm_qiskit.common.QiskitLibraryParameters import \
+    QISKIT_LIBRARY_QASM_SIMULATOR_MAX_NUM_QUBITS, QISKIT_DEFAULT_NUM_COUNTS
 
 
 # Class for IBM Qiskit's Quantum True Random Binary String Generator (QTRBSG)
 class QiskitQuantumTrueRandomBinaryStringGenerator:
 
     # Constructor for IBM Qiskit's Quantum True Random Binary String Generator (QTRBSG)
-    def __init__(self, name, binary_string_length=QISKIT_LIBRARY_QASM_SIMULATOR_MAX_NUM_QUBITS, num_counts=NUM_COUNTS):
+    def __init__(self, name, binary_string_length=QISKIT_LIBRARY_QASM_SIMULATOR_MAX_NUM_QUBITS,
+                 num_counts=QISKIT_DEFAULT_NUM_COUNTS):
         self.name = name
         self.binary_string_length = binary_string_length
         self.num_counts = num_counts
