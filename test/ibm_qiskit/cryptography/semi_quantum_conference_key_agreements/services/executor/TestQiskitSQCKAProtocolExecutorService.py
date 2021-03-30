@@ -311,6 +311,12 @@ class MyTestCase(unittest.TestCase):
             # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
             protocol_master_party.print_info()
 
+        """ 4) Creation of the final object for
+        the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol """
+
+        # Initialise the final object for the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state.initialise_protocol()
+
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
 
