@@ -15,3 +15,6 @@ Acknowledgments:
 # The maximum number of Qubits for the QASM Simulator of the IBM's Qiskit Library
 QISKIT_LIBRARY_QASM_SIMULATOR_MAX_NUM_QUBITS = 32
 
+# The default number of counts for the Final Result,
+# for simulation or executions of Quantum Circuits
+QISKIT_DEFAULT_NUM_COUNTS = 1000
