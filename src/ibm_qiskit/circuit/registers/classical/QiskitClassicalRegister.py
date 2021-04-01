@@ -31,4 +31,4 @@ class QiskitClassicalRegister:
         self.num_bits = num_bits
 
         # The Classical Register of the Qiskit's Classical Register
-        self.classicalRegister = ClassicalRegister(name=name, size=num_bits)
+        self.classical_register = ClassicalRegister(name=name, size=num_bits)

@@ -31,4 +31,4 @@ class QiskitQuantumRegister:
         self.num_qubits = num_qubits
 
         # The Quantum Register of the Qiskit's Quantum Register
-        self.quantumRegister = QuantumRegister(name=name, size=num_qubits)
+        self.quantum_register = QuantumRegister(name=name, size=num_qubits)
