@@ -29,11 +29,11 @@ from qiskit import Aer, execute
 # Import QiskitQuantumCircuit from IBM_Qiskit.Circuit
 from src.ibm_qiskit.circuit import QiskitQuantumCircuit
 
-# Import QiskitClassicalRegister from IBM_Qiskit.Circuit.Classical
-from src.ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
-
 # Import QiskitQuantumRegister from IBM_Qiskit.Circuit.Quantum
 from src.ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
+
+# Import QiskitClassicalRegister from IBM_Qiskit.Circuit.Classical
+from src.ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
 
 
 # Test Cases for the Prepare/Measure in the X-Basis (Diagonal Basis)
