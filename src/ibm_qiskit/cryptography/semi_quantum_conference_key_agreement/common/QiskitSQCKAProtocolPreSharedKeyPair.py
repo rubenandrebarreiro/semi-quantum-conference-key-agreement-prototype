@@ -12,7 +12,7 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
-# Import Enumerations and Constants
+# Import Packages and Libraries
 
 # Import TimestampGenerator from IBM_Qiskit.Common
 from src.ibm_qiskit.common import TimestampGenerator
