@@ -108,7 +108,7 @@ class PrepareMeasureXBasisTests(unittest.TestCase):
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
         qiskit_quantum_circuit_prepare_measure_x_basis_2 \
-            .apply_pauli_x(qiskit_quantum_register_prepare_measure_x_basis_2.quantumRegister[0])
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_x_basis_2.quantum_register[0])
 
         # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_x_basis_2 \
@@ -156,7 +156,7 @@ class PrepareMeasureXBasisTests(unittest.TestCase):
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
         qiskit_quantum_circuit_prepare_measure_x_basis_3 \
-            .apply_hadamard(qiskit_quantum_register_prepare_measure_x_basis_3.quantumRegister[0])
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_x_basis_3.quantum_register[0])
 
         # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_x_basis_3 \
@@ -204,11 +204,11 @@ class PrepareMeasureXBasisTests(unittest.TestCase):
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
         qiskit_quantum_circuit_prepare_measure_x_basis_4 \
-            .apply_pauli_x(qiskit_quantum_register_prepare_measure_x_basis_4.quantumRegister[0])
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_x_basis_4.quantum_register[0])
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|1⟩ ↦ |-⟩)
         qiskit_quantum_circuit_prepare_measure_x_basis_4 \
-            .apply_hadamard(qiskit_quantum_register_prepare_measure_x_basis_4.quantumRegister[0])
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_x_basis_4.quantum_register[0])
 
         # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_x_basis_4 \
@@ -302,7 +302,7 @@ class PrepareMeasureYBasisTests(unittest.TestCase):
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
         qiskit_quantum_circuit_prepare_measure_y_basis_2 \
-            .apply_pauli_x(qiskit_quantum_register_prepare_measure_y_basis_2.quantumRegister[0])
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_y_basis_2.quantum_register[0])
 
         # Prepare/Measure the Qubit in the Y-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_y_basis_2 \
@@ -350,7 +350,7 @@ class PrepareMeasureYBasisTests(unittest.TestCase):
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
         qiskit_quantum_circuit_prepare_measure_y_basis_3 \
-            .apply_hadamard(qiskit_quantum_register_prepare_measure_y_basis_3.quantumRegister[0])
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_y_basis_3.quantum_register[0])
 
         # Prepare/Measure the Qubit in the Y-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_y_basis_3 \
@@ -399,11 +399,11 @@ class PrepareMeasureYBasisTests(unittest.TestCase):
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
         qiskit_quantum_circuit_prepare_measure_y_basis_4 \
-            .apply_pauli_x(qiskit_quantum_register_prepare_measure_y_basis_4.quantumRegister[0])
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_y_basis_4.quantum_register[0])
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|1⟩ ↦ |-⟩)
         qiskit_quantum_circuit_prepare_measure_y_basis_4 \
-            .apply_hadamard(qiskit_quantum_register_prepare_measure_y_basis_4.quantumRegister[0])
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_y_basis_4.quantum_register[0])
 
         # Prepare/Measure the Qubit in the Y-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_y_basis_4 \
@@ -498,7 +498,7 @@ class PrepareMeasureZBasisTests(unittest.TestCase):
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
         qiskit_quantum_circuit_prepare_measure_z_basis_2 \
-            .apply_pauli_x(qiskit_quantum_register_prepare_measure_z_basis_2.quantumRegister[0])
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_z_basis_2.quantum_register[0])
 
         # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
         qiskit_quantum_circuit_prepare_measure_z_basis_2 \
@@ -546,7 +546,7 @@ class PrepareMeasureZBasisTests(unittest.TestCase):
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
         qiskit_quantum_circuit_prepare_measure_z_basis_3 \
-            .apply_hadamard(qiskit_quantum_register_prepare_measure_z_basis_3.quantumRegister[0])
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_z_basis_3.quantum_register[0])
 
         # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
         qiskit_quantum_circuit_prepare_measure_z_basis_3 \
@@ -595,11 +595,11 @@ class PrepareMeasureZBasisTests(unittest.TestCase):
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
         qiskit_quantum_circuit_prepare_measure_z_basis_4 \
-            .apply_pauli_x(qiskit_quantum_register_prepare_measure_z_basis_4.quantumRegister[0])
+            .apply_pauli_x(qiskit_quantum_register_prepare_measure_z_basis_4.quantum_register[0])
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|1⟩ ↦ |-⟩)
         qiskit_quantum_circuit_prepare_measure_z_basis_4 \
-            .apply_hadamard(qiskit_quantum_register_prepare_measure_z_basis_4.quantumRegister[0])
+            .apply_hadamard(qiskit_quantum_register_prepare_measure_z_basis_4.quantum_register[0])
 
         # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
         qiskit_quantum_circuit_prepare_measure_z_basis_4 \
@@ -647,7 +647,7 @@ class PauliIGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Pauli-I Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |0⟩)
-        qiskit_quantum_circuit_pauli_i_1.apply_pauli_i(qiskit_quantum_register_pauli_i_1.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_i_1.apply_pauli_i(qiskit_quantum_register_pauli_i_1.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -687,10 +687,10 @@ class PauliIGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Pauli-I Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |0⟩)
-        qiskit_quantum_circuit_pauli_i_2.apply_pauli_i(qiskit_quantum_register_pauli_i_2.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_i_2.apply_pauli_i(qiskit_quantum_register_pauli_i_2.quantum_register[0])
 
         # Apply the Pauli-I Gate to the 1st Qubit of the Quantum Circuit, again (|0⟩ ↦ |0⟩)
-        qiskit_quantum_circuit_pauli_i_2.apply_pauli_i(qiskit_quantum_register_pauli_i_2.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_i_2.apply_pauli_i(qiskit_quantum_register_pauli_i_2.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -732,7 +732,7 @@ class PauliXGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
-        qiskit_quantum_circuit_pauli_x_1.apply_pauli_x(qiskit_quantum_register_pauli_x_1.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_x_1.apply_pauli_x(qiskit_quantum_register_pauli_x_1.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -771,10 +771,10 @@ class PauliXGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
-        qiskit_quantum_circuit_pauli_x_2.apply_pauli_x(qiskit_quantum_register_pauli_x_2.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_x_2.apply_pauli_x(qiskit_quantum_register_pauli_x_2.quantum_register[0])
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit, again (|1⟩ ↦ |0⟩)
-        qiskit_quantum_circuit_pauli_x_2.apply_pauli_x(qiskit_quantum_register_pauli_x_2.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_x_2.apply_pauli_x(qiskit_quantum_register_pauli_x_2.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -811,10 +811,10 @@ class PauliXGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
-        qiskit_quantum_circuit_pauli_x_3.apply_hadamard(qiskit_quantum_register_pauli_x_3.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_x_3.apply_hadamard(qiskit_quantum_register_pauli_x_3.quantum_register[0])
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit, again (|+⟩ ↦ |+⟩)
-        qiskit_quantum_circuit_pauli_x_3.apply_pauli_x(qiskit_quantum_register_pauli_x_3.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_x_3.apply_pauli_x(qiskit_quantum_register_pauli_x_3.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -855,13 +855,13 @@ class PauliXGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
-        qiskit_quantum_circuit_pauli_x_4.apply_hadamard(qiskit_quantum_register_pauli_x_4.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_x_4.apply_hadamard(qiskit_quantum_register_pauli_x_4.quantum_register[0])
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit, again (|+⟩ ↦ |+⟩)
-        qiskit_quantum_circuit_pauli_x_4.apply_pauli_x(qiskit_quantum_register_pauli_x_4.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_x_4.apply_pauli_x(qiskit_quantum_register_pauli_x_4.quantum_register[0])
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|+⟩ ↦ |0⟩)
-        qiskit_quantum_circuit_pauli_x_4.apply_hadamard(qiskit_quantum_register_pauli_x_4.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_x_4.apply_hadamard(qiskit_quantum_register_pauli_x_4.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -904,7 +904,7 @@ class PauliYGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Pauli-Y Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+i⟩)
-        qiskit_quantum_circuit_pauli_y_1.apply_pauli_y(qiskit_quantum_register_pauli_y_1.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_y_1.apply_pauli_y(qiskit_quantum_register_pauli_y_1.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -943,10 +943,10 @@ class PauliYGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Pauli-Y Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+i⟩)
-        qiskit_quantum_circuit_pauli_y_2.apply_pauli_y(qiskit_quantum_register_pauli_y_2.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_y_2.apply_pauli_y(qiskit_quantum_register_pauli_y_2.quantum_register[0])
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit, again (|+i⟩ ↦ |0⟩)
-        qiskit_quantum_circuit_pauli_y_2.apply_pauli_y(qiskit_quantum_register_pauli_y_2.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_y_2.apply_pauli_y(qiskit_quantum_register_pauli_y_2.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -985,10 +985,10 @@ class PauliYGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Pauli-X Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |1⟩)
-        qiskit_quantum_circuit_pauli_y_3.apply_pauli_x(qiskit_quantum_register_pauli_y_3.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_y_3.apply_pauli_x(qiskit_quantum_register_pauli_y_3.quantum_register[0])
 
         # Apply the Pauli-Y Gate to the 1st Qubit of the Quantum Circuit, again (|1⟩ ↦ -i|0⟩)
-        qiskit_quantum_circuit_pauli_y_3.apply_pauli_y(qiskit_quantum_register_pauli_y_3.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_y_3.apply_pauli_y(qiskit_quantum_register_pauli_y_3.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -1027,10 +1027,10 @@ class PauliYGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
-        qiskit_quantum_circuit_pauli_y_4.apply_hadamard(qiskit_quantum_register_pauli_y_4.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_y_4.apply_hadamard(qiskit_quantum_register_pauli_y_4.quantum_register[0])
 
         # Apply the Pauli-Y Gate to the 1st Qubit of the Quantum Circuit, again (|+⟩ ↦ 1/sqrt(2)i x (-|0⟩ + |1⟩))
-        qiskit_quantum_circuit_pauli_y_4.apply_pauli_y(qiskit_quantum_register_pauli_y_4.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_y_4.apply_pauli_y(qiskit_quantum_register_pauli_y_4.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -1073,7 +1073,7 @@ class PauliZGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Pauli-Z Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |0⟩)
-        qiskit_quantum_circuit_pauli_z_1.apply_pauli_z(qiskit_quantum_register_pauli_z_1.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_z_1.apply_pauli_z(qiskit_quantum_register_pauli_z_1.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -1112,10 +1112,10 @@ class PauliZGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Pauli-Z Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |0⟩)
-        qiskit_quantum_circuit_pauli_z_2.apply_pauli_z(qiskit_quantum_register_pauli_z_2.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_z_2.apply_pauli_z(qiskit_quantum_register_pauli_z_2.quantum_register[0])
 
         # Apply the Pauli-Z Gate to the 1st Qubit of the Quantum Circuit, again (|0⟩ ↦ |0⟩)
-        qiskit_quantum_circuit_pauli_z_2.apply_pauli_z(qiskit_quantum_register_pauli_z_2.quantumRegister[0])
+        qiskit_quantum_circuit_pauli_z_2.apply_pauli_z(qiskit_quantum_register_pauli_z_2.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -1158,7 +1158,7 @@ class HadamardGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
-        qiskit_quantum_circuit_hadamard_1.apply_hadamard(qiskit_quantum_register_hadamard_1.quantumRegister[0])
+        qiskit_quantum_circuit_hadamard_1.apply_hadamard(qiskit_quantum_register_hadamard_1.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -1198,10 +1198,10 @@ class HadamardGateTests(unittest.TestCase):
                                                       global_phase=0)
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit (|0⟩ ↦ |+⟩)
-        qiskit_quantum_circuit_hadamard_2.apply_hadamard(qiskit_quantum_register_hadamard_2.quantumRegister[0])
+        qiskit_quantum_circuit_hadamard_2.apply_hadamard(qiskit_quantum_register_hadamard_2.quantum_register[0])
 
         # Apply the Hadamard Gate to the 1st Qubit of the Quantum Circuit, again (|+⟩ ↦ |0⟩)
-        qiskit_quantum_circuit_hadamard_2.apply_hadamard(qiskit_quantum_register_hadamard_2.quantumRegister[0])
+        qiskit_quantum_circuit_hadamard_2.apply_hadamard(qiskit_quantum_register_hadamard_2.quantum_register[0])
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
