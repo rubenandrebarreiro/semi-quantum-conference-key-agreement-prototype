@@ -12,6 +12,8 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
+# Import Packages and Libraries
+
 # Import Unittest for Python's Unitary Tests
 import unittest
 
@@ -62,7 +64,7 @@ class PrepareMeasureXBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_x_basis_1 \
-            .prepare_measure_single_qubit_in_x_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_x_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -110,7 +112,7 @@ class PrepareMeasureXBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_x_basis_2 \
-            .prepare_measure_single_qubit_in_x_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_x_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -158,7 +160,7 @@ class PrepareMeasureXBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_x_basis_3 \
-            .prepare_measure_single_qubit_in_x_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_x_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -210,7 +212,7 @@ class PrepareMeasureXBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the X-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_x_basis_4 \
-            .prepare_measure_single_qubit_in_x_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_x_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -256,7 +258,7 @@ class PrepareMeasureYBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the Y-Basis (Computational Basis)
         qiskit_quantum_circuit_prepare_measure_y_basis_1 \
-            .prepare_measure_single_qubit_in_y_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_y_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -304,7 +306,7 @@ class PrepareMeasureYBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the Y-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_y_basis_2 \
-            .prepare_measure_single_qubit_in_y_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_y_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -352,7 +354,7 @@ class PrepareMeasureYBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the Y-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_y_basis_3 \
-            .prepare_measure_single_qubit_in_y_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_y_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -405,7 +407,7 @@ class PrepareMeasureYBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the Y-Basis (Diagonal Basis)
         qiskit_quantum_circuit_prepare_measure_y_basis_4 \
-            .prepare_measure_single_qubit_in_y_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_y_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -452,7 +454,7 @@ class PrepareMeasureZBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
         qiskit_quantum_circuit_prepare_measure_z_basis_1 \
-            .prepare_measure_single_qubit_in_z_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_z_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -500,7 +502,7 @@ class PrepareMeasureZBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
         qiskit_quantum_circuit_prepare_measure_z_basis_2 \
-            .prepare_measure_single_qubit_in_z_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_z_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -548,7 +550,7 @@ class PrepareMeasureZBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
         qiskit_quantum_circuit_prepare_measure_z_basis_3 \
-            .prepare_measure_single_qubit_in_z_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_z_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
@@ -601,7 +603,7 @@ class PrepareMeasureZBasisTests(unittest.TestCase):
 
         # Prepare/Measure the Qubit in the Z-Basis (Computational Basis)
         qiskit_quantum_circuit_prepare_measure_z_basis_4 \
-            .prepare_measure_single_qubit_in_z_basis(0, 0, is_final_measurement=False)
+            .prepare_measure_single_qubit_in_z_basis(0, 0, 0, 0, is_final_measurement=False)
 
         # Getting the Backend for the State Vector Representation
         # (i.e., the Quantum State represented as State Vector)
