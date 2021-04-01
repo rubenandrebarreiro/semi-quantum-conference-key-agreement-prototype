@@ -34,10 +34,14 @@ from src.ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
 class QiskitQuantumCircuit:
 
     # Constructor for IBM Qiskit's Quantum Circuit
-    def __init__(self, name, quantum_registers=None, classical_registers=None, global_phase=0, quantum_circuit=None):
+    def __init__(self, name, quantum_registers=None, classical_registers=None, global_phase=0,
+                 quantum_circuit=None, memory_enumeration_tag=None):
 
         # The name of the Qiskit's Quantum Circuit
         self.name = name
+
+        # The Enumeration Tag used, for the case of this Quantum Circuit represent a Memory
+        self.memory_enumeration_tag = memory_enumeration_tag
 
         # If there is no given any Quantum Circuit, it will be created a new one,
         # according to the given Quantum and Classical Registers
