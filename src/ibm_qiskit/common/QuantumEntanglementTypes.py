@@ -12,6 +12,8 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
+# The Enumerations and Constants
+
 # The possible existing types of Bipartite and Multipartite Quantum Entanglements
 POSSIBLE_QUANTUM_ENTANGLEMENT_TYPES = ["BELL_STATE", "GHZ_STATE", "W_STATE", "RESOURCE_STATE", "GRAPH_STATE"]
 
