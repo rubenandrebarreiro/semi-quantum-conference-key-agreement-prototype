@@ -34,46 +34,103 @@ from src.ibm_qiskit.circuit.registers.classical import QiskitClassicalRegister
 class QiskitQuantumCircuit:
 
     # Constructor for IBM Qiskit's Quantum Circuit
-    def __init__(self, name, quantum_registers, classical_registers, global_phase=0, quantum_circuit=None):
+    def __init__(self, name, quantum_registers=None, classical_registers=None, global_phase=0, quantum_circuit=None):
 
         # The name of the Qiskit's Quantum Circuit
         self.name = name
-
-        # The Quantum Registers of the Qiskit's Quantum Circuit
-        self.quantum_registers = quantum_registers
-
-        # The Classical Registers of the Qiskit's Quantum Circuit
-        self.classical_registers = classical_registers
-
-        # The Global Phase of the Qiskit's Quantum Circuit
-        self.global_phase = global_phase
 
         # If there is no given any Quantum Circuit, it will be created a new one,
         # according to the given Quantum and Classical Registers
         if quantum_circuit is None:
 
-            # If the Quantum Circuit it will be composed by a single Quantum Register and Classical Register
-            if (isinstance(quantum_registers, QiskitQuantumRegister.QiskitQuantumRegister) and
-                    isinstance(classical_registers, QiskitClassicalRegister.QiskitClassicalRegister)):
+            # If the Quantum and Classical Registers given as arguments are not None
+            # (i.e., a Quantum Circuit equivalent to a hybrid Quantum-Classical Memory)
+            if (quantum_registers is not None) and (classical_registers is not None):
 
-                # The Quantum Circuit of the Qiskit's Quantum Circuit
-                self.quantum_circuit = \
-                    QuantumCircuit(quantum_registers.quantumRegister,
-                                   classical_registers.classicalRegister,
-                                   name=name, global_phase=global_phase)
+                # The Quantum Registers of the Qiskit's Quantum Circuit
+                self.quantum_registers = quantum_registers
 
-            # If the Quantum Circuit it will be composed by multiple Quantum Registers and Classical Registers
-            elif (isinstance(quantum_registers, list) and
-                    isinstance(classical_registers, list)):
+                # The Classical Registers of the Qiskit's Quantum Circuit
+                self.classical_registers = classical_registers
 
-                # The Quantum Circuit of the Qiskit's Quantum Circuit
-                self.quantum_circuit = \
-                    QuantumCircuit([quantum_register.quantumRegister for quantum_register in quantum_registers],
-                                   [classical_register.classicalRegister for classical_register in classical_registers],
-                                   name=name, global_phase=global_phase)
+                # The Global Phase of the Qiskit's Quantum Circuit
+                self.global_phase = global_phase
+
+                # If the Quantum Circuit it will be composed by a single Quantum Register and Classical Register
+                if (isinstance(quantum_registers, QiskitQuantumRegister.QiskitQuantumRegister) and
+                        isinstance(classical_registers, QiskitClassicalRegister.QiskitClassicalRegister)):
+
+                    # The Quantum Circuit of the Qiskit's Quantum Circuit
+                    self.quantum_circuit = \
+                        QuantumCircuit(quantum_registers.quantum_register,
+                                       classical_registers.classical_register,
+                                       name=name, global_phase=global_phase)
+
+                # If the Quantum Circuit it will be composed by multiple Quantum Registers and Classical Registers
+                elif (isinstance(quantum_registers, list) and
+                        isinstance(classical_registers, list)):
+
+                    # The Quantum Circuit of the Qiskit's Quantum Circuit
+                    self.quantum_circuit = \
+                        QuantumCircuit([quantum_register.quantum_register for quantum_register in quantum_registers],
+                                       [classical_register.classical_register for classical_register in
+                                        classical_registers],
+                                       name=name, global_phase=global_phase)
+
+            # If the Classical Register given as argument is None, but the Quantum Register do not
+            # (i.e., a Quantum Circuit equivalent to a pure Quantum Memory)
+            elif (quantum_registers is not None) and (classical_registers is None):
+
+                # Initialise the Classical Registers as None
+                self.classical_registers = None
+
+                # If the Quantum Circuit it will be composed by a single Quantum Register
+                if isinstance(quantum_registers, QiskitQuantumRegister.QiskitQuantumRegister):
+
+                    # The Quantum Circuit of the Qiskit's Quantum Circuit
+                    self.quantum_circuit = \
+                        QuantumCircuit(quantum_registers.quantum_register,
+                                       name=name, global_phase=global_phase)
+
+                # If the Quantum Circuit it will be composed by multiple Quantum Registers
+                elif isinstance(quantum_registers, list):
+
+                    # The Quantum Circuit of the Qiskit's Quantum Circuit
+                    self.quantum_circuit = \
+                        QuantumCircuit([quantum_register.quantum_register for quantum_register in quantum_registers],
+                                       name=name, global_phase=global_phase)
+
+            # If the Quantum Register given as argument is None, but the Classical Register do not
+            # (i.e., a Quantum Circuit equivalent to a pure Classical Memory)
+            elif (quantum_registers is None) and (classical_registers is not None):
+
+                # Initialise the Quantum Registers as None
+                self.quantum_registers = None
+
+                # If the Quantum Circuit it will be composed by a single Classical Register
+                if isinstance(classical_registers, QiskitClassicalRegister.QiskitClassicalRegister):
+
+                    # The Quantum Circuit of the Qiskit's Quantum Circuit
+                    self.quantum_circuit = \
+                        QuantumCircuit(classical_registers.classical_register,
+                                       name=name, global_phase=global_phase)
+
+                # If the Quantum Circuit it will be composed by multiple Classical Registers
+                elif isinstance(classical_registers, list):
+
+                    # The Quantum Circuit of the Qiskit's Quantum Circuit
+                    self.quantum_circuit = \
+                        QuantumCircuit([classical_register.classical_register for classical_register in classical_registers],
+                                       name=name, global_phase=global_phase)
 
         # If there is given one Quantum Circuit, the same it will be used
         else:
+
+            # The Quantum Registers of the Qiskit's Quantum Circuit
+            self.quantum_registers = quantum_registers
+
+            # The Classical Registers of the Qiskit's Quantum Circuit
+            self.classical_registers = classical_registers
 
             # Set the given Quantum Circuit as the one given as argument
             self.quantum_circuit = quantum_circuit
@@ -182,8 +239,8 @@ class QiskitQuantumCircuit:
                              .format(num_qubits_quantum_circuit))
 
         # Measure the given Qubit's index to the given Bit's index
-        self.quantum_circuit.measure(self.quantum_registers[quantum_register_index].quantumRegister[qubit_index],
-                                     self.classical_registers[classical_register_index].classicalRegister[bit_index])
+        self.quantum_circuit.measure(self.quantum_registers[quantum_register_index].quantum_register[qubit_index],
+                                     self.classical_registers[classical_register_index].classical_register[bit_index])
 
     # Measure a given interval of Qubits' indexes
     def measure_qubits_interval(self, qubit_indexes, bit_indexes):
@@ -228,8 +285,8 @@ class QiskitQuantumCircuit:
         # For each Qubit's and Bit's index
         for qubit_index, bit_index in zip(qubit_indexes, bit_indexes):
             # Measure the given Qubit's index to the given Bit's index
-            self.quantum_circuit.measure(self.quantum_registers.quantumRegister[qubit_index],
-                                         self.classical_registers.classicalRegister[bit_index])
+            self.quantum_circuit.measure(self.quantum_registers.quantum_register[qubit_index],
+                                         self.classical_registers.classical_register[bit_index])
 
     # Measure all Qubits' indexes to all Bits' indexes
     def measure_all_qubits(self):
@@ -243,8 +300,8 @@ class QiskitQuantumCircuit:
         # For each Qubit's and Bit's index
         for qubit_index, bit_index in zip(range(num_qubits_quantum_circuit), range(num_bits_quantum_circuit)):
             # Measure the given Qubit's index to the given Bit's index
-            self.quantum_circuit.measure(self.quantum_registers.quantumRegister[qubit_index],
-                                         self.classical_registers.classicalRegister[bit_index])
+            self.quantum_circuit.measure(self.quantum_registers.quantum_register[qubit_index],
+                                         self.classical_registers.classical_register[bit_index])
 
     # Measure all Qubits' (predefined by IBM Qiskit)
     def measure_all_qubits_predefined(self):
