@@ -15,7 +15,7 @@ Acknowledgments:
 # Import required Enumerations and Constants
 
 # Import the Memory Type from the IBM_Qiskit.Common
-from src.ibm_qiskit.common import HardwareModuleTypes
+from src.ibm_qiskit.common import MemoryModuleTypes
 
 # Import the IBM Qiskit's Hybrid Memory from IBM_Qiskit.Node.Common.Memory.Hardware.Hybrid
 from src.ibm_qiskit.node.common.memory.hardware.hybrid import QiskitHybridMemory
@@ -50,7 +50,7 @@ class QiskitMemoryModule:
 
         # If the IBM Qiskit's Memory Module is Hybrid,
         # all the type of Memory Hardware (Hybrid, Quantum and Classical) can be added
-        if self.hardware_module_type_tag == HardwareModuleTypes.HYBRID_HARDWARE_ENUM:
+        if self.hardware_module_type_tag == MemoryModuleTypes.HYBRID_HARDWARE_ENUM:
 
             # Check if the abstract IBM Qiskit's Memory is compatible with the type of Memory Hardware,
             # for the case of a Hybrid Memory being given
@@ -82,7 +82,7 @@ class QiskitMemoryModule:
 
         # If the IBM Qiskit's Memory Module is Quantum,
         # only Quantum Memory Hardware can be added
-        elif self.hardware_module_type_tag == HardwareModuleTypes.QUANTUM_HARDWARE_ENUM:
+        elif self.hardware_module_type_tag == MemoryModuleTypes.QUANTUM_MEMORY_ENUM:
 
             # Check if the abstract IBM Qiskit's Memory is compatible with the type of Memory Hardware,
             # for the case of a Hybrid Memory being given
@@ -114,7 +114,7 @@ class QiskitMemoryModule:
 
         # If the IBM Qiskit's Memory Module is Classical,
         # only Classical Memory Hardware can be added
-        elif self.hardware_module_type_tag == HardwareModuleTypes.CLASSICAL_HARDWARE_ENUM:
+        elif self.hardware_module_type_tag == MemoryModuleTypes.CLASSICAL_MEMORY_ENUM:
 
             # Check if the abstract IBM Qiskit's Memory is compatible with the type of Memory Hardware,
             # for the case of a Hybrid Memory being given
@@ -157,7 +157,7 @@ class QiskitMemoryModule:
 
         # If the IBM Qiskit's Memory Module is Hybrid,
         # all the type of Memory Hardware (Hybrid, Quantum and Classical) can be removed
-        if self.hardware_module_type_tag == HardwareModuleTypes.HYBRID_HARDWARE_ENUM:
+        if self.hardware_module_type_tag == MemoryModuleTypes.HYBRID_HARDWARE_ENUM:
 
             # Check if the abstract IBM Qiskit's Memory is compatible with the type of Memory Hardware,
             # for the case of a Hybrid Memory being given
@@ -189,7 +189,7 @@ class QiskitMemoryModule:
 
         # If the IBM Qiskit's Memory Module is Quantum,
         # only Quantum Memory Hardware can be removed
-        elif self.hardware_module_type_tag == HardwareModuleTypes.QUANTUM_HARDWARE_ENUM:
+        elif self.hardware_module_type_tag == MemoryModuleTypes.QUANTUM_MEMORY_ENUM:
 
             # Check if the abstract IBM Qiskit's Memory is compatible with the type of Memory Hardware,
             # for the case of a Hybrid Memory being given
@@ -221,7 +221,7 @@ class QiskitMemoryModule:
 
         # If the IBM Qiskit's Memory Module is Classical,
         # only Classical Memory Hardware can be added
-        elif self.hardware_module_type_tag == HardwareModuleTypes.CLASSICAL_HARDWARE_ENUM:
+        elif self.hardware_module_type_tag == MemoryModuleTypes.CLASSICAL_MEMORY_ENUM:
 
             # Check if the abstract IBM Qiskit's Memory is compatible with the type of Memory Hardware,
             # for the case of a Hybrid Memory being given
