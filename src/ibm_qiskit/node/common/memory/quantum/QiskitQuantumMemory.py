@@ -44,13 +44,13 @@ class QiskitQuantumMemory:
 
         # Create the Quantum Register for the IBM Qiskit's Quantum Memory
         qiskit_quantum_register_quantum_memory = \
-            QiskitQuantumRegister.QiskitQuantumRegister("qrhybridmemory{}".format(self.quantum_memory_id),
+            QiskitQuantumRegister.QiskitQuantumRegister("qrquantummemory{}".format(self.quantum_memory_id),
                                                         quantum_memory_num_qubits)
 
         # The Quantum Circuit for this IBM Qiskit's Quantum Memory
         self.qiskit_quantum_circuit_quantum_memory = \
             QiskitQuantumCircuit\
-            .QiskitQuantumCircuit("qchybridmemory{}".format(self.quantum_memory_id),
+            .QiskitQuantumCircuit("qcquantummemory{}".format(self.quantum_memory_id),
                                   quantum_registers=qiskit_quantum_register_quantum_memory,
                                   classical_registers=None,
                                   global_phase=0, quantum_circuit=None,
