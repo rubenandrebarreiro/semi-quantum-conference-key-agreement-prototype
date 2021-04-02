@@ -14,11 +14,11 @@ Acknowledgments:
 
 # The Enumerations and Constants
 
-# The tag enumeration for Quantum Memory
-QUANTUM_MEMORY_ENUM = "QUANTUM_MEMORY"
+# The tag enumeration for Quantum Hardware
+QUANTUM_HARDWARE_ENUM = "QUANTUM_HARDWARE"
 
-# The tag enumeration for Classical Memory
-CLASSICAL_MEMORY_ENUM = "CLASSICAL_MEMORY"
+# The tag enumeration for Classical Hardware
+CLASSICAL_HARDWARE_ENUM = "CLASSICAL_HARDWARE"
 
-# The tag enumeration for Hybrid Memory
-HYBRID_MEMORY_ENUM = "HYBRID_MEMORY"
+# The tag enumeration for Hybrid Hardware
+HYBRID_HARDWARE_ENUM = "HYBRID_HARDWARE"
