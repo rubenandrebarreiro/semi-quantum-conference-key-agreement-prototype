@@ -15,7 +15,7 @@ Acknowledgments:
 # Import required Enumerations and Constants
 
 # Import the Memory Type from the IBM_Qiskit.Common
-from src.ibm_qiskit.common import HardwareModuleTypes
+from src.ibm_qiskit.common import MemoryModuleTypes
 
 
 # Import required Libraries and Packages
@@ -40,7 +40,7 @@ class QiskitQuantumMemory:
         self.quantum_memory_num_qubits = quantum_memory_num_qubits
 
         # The tag for the Memory Type for the IBM Qiskit's Quantum Memory
-        self.quantum_memory_type_tag = HardwareModuleTypes.QUANTUM_HARDWARE_ENUM
+        self.quantum_memory_type_tag = MemoryModuleTypes.QUANTUM_MEMORY_ENUM
 
         # Create the Quantum Register for the IBM Qiskit's Quantum Memory
         qiskit_quantum_register_quantum_memory = \

@@ -15,7 +15,7 @@ Acknowledgments:
 # Import required Enumerations and Constants
 
 # Import the Memory Type from the IBM_Qiskit.Common
-from src.ibm_qiskit.common import HardwareModuleTypes
+from src.ibm_qiskit.common import MemoryModuleTypes
 
 
 # Import required Libraries and Packages
@@ -40,7 +40,7 @@ class QiskitClassicalMemory:
         self.classical_memory_num_bits = classical_memory_num_bits
 
         # The tag for the Memory Type for the IBM Qiskit's Classical Memory
-        self.classical_memory_type_tag = HardwareModuleTypes.CLASSICAL_HARDWARE_ENUM
+        self.classical_memory_type_tag = MemoryModuleTypes.CLASSICAL_MEMORY_ENUM
 
         # Create the Classical Register for the IBM Qiskit's Classical Memory
         qiskit_classical_register_classical_memory = \
