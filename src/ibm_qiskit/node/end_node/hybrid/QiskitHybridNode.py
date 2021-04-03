@@ -34,8 +34,8 @@ class QiskitHybridNode:
 
         # TODO - Communication Module
 
-    # Attach some Owner Client Party to the IBM Qiskit's Hybrid Node
-    def attach_owner_client_party(self, owner_client_party):
+    # Connect some Owner Client Party to the IBM Qiskit's Hybrid Node
+    def connect_owner_client_party(self, owner_client_party):
 
         # Set the Owner Client Party of the IBM Qiskit's Hybrid Node,
         # as the one given by argument
@@ -45,8 +45,8 @@ class QiskitHybridNode:
         # the IBM Qiskit's Hybrid Node is currently being owned by some Client/Party, as True
         self.owned_by_client_party = True
 
-    # Release the current Owner Client Party from the IBM Qiskit's Hybrid Node
-    def release_owner_client_party(self):
+    # Disconnect the current Owner Client Party from the IBM Qiskit's Hybrid Node
+    def disconnect_owner_client_party(self):
 
         # Set the Owner Client Party of the IBM Qiskit's Hybrid Node,
         # as None
