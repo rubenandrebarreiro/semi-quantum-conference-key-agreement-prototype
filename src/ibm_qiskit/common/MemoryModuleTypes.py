@@ -15,7 +15,7 @@ Acknowledgments:
 # The Enumerations and Constants
 
 # The tag enumeration for Hybrid Memory
-HYBRID_HARDWARE_ENUM = "HYBRID_MEMORY"
+HYBRID_MEMORY_ENUM = "HYBRID_MEMORY"
 
 # The tag enumeration for Quantum Memory
 QUANTUM_MEMORY_ENUM = "QUANTUM_MEMORY"
