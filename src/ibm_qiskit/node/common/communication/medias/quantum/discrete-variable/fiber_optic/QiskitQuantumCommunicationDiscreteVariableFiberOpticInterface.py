@@ -38,15 +38,21 @@ MIDDLE_MEDIA = 1
 INPUT_PORT = 2
 
 
-# Class for IBM Qiskit's Quantum Communication Fiber Optic Interface
-class QiskitQuantumCommunicationFiberOpticInterface:
+# Class for IBM Qiskit's Quantum Communication, using Discrete Variable, by Fiber Optic Interface
+class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
 
     # Constructor for IBM Qiskit's Quantum Communication Fiber Optic Interface
-    def __init__(self, quantum_communication_fiber_optic_id, quantum_communication_fiber_optic_distance_kms):
+    def __init__(self, quantum_communication_fiber_optic_interface_id):
 
-        # Set the ID and the Distance (in Kilometers) of the IBM Qiskit's Quantum Communication Fiber Optic Interface
-        self.quantum_communication_fiber_optic_id = quantum_communication_fiber_optic_id
-        self.quantum_communication_fiber_optic_distance_kms = quantum_communication_fiber_optic_distance_kms
+        # Initialise the ID of the IBM Qiskit's Quantum Communication Fiber Optic Interface
+        self.quantum_communication_fiber_optic_interface_id = quantum_communication_fiber_optic_interface_id
+
+        # Initialise the Fiber Optic Cable, as None
+        self.fiber_optic_cable = None
+
+        # Set the Boolean Flag, responsible to keep the information about if
+        # the Fiber Optic Cable is installed or not
+        self.fiber_optic_cable_installed = False
 
         # Initialise the IBM Qiskit's Quantum Circuit, Quantum Register and Classical Register,
         # for the IBM Qiskit's Quantum Communication Fiber Optic Interface
@@ -72,13 +78,47 @@ class QiskitQuantumCommunicationFiberOpticInterface:
         # Initialise the Quantum Communication Session
         self.quantum_communication_sessions = []
 
-    # Return the ID of the IBM Qiskit's Quantum Communication Fiber Optic Interface
-    def get_quantum_communication_fiber_optic_id(self):
-        return self.quantum_communication_fiber_optic_id
+    # Return the currently installed Fiber Optic Cable of
+    # the IBM Qiskit's Quantum Communication Fiber Optic Interface
+    def get_fiber_optic_cable(self):
+        return self.fiber_optic_cable
 
-    # Return the Distance (in kms) of the IBM Qiskit's Quantum Communication Fiber Optic Interface
-    def get_quantum_communication_fiber_optic_distance_kms(self):
-        return self.quantum_communication_fiber_optic_distance_kms
+    # Install the a new Fiber Optic Cable to
+    # the IBM Qiskit's Quantum Communication Fiber Optic Interface
+    def install_fiber_optic_cable(self, fiber_optic_cable):
+
+        # If there is no Fiber Optic Cable currently installed, it is possible to install one
+        if not self.is_fiber_optic_cable_installed():
+            self.fiber_optic_cable = fiber_optic_cable
+            self.fiber_optic_cable_installed = True
+
+        # If there is one Fiber Optic Cable already installed, it is not possible to install one
+        else:
+
+            # Raise a Value Error
+            raise ValueError("One Fiber Optic Cable is already installed in "
+                             "the Quantum Communication Fiber Optic Interface!!!")
+
+    # Uninstall the currently installed Fiber Optic Cable on
+    # the IBM Qiskit's Quantum Communication Fiber Optic Interface
+    def uninstall_fiber_optic_cable(self):
+
+        # If there is one Fiber Optic Cable already installed, it is possible to uninstall none
+        if self.is_fiber_optic_cable_installed():
+            self.fiber_optic_cable = None
+            self.fiber_optic_cable_installed = False
+
+        # If there is no Fiber Optic Cable currently installed, it is not possible to uninstall one
+        else:
+
+            # Raise a Value Error
+            raise ValueError("No Fiber Optic Cable is currently installed in "
+                             "the Quantum Communication Fiber Optic Interface!!!")
+
+    # Return the Boolean Flag, responsible to keep the information about if
+    # the Fiber Optic Cable is installed or not
+    def is_fiber_optic_cable_installed(self):
+        return self.fiber_optic_cable_installed
 
     # Return the IBM Qiskit's Quantum Register from the IBM Qiskit's Quantum Communication Fiber Optic Interface
     def get_qiskit_quantum_register_quantum_communication_fiber_optic_interface(self):
@@ -130,14 +170,16 @@ class QiskitQuantumCommunicationFiberOpticInterface:
         # for the IBM Qiskit's Quantum Communication Fiber Optic Interface
         self.qiskit_quantum_register_quantum_communication_fiber_optic_interface = \
             QiskitQuantumRegister\
-            .QiskitQuantumRegister("qrfiberoptic{}".format(self.quantum_communication_fiber_optic_id),
+            .QiskitQuantumRegister("qrquantumcommunicationdiscretevariablefiberopticinterfaceidle{}"
+                                   .format(self.quantum_communication_fiber_optic_interface_id),
                                    num_qubits)
 
         # Creation of the IBM Qiskit's Classical Register,
         # for the IBM Qiskit's Quantum Communication Fiber Optic Interface
         self.qiskit_classical_register_quantum_communication_fiber_optic_interface = \
             QiskitClassicalRegister\
-            .QiskitClassicalRegister("crfiberoptic{}".format(self.quantum_communication_fiber_optic_id),
+            .QiskitClassicalRegister("crquantumcommunicationdiscretevariablefiberopticinterfaceidle{}"
+                                     .format(self.quantum_communication_fiber_optic_interface_id),
                                      num_bits)
 
         # Creation of the IBM Qiskit's Quantum Circuit,
@@ -145,7 +187,8 @@ class QiskitQuantumCommunicationFiberOpticInterface:
         # with one Quantum and Classical Registers
         self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface = \
             QiskitQuantumCircuit\
-            .QiskitQuantumCircuit("qcfiberopticidle{}".format(self.quantum_communication_fiber_optic_id),
+            .QiskitQuantumCircuit("qcquantumcommunicationdiscretevariablefiberopticinterfaceidle{}"
+                                  .format(self.quantum_communication_fiber_optic_interface_id),
                                   self.qiskit_quantum_register_quantum_communication_fiber_optic_interface,
                                   self.qiskit_classical_register_quantum_communication_fiber_optic_interface,
                                   global_phase=0)
@@ -202,7 +245,8 @@ class QiskitQuantumCommunicationFiberOpticInterface:
             # Create the temporary IBM Qiskit's Circuit, representing the first connection
             # (Sender -> Quantum Communication Fiber Optic)
             qiskit_quantum_circuit_temporary = qiskit_quantum_circuit_sender\
-                .combine_quantum_circuit("qcfiberoptictemp{}".format(self.quantum_communication_fiber_optic_id),
+                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablefiberopticinterfacetemp{}"
+                                         .format(self.quantum_communication_fiber_optic_interface_id),
                                          self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface,
                                          global_phase=0)
 
@@ -210,7 +254,8 @@ class QiskitQuantumCommunicationFiberOpticInterface:
             # (Sender -> Quantum Communication Fiber Optic -> Receiver)
             self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface = \
                 qiskit_quantum_circuit_temporary\
-                .combine_quantum_circuit("qcfiberopticstarted{}".format(self.quantum_communication_fiber_optic_id),
+                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablefiberopticinterfacestarted{}"
+                                         .format(self.quantum_communication_fiber_optic_interface_id),
                                          qiskit_quantum_circuit_receiver,
                                          global_phase=0)
 
