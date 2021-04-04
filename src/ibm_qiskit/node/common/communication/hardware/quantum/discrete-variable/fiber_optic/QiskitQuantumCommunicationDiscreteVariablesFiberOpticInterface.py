@@ -40,7 +40,7 @@ INPUT_PORT = 2
 
 
 # Class for IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
-class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
+class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
 
     # Constructor for IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
     def __init__(self, quantum_communication_fiber_optic_interface_id):
@@ -179,7 +179,7 @@ class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
         # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
         self.qiskit_quantum_register_quantum_communication_fiber_optic_interface = \
             QiskitQuantumRegister\
-            .QiskitQuantumRegister("qrquantumcommunicationdiscretevariablefiberopticinterfaceidle{}"
+            .QiskitQuantumRegister("qrquantumcommunicationdiscretevariablesfiberopticinterfaceidle{}"
                                    .format(self.quantum_communication_fiber_optic_interface_id),
                                    num_qubits)
 
@@ -187,7 +187,7 @@ class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
         # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
         self.qiskit_classical_register_quantum_communication_fiber_optic_interface = \
             QiskitClassicalRegister\
-            .QiskitClassicalRegister("crquantumcommunicationdiscretevariablefiberopticinterfaceidle{}"
+            .QiskitClassicalRegister("crquantumcommunicationdiscretevariablesfiberopticinterfaceidle{}"
                                      .format(self.quantum_communication_fiber_optic_interface_id),
                                      num_bits)
 
@@ -196,7 +196,7 @@ class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
         # with one Quantum and Classical Registers
         self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface = \
             QiskitQuantumCircuit\
-            .QiskitQuantumCircuit("qcquantumcommunicationdiscretevariablefiberopticinterfaceidle{}"
+            .QiskitQuantumCircuit("qcquantumcommunicationdiscretevariablesfiberopticinterfaceidle{}"
                                   .format(self.quantum_communication_fiber_optic_interface_id),
                                   self.qiskit_quantum_register_quantum_communication_fiber_optic_interface,
                                   self.qiskit_classical_register_quantum_communication_fiber_optic_interface,
@@ -257,7 +257,7 @@ class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
             # Create the temporary IBM Qiskit's Circuit, representing the first connection
             # (Sender -> Quantum Communication Fiber Optic)
             qiskit_quantum_circuit_temporary = qiskit_quantum_circuit_sender\
-                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablefiberopticinterfacetemp{}"
+                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablesfiberopticinterfacetemp{}"
                                          .format(self.quantum_communication_fiber_optic_interface_id),
                                          self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface,
                                          global_phase=0)
@@ -266,7 +266,7 @@ class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
             # (Sender -> Quantum Communication Fiber Optic -> Receiver)
             self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface = \
                 qiskit_quantum_circuit_temporary\
-                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablefiberopticinterfacestarted{}"
+                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablesfiberopticinterfacestarted{}"
                                          .format(self.quantum_communication_fiber_optic_interface_id),
                                          qiskit_quantum_circuit_receiver,
                                          global_phase=0)

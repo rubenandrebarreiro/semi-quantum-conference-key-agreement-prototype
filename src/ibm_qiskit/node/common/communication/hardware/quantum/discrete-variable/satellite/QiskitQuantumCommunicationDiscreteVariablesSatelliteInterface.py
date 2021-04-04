@@ -40,7 +40,7 @@ INPUT_PORT = 2
 
 
 # Class for IBM Qiskit's Quantum Communication, using Discrete Variables, by Satellite Interface
-class QiskitQuantumCommunicationDiscreteVariableSatelliteInterface:
+class QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface:
 
     # Constructor for IBM Qiskit's Quantum Communication, using Discrete Variables, by Satellite Interface
     def __init__(self, quantum_communication_satellite_interface_id):
@@ -179,7 +179,7 @@ class QiskitQuantumCommunicationDiscreteVariableSatelliteInterface:
         # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Satellite Interface
         self.qiskit_quantum_register_quantum_communication_satellite_interface = \
             QiskitQuantumRegister\
-            .QiskitQuantumRegister("qrquantumcommunicationdiscretevariablesatelliteinterfaceidle{}"
+            .QiskitQuantumRegister("qrquantumcommunicationdiscretevariablessatelliteinterfaceidle{}"
                                    .format(self.quantum_communication_satellite_interface_id),
                                    num_qubits)
 
@@ -187,7 +187,7 @@ class QiskitQuantumCommunicationDiscreteVariableSatelliteInterface:
         # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Satellite Interface
         self.qiskit_classical_register_quantum_communication_satellite_interface = \
             QiskitClassicalRegister\
-            .QiskitClassicalRegister("crquantumcommunicationdiscretevariablesatelliteinterfaceidle{}"
+            .QiskitClassicalRegister("crquantumcommunicationdiscretevariablessatelliteinterfaceidle{}"
                                      .format(self.quantum_communication_satellite_interface_id),
                                      num_bits)
 
@@ -196,7 +196,7 @@ class QiskitQuantumCommunicationDiscreteVariableSatelliteInterface:
         # with one Quantum and Classical Registers
         self.qiskit_quantum_circuit_quantum_communication_satellite_interface = \
             QiskitQuantumCircuit\
-            .QiskitQuantumCircuit("qcquantumcommunicationdiscretevariablesatelliteinterfaceidle{}"
+            .QiskitQuantumCircuit("qcquantumcommunicationdiscretevariablessatelliteinterfaceidle{}"
                                   .format(self.quantum_communication_satellite_interface_id),
                                   self.qiskit_quantum_register_quantum_communication_satellite_interface,
                                   self.qiskit_classical_register_quantum_communication_satellite_interface,
@@ -257,7 +257,7 @@ class QiskitQuantumCommunicationDiscreteVariableSatelliteInterface:
             # Create the temporary IBM Qiskit's Circuit, representing the first connection
             # (Sender -> Quantum Communication Fiber Optic)
             qiskit_quantum_circuit_temporary = qiskit_quantum_circuit_sender\
-                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablesatelliteinterfacetemp{}"
+                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablessatelliteinterfacetemp{}"
                                          .format(self.quantum_communication_satellite_interface_id),
                                          self.qiskit_quantum_circuit_quantum_communication_satellite_interface,
                                          global_phase=0)
@@ -266,7 +266,7 @@ class QiskitQuantumCommunicationDiscreteVariableSatelliteInterface:
             # (Sender -> Quantum Communication Fiber Optic -> Receiver)
             self.qiskit_quantum_circuit_quantum_communication_satellite_interface = \
                 qiskit_quantum_circuit_temporary\
-                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablesatelliteinterfacestarted{}"
+                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablessatelliteinterfacestarted{}"
                                          .format(self.quantum_communication_satellite_interface_id),
                                          qiskit_quantum_circuit_receiver,
                                          global_phase=0)
