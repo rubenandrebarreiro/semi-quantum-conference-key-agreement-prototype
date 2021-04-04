@@ -14,7 +14,7 @@ Acknowledgments:
 
 # Import Packages and Libraries
 
-# Import TimestampGenerator from IBM_Qiskit.Common
+# Import TimestampGenerator from Common.Utils
 from src.common.utils import TimestampGenerator
 
 
