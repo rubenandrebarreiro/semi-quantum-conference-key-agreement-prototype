@@ -18,7 +18,7 @@ Acknowledgments:
 import unittest
 
 # Import the Timestamp Generator from the IBM's Qiskit's Common Package
-from src.ibm_qiskit.common import TimestampGenerator
+from src.common.utils import TimestampGenerator
 
 
 # Test Cases for Generation of Pseudo Random Timestamps

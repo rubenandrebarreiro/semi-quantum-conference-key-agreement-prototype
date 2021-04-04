@@ -13,7 +13,7 @@ Acknowledgments:
 """
 
 # Import the Bipartite and Multipartite Quantum Entanglement Types
-from src.ibm_qiskit.common.QuantumEntanglementTypes import POSSIBLE_CONFIGURATIONS_BELL_STATES
+from src.common.enumerations.QuantumEntanglementTypes import POSSIBLE_CONFIGURATIONS_BELL_STATES
 
 
 # Class for IBM Qiskit's Bell State

@@ -16,7 +16,7 @@ Acknowledgments:
 
 # Import the possible Bipartite and Multipartite Quantum Entanglement Types and
 # the Possible Configurations for Bell States
-from src.ibm_qiskit.common.QuantumEntanglementTypes \
+from src.common.enumerations.QuantumEntanglementTypes \
     import POSSIBLE_QUANTUM_ENTANGLEMENT_TYPES, POSSIBLE_CONFIGURATIONS_BELL_STATES
 
 
@@ -44,37 +44,36 @@ from src.ibm_qiskit.utils.random_generator.binary.quantum import QiskitQuantumTr
 NUM_COUNTS_FOR_SIMULATION = 1000
 
 
-# Class for IBM Qiskit's Party for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+# Class of the IBM Qiskit's Party for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
 class QiskitSQCKAProtocolParty:
 
-    # Constructor for IBM Qiskit's Party for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-    def __init__(self, party_id, party_name, master_status_flag, bipartite_pre_shared_keys):
+    # Constructor of the IBM Qiskit's Party for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+    def __init__(self, user_client, party_id, master_status_flag, bipartite_pre_shared_keys):
 
-        # Set the Party's ID
+        # Set the User/Client for the IBM Qiskit's Party for
+        # the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        self.user_client = user_client
+
+        # Set the ID for the IBM Qiskit's Party for
+        # the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
         self.party_id = party_id
 
-        # Set the Party's name
-        self.party_name = party_name
-
         # Set the boolean flag, responsible to keep the information about if the Party is
-        # the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
-        self.master_status_flag = master_status_flag
+        # the Distributor of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
+        self.distributor_status_flag = master_status_flag
 
         # Set the Pre-Shared Key, previously established between the parties
         self.bipartite_pre_shared_keys = bipartite_pre_shared_keys
 
-    # Return the ID of the Party
-    def get_id(self):
-        return self.party_id
-
-    # Return the Name of the Party
-    def get_name(self):
-        return self.party_name
+    # Return the User/Client for the IBM Qiskit's Party for
+    # the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+    def get_user_client(self):
+        return self.user_client
 
     # Retrieve the boolean flag, responsible to keep the information about if the Party is
-    # the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
-    def is_master(self):
-        return self.master_status_flag
+    # the Distributor of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
+    def is_distributor(self):
+        return self.distributor_status_flag
 
     # Return the Bipartite Pre-Shared Keys that the Party possesses with other Parties
     def get_bipartite_pre_shared_keys(self):
@@ -89,24 +88,28 @@ class QiskitSQCKAProtocolParty:
         print("|")
         print("|")
 
-        # Print the ID of the Party involved on the
+        # Print the UUID of the User/Client of the Party involved on the
         # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-        print(" - ID: {}".format(self.get_id()))
+        print(" - User/Client's UUID: {}".format(self.get_user_client().get_user_client_uuid()))
 
-        # Print the name of the Party involved on the
+        # Print the Name of the User/Client of the Party involved on the
         # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-        print(" - Name: {}".format(self.get_name()))
+        print(" - User/Client's Name: {}".format(self.get_user_client().get_user_client_name()))
 
-        # Print the Master status of the Party involved on the
+        # Print the ID of the User/Client of the Party involved on the
         # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-        print(" - Master Status: {}".format(self.is_master()))
+        print(" - Party's ID: {}".format(self.party_id))
+
+        # Print the Distributor status of the Party involved on the
+        # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        print(" - Party's Distributor Status: {}".format(self.is_distributor()))
 
         # Retrieve the Bipartite Pre-Shared Keys owned/possessed by the Party involved on the
         # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
         bipartite_pre_shared_keys = self.get_bipartite_pre_shared_keys()
 
-        # If the Party is the Master of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-        if self.is_master():
+        # If the Party is the Distributor of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        if self.is_distributor():
 
             # Retrieve the number of the Bipartite Pre-Shared Keys owned/possessed by the Party involved on the
             # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
@@ -126,7 +129,7 @@ class QiskitSQCKAProtocolParty:
                 print("   [{}]".format((current_num_bipartite_pre_shared_key + 1)), end='')
                 bipartite_pre_shared_keys[current_num_bipartite_pre_shared_key].print_info()
 
-        # If the Party is not the Master of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        # If the Party is not the Distributor of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
         else:
 
             # Initialise the number of the Bipartite Pre-Shared Keys owned/possessed by the Party involved on the
@@ -151,13 +154,13 @@ class QiskitSQCKAProtocolParty:
         print("|")
         print("|__")
 
-    # Generate the True Random String for the Master Party's Raw Key
+    # Generate the True Random String for the Distributor Party's Raw Key
     def generate_true_random_binary_string_for_master_party_raw_key(
         self, true_random_binary_string_for_master_party_raw_key_length
     ):
 
-        # If the Party is the Master of the Protocol
-        if self.is_master():
+        # If the Party is the Distributor of the Protocol
+        if self.is_distributor():
 
             # Create the True Random Binary String Generator for the SQCKA's
             true_random_binary_string_generator_for_master_party_raw_key = \
@@ -169,33 +172,33 @@ class QiskitSQCKAProtocolParty:
                 )
 
             # Generate the final True Random Binary String from the Generator, previously created,
-            # for the initial Raw Key of the Protocol's Master Party
+            # for the initial Raw Key of the Protocol's Distributor Party
             initial_true_random_binary_string_for_master_party_raw_key = \
                 true_random_binary_string_generator_for_master_party_raw_key.generate_true_random_binary_string()
 
-            # Return the initial Raw Key of the Protocol's Master Party
+            # Return the initial Raw Key of the Protocol's Distributor Party
             return initial_true_random_binary_string_for_master_party_raw_key
 
-        # If the Party is not the Master of the Protocol
+        # If the Party is not the Distributor of the Protocol
         else:
 
             # Raise a Value Error
-            raise ValueError("Only the Master Party can generate the initial Raw Key!!!")
+            raise ValueError("Only the Distributor Party can generate the initial Raw Key!!!")
 
     # Prepare a Bipartite or Multipartite Quantum Entanglement
     def prepare_quantum_entanglement(self, quantum_entanglement_type, num_parties, quantum_circuit,
                                      bell_state_type=None, qubits_edges_indexes_for_resource_state=None):
 
-        # If the Party is not the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-        if not self.master_status_flag:
+        # If the Party is not the Distributor of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        if not self.is_distributor():
 
             # Raise the Value Error exception
-            raise ValueError("The Party Name specified to be the Master "
+            raise ValueError("The Party Name specified to be the Distributor "
                              "(i.e., the party responsible for the distribution of the Common Secret Key "
                              "(Conference Key) between the parties involved is not present in "
                              "the list of Parties' Names involved!!!")
 
-        # If the Party is the Master of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        # If the Party is the Distributor of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
         else:
 
             # If the specified type of Quantum Entanglement is one of the possible configurations for
@@ -414,15 +417,15 @@ class QiskitSQCKAProtocolParty:
     # Measure and Resend the Qubit, or just Reflect it, according to the Pre-Shared Key
     def measure_and_resend_or_reflect_qubit(self, quantum_circuit, num_round, timestamp):
 
-        # If the Party is not the Master of the Protocol and the Party possesses only
-        # one Pre-Shared Key between itself and the Master of the Protocol
-        if (not self.master_status_flag) and (len(self.bipartite_pre_shared_keys) == 1):
+        # If the Party is not the Distributor of the Protocol and the Party possesses only
+        # one Pre-Shared Key between itself and the Distributor of the Protocol
+        if (not self.is_distributor()) and (len(self.bipartite_pre_shared_keys) == 1):
 
-            # Retrieve the bipartite Pre-Shared Key, with the Master of the Protocol
+            # Retrieve the bipartite Pre-Shared Key, with the Distributor of the Protocol
             pre_shared_key_bits = self.bipartite_pre_shared_keys[0][1]
 
             # It is a SIFT Round, thus, the Normal Party, will Measure and Resend the Qubit
-            # back again to the Master of the Protocol (more probable)
+            # back again to the Distributor of the Protocol (more probable)
             if pre_shared_key_bits[num_round] == 0:
 
                 # Prepare and Measure the Qubit in the Z-Basis (Computational Basis),
@@ -432,17 +435,17 @@ class QiskitSQCKAProtocolParty:
                                                                         is_final_measurement=True)
 
             # It is a CTRL Round, thus, the Normal Party, will just Reflect the Qubit,
-            # to the Master of the Protocol, without measure it (less probable)
+            # to the Distributor of the Protocol, without measure it (less probable)
             elif pre_shared_key_bits[num_round] == 1:
 
                 # Apply the Pauli-I to the Qubit,
                 # according to the Party's ID
                 quantum_circuit.apply_pauli_i(self.party_id - 1)
 
-        # If the Party is the Master of the Protocol and the Party possesses
+        # If the Party is the Distributor of the Protocol and the Party possesses
         # all the bipartite Pre-Shared Keys between itself and the other PARTIES
         else:
 
             # Raise the Value Error exception
-            raise ValueError("The Master Party cannot Measure and Resend (SIFT Rounds) or "
+            raise ValueError("The Distributor Party cannot Measure and Resend (SIFT Rounds) or "
                              "just Reflect the Qubits (CTRL Rounds)!!!")

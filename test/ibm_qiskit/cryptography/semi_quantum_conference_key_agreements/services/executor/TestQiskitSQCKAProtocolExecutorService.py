@@ -36,10 +36,10 @@ from src.ibm_qiskit.utils.random_generator.binary.quantum import \
 from src.ibm_qiskit.common.QiskitLibraryParameters import QISKIT_DEFAULT_NUM_COUNTS
 
 # Import GHZ_STATE ID from IBM_Qiskit.Common.QuantumEntanglementTypes
-from src.ibm_qiskit.common.QuantumEntanglementTypes import GHZ_STATE
+from src.common.enumerations.QuantumEntanglementTypes import GHZ_STATE
 
 # Import Utilities from IBM_Qiskit.Common.Utilities
-from src.ibm_qiskit.common.Utilities import Utilities
+from src.common.utils.Utilities import Utilities
 
 
 # Constants

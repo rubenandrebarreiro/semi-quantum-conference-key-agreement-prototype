@@ -15,29 +15,40 @@ Acknowledgments:
 # Import Packages and Libraries
 
 # Import TimestampGenerator from IBM_Qiskit.Common
-from src.ibm_qiskit.common import TimestampGenerator
+from src.common.utils import TimestampGenerator
 
 
 # Class of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Pre-Shared Key Pair
 class QiskitSQCKAProtocolPreSharedKeyPair:
 
     # Constructor of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Pre-Shared Key
-    def __init__(self, party_name_1, party_name_2, bipartite_pre_shared_key):
-        self.party_name_1 = party_name_1.lower()
-        self.party_name_2 = party_name_2.lower()
+    def __init__(self, user_client_uuid_1, user_client_uuid_2,
+                 user_client_name_1, user_client_name_2, bipartite_pre_shared_key):
+        self.user_client_uuid_1 = user_client_uuid_1
+        self.user_client_uuid_2 = user_client_uuid_2
+        self.user_client_name_1 = user_client_name_1.lower()
+        self.user_client_name_2 = user_client_name_2.lower()
         self.bipartite_pre_shared_key = bipartite_pre_shared_key
         self.timestamp = \
             TimestampGenerator.TimestampGenerator("pre-shared-key-{}-{}"
-                                                  .format(self.party_name_1.lower(),
-                                                          self.party_name_2.lower())).get_now_timestamp()
+                                                  .format(self.user_client_name_1.lower(),
+                                                          self.user_client_name_2.lower())).get_now_timestamp()
 
-    # Return the name of the Party #1
-    def get_party_name_1(self):
-        return self.party_name_1
+    # Return the UUID of the User/Client #1
+    def get_user_client_uuid_1(self):
+        return self.user_client_uuid_1
 
-    # Return the name of the Party #2
-    def get_party_name_2(self):
-        return self.party_name_2
+    # Return the UUID of the User/Client #2
+    def get_user_client_uuid_2(self):
+        return self.user_client_uuid_2
+
+    # Return the Name of the User/Client #1
+    def get_user_client_name_1(self):
+        return self.user_client_name_1
+
+    # Return the Name of the User/Client #2
+    def get_user_client_name_2(self):
+        return self.user_client_name_2
 
     # Return the Bipartite Pre-Shared Key
     def get_bipartite_pre_shared_key(self):
@@ -50,5 +61,5 @@ class QiskitSQCKAProtocolPreSharedKeyPair:
     # Print the information about
     # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Bipartite Pre-Shared Key Pair
     def print_info(self):
-        print(" - ( {} , {} ) [{}]: {}\n".format(self.party_name_1, self.party_name_2,
+        print(" - ( {} , {} ) [{}]: {}\n".format(self.user_client_name_1, self.user_client_name_2,
                                                  self.timestamp, self.bipartite_pre_shared_key))

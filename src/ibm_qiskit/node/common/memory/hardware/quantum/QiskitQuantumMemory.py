@@ -15,8 +15,7 @@ Acknowledgments:
 # Import required Enumerations and Constants
 
 # Import the Memory Type from the IBM_Qiskit.Common
-from src.ibm_qiskit.common import MemoryModuleTypes
-
+from src.common.enumerations import MemoryModuleTypes
 
 # Import required Libraries and Packages
 

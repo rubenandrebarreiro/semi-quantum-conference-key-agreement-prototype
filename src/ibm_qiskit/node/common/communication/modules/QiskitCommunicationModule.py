@@ -15,7 +15,7 @@ Acknowledgments:
 # Import required Enumerations and Constants
 
 # Import the Communication Module Type from the IBM_Qiskit.Common
-from src.ibm_qiskit.common import CommunicationModuleTypes
+from src.common.enumerations import CommunicationModuleTypes
 
 # Import the IBM Qiskit's Hybrid Memory from IBM_Qiskit.Node.Common.Memory.Hardware.Hybrid
 from src.ibm_qiskit.node.common.memory.hardware.hybrid import QiskitHybridMemory
