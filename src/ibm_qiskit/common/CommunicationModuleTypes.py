@@ -20,7 +20,7 @@ QUANTUM_COMMUNICATION_DISCRETE_VARIABLES_ENUM = "QUANTUM_COMMUNICATION_DISCRETE_
 # The tag enumeration for Quantum Communication with Continuous Variables
 QUANTUM_COMMUNICATION_CONTINUOUS_VARIABLES_ENUM = "QUANTUM_COMMUNICATION_CONTINUOUS_VARIABLES"
 
-# The tag enumeration for Quantum Communication
+# The tag enumeration for Quantum Communication (with Discrete Variables, by default)
 QUANTUM_COMMUNICATION_ENUM = "QUANTUM_COMMUNICATION"
 
 # The tag enumeration for Classical Communication
