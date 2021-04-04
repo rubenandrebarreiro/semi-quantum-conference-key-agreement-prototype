@@ -32,12 +32,62 @@ class TimestampGenerator:
         self.now = date_time.now()
         self.timestamp_generator_name = timestamp_generator_name
 
-    # Retrieve the current Timestamp, as a custom DateTime
+    # Retrieve the Now's DateTime
+    def get_now(self):
+
+        # Return the Now's DateTime
+        return self.now
+
+    # Retrieve the Now's DateTime, as Timestamp representation
     def get_now_timestamp(self):
+
+        # Return the Now's DateTime, as Timestamp representation
+        return date_time.timestamp(self.now)
+
+    # Retrieve the Now's DateTime, plus a Delta DateTime
+    def get_now_plus_delta(self, weeks_delta, days_delta, hours_delta, minutes_delta,
+                           seconds_delta, milliseconds_delta, microseconds_delta):
+
+        # Return the Now's DateTime, plus a Delta DateTime
+        return self.now + time_delta(weeks=weeks_delta,
+                                     days=days_delta,
+                                     hours=hours_delta,
+                                     minutes=minutes_delta,
+                                     seconds=seconds_delta,
+                                     milliseconds=milliseconds_delta,
+                                     microseconds=microseconds_delta)
+
+    # Retrieve the Now's DateTime, plus a Delta DateTime, as Timestamp representation
+    def get_now_plus_delta_timestamp(self, weeks_delta, days_delta, hours_delta, minutes_delta,
+                                     seconds_delta, milliseconds_delta, microseconds_delta):
+
+        # Return the Now's DateTime, as Timestamp representation
+        return date_time.timestamp(self.now + time_delta(weeks=weeks_delta,
+                                                         days=days_delta,
+                                                         hours=hours_delta,
+                                                         minutes=minutes_delta,
+                                                         seconds=seconds_delta,
+                                                         milliseconds=milliseconds_delta,
+                                                         microseconds=microseconds_delta))
+
+    # Retrieve the current Timestamp, as a custom DateTime
+    def get_now_customised_format(self):
 
         # Return the current Timestamp, as a custom DateTime
         return date_time(self.now.year, self.now.month, self.now.day,
                          self.now.hour, self.now.minute, self.now.second)
+
+    # Return the current Timestamp, plus some delta, as custom DateTime
+    def get_now_plus_delta_customised_format(self, weeks_delta, days_delta, hours_delta, minutes_delta,
+                                             seconds_delta, milliseconds_delta, microseconds_delta):
+
+        return self.get_now_customised_format() + time_delta(weeks=weeks_delta,
+                                                             days=days_delta,
+                                                             hours=hours_delta,
+                                                             minutes=minutes_delta,
+                                                             seconds=seconds_delta,
+                                                             milliseconds=milliseconds_delta,
+                                                             microseconds=microseconds_delta)
 
     # Generate multiple Pseudo Random Timestamps
     def generate_random_timestamps(self, num_timestamps_to_generate, weeks_delta, days_delta,
@@ -45,7 +95,7 @@ class TimestampGenerator:
                                    milliseconds_delta, microseconds_delta):
 
         # Retrieve the current Timestamp
-        now_timestamp = self.get_now_timestamp()
+        now_timestamp = self.get_now_customised_format()
 
         # While there are still Pseudo Random Timestamps to be generated
         while num_timestamps_to_generate > 0:
