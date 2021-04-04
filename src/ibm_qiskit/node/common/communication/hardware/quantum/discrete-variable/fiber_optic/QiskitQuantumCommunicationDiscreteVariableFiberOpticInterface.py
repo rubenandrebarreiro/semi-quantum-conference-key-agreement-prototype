@@ -26,23 +26,23 @@ from src.ibm_qiskit.circuit.registers.quantum import QiskitQuantumRegister
 
 # Constants
 
-# The number of Wires needed for the Quantum Communication Fiber Optic Interface
+# The number of Wires needed for the Quantum Communication, using Discrete Variables, by Fiber Optic Interface
 NUM_WIRES = 3
 
-# The Output Port of the Quantum Communication, using Discrete Variable, by Fiber Optic Interface
+# The Output Port of the Quantum Communication, using Discrete Variables, by Fiber Optic Interface
 OUTPUT_PORT = 0
 
-# The Middle Media of the Quantum Communication, using Discrete Variable, by Fiber Optic Interface
+# The Middle Media of the Quantum Communication, using Discrete Variables, by Fiber Optic Interface
 MIDDLE_MEDIA = 1
 
-# The Input Port of the Quantum Communication, using Discrete Variable, by Fiber Optic Interface
+# The Input Port of the Quantum Communication, using Discrete Variables, by Fiber Optic Interface
 INPUT_PORT = 2
 
 
 # Class for IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
 class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
 
-    # Constructor for IBM Qiskit's Quantum Communication, using Discrete Variable, by Fiber Optic Interface
+    # Constructor for IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
     def __init__(self, quantum_communication_fiber_optic_interface_id):
 
         # Initialise the ID of the IBM Qiskit's Quantum Communication,
