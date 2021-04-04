@@ -14,9 +14,10 @@ Acknowledgments:
 
 # Import Packages and Libraries
 
-# Import DateTime and TimeDelta from the DateTime Library,
-# as date_time and time_delta aliases, respectively
+# Import DateTime from the DateTime Library, as date_time alias
 from datetime import datetime as date_time
+
+# Import TimeDelta from the DateTime Library, as time_delta alias
 from datetime import timedelta as time_delta
 
 # Import the Random Intervals from the Random Library
