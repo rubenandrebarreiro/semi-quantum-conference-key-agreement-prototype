@@ -100,7 +100,7 @@ class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
 
             # Raise a Value Error
             raise ValueError("One Fiber Optic Cable is already installed in "
-                             "the Quantum Communication Fiber Optic Interface!!!")
+                             "the Quantum Communication, using Discrete Variables, by Fiber Optic Interface!!!")
 
     # Uninstall the currently installed Fiber Optic Cable on
     # the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
@@ -116,7 +116,7 @@ class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
 
             # Raise a Value Error
             raise ValueError("No Fiber Optic Cable is currently installed in "
-                             "the Quantum Communication Fiber Optic Interface!!!")
+                             "the Quantum Communication, using Discrete Variables, by Fiber Optic Interface!!!")
 
     # Return the Boolean Flag, responsible to keep the information about if
     # the Fiber Optic Cable is installed or not
@@ -169,7 +169,7 @@ class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
     def get_num_qubits_offset_receiver(self):
         return self.num_qubits_offset_receiver
 
-    # Initialise the IBM Qiskit's Quantum Fiber Optic Interface
+    # Initialise the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
     def initialise_interface(self):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
@@ -271,11 +271,13 @@ class QiskitQuantumCommunicationDiscreteVariableFiberOpticInterface:
                                          qiskit_quantum_circuit_receiver,
                                          global_phase=0)
 
-        # If the IBM Qiskit's Quantum Fiber Optic is currently being used
+        # If the IBM Qiskit's Quantum Communication,
+        # using Discrete Variables, by Fiber Optic Interface is currently being used
         else:
 
             # Raise a Value Error
-            raise ValueError("The Quantum Fiber Optic Interface is currently being used!!!")
+            raise ValueError("The Quantum Communication, "
+                             "using Discrete Variables, by Fiber Optic Interface is currently being used!!!")
 
     # Prepare the Quantum Signal, at the Output Port of the IBM Qiskit's Quantum Communication,
     # using Discrete Variables, by Fiber Optic Interface
