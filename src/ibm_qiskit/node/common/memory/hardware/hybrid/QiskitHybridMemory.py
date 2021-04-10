@@ -45,7 +45,7 @@ class QiskitHybridMemory:
         self.hybrid_memory_num_bits = hybrid_memory_num_bits
 
         # The tag for the Memory Type for the IBM Qiskit's Hybrid Memory
-        self.hybrid_memory_type_tag = MemoryModuleTypes.HYBRID_HARDWARE_ENUM
+        self.hybrid_memory_type_tag = MemoryModuleTypes.HYBRID_MEMORY_ENUM
 
         # Create the Quantum Register for the IBM Qiskit's Hybrid Memory
         qiskit_quantum_register_hybrid_memory = \
