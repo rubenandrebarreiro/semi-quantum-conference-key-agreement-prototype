@@ -43,11 +43,12 @@ INPUT_PORT = 2
 class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
 
     # Constructor for IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
-    def __init__(self, quantum_communication_fiber_optic_interface_id):
+    def __init__(self, quantum_communication_discrete_variables_fiber_optic_interface_id):
 
         # Initialise the ID of the IBM Qiskit's Quantum Communication,
         # using Discrete Variables, by Fiber Optic Interface
-        self.quantum_communication_fiber_optic_interface_id = quantum_communication_fiber_optic_interface_id
+        self.quantum_communication_discrete_variables_fiber_optic_interface_id = \
+            quantum_communication_discrete_variables_fiber_optic_interface_id
 
         # Initialise the Fiber Optic Cable, as None
         self.fiber_optic_cable = None
@@ -180,7 +181,7 @@ class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
         self.qiskit_quantum_register_quantum_communication_fiber_optic_interface = \
             QiskitQuantumRegister\
             .QiskitQuantumRegister("qrquantumcommunicationdiscretevariablesfiberopticinterfaceidle{}"
-                                   .format(self.quantum_communication_fiber_optic_interface_id),
+                                   .format(self.quantum_communication_discrete_variables_fiber_optic_interface_id),
                                    num_qubits)
 
         # Creation of the IBM Qiskit's Classical Register,
@@ -188,7 +189,7 @@ class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
         self.qiskit_classical_register_quantum_communication_fiber_optic_interface = \
             QiskitClassicalRegister\
             .QiskitClassicalRegister("crquantumcommunicationdiscretevariablesfiberopticinterfaceidle{}"
-                                     .format(self.quantum_communication_fiber_optic_interface_id),
+                                     .format(self.quantum_communication_discrete_variables_fiber_optic_interface_id),
                                      num_bits)
 
         # Creation of the IBM Qiskit's Quantum Circuit,
@@ -197,7 +198,7 @@ class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
         self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface = \
             QiskitQuantumCircuit\
             .QiskitQuantumCircuit("qcquantumcommunicationdiscretevariablesfiberopticinterfaceidle{}"
-                                  .format(self.quantum_communication_fiber_optic_interface_id),
+                                  .format(self.quantum_communication_discrete_variables_fiber_optic_interface_id),
                                   self.qiskit_quantum_register_quantum_communication_fiber_optic_interface,
                                   self.qiskit_classical_register_quantum_communication_fiber_optic_interface,
                                   global_phase=0)
@@ -258,7 +259,9 @@ class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
             # (Sender -> Quantum Communication Fiber Optic)
             qiskit_quantum_circuit_temporary = qiskit_quantum_circuit_sender\
                 .combine_quantum_circuit("qcquantumcommunicationdiscretevariablesfiberopticinterfacetemp{}"
-                                         .format(self.quantum_communication_fiber_optic_interface_id),
+                                         .format(
+                                            self.quantum_communication_discrete_variables_fiber_optic_interface_id
+                                         ),
                                          self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface,
                                          global_phase=0)
 
@@ -267,7 +270,9 @@ class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
             self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface = \
                 qiskit_quantum_circuit_temporary\
                 .combine_quantum_circuit("qcquantumcommunicationdiscretevariablesfiberopticinterfacestarted{}"
-                                         .format(self.quantum_communication_fiber_optic_interface_id),
+                                         .format(
+                                            self.quantum_communication_discrete_variables_fiber_optic_interface_id
+                                         ),
                                          qiskit_quantum_circuit_receiver,
                                          global_phase=0)
 
