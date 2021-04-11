@@ -17,7 +17,7 @@ Acknowledgments:
 from src.ibm_qiskit.node.common.memory.modules import QiskitMemoryModule
 
 # Import the IBM Qiskit's Communication Module from
-# the IBM_Qiskit.Node.Common.Memory.Modules
+# the IBM_Qiskit.Node.Common.Communication.Modules
 from src.ibm_qiskit.node.common.communication.modules import QiskitCommunicationModule
 
 # Import the Enumeration for the Memory Module Types from
@@ -67,8 +67,7 @@ class QiskitSemiQuantumNode:
     # Release the current Owner Client Party from the IBM Qiskit's Semi-Quantum Node
     def release_owner_client_party(self):
 
-        # Set the Owner Client Party of the IBM Qiskit's Semi-Quantum Node,
-        # as None
+        # Set the Owner Client Party of the IBM Qiskit's Semi-Quantum Node, as None
         self.owner_client_party = None
 
         # Set the Boolean Flag, to keep the information about
@@ -76,7 +75,7 @@ class QiskitSemiQuantumNode:
         self.owned_by_client_party = False
 
     # Return the ID of the IBM Qiskit's Semi-Quantum Node
-    def get_quantum_node_id(self):
+    def get_semi_quantum_node_id(self):
         return self.semi_quantum_node_id
 
     # Return the Owner Client Party, using the IBM Qiskit's Semi-Quantum Node
