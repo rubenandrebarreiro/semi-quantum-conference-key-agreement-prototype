@@ -12,12 +12,28 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
+# Import the IBM Qiskit's Memory Module from
+# the IBM_Qiskit.Node.Common.Memory.Modules
+from src.ibm_qiskit.node.common.memory.modules import QiskitMemoryModule
+
+# Import the IBM Qiskit's Communication Module from
+# the IBM_Qiskit.Node.Common.Memory.Modules
+from src.ibm_qiskit.node.common.communication.modules import QiskitCommunicationModule
+
+# Import the Enumeration for the Memory Module Types from
+# the Common.Enumerations
+from src.common.enumerations import MemoryModuleTypes
+
+# Import the Enumeration for the Communication Module Types from
+# the Common.Enumerations
+from src.common.enumerations import CommunicationModuleTypes
+
 
 # Class of the IBM Qiskit's Semi-Quantum Node
 class QiskitSemiQuantumNode:
 
     # Constructor of the IBM Qiskit's Semi-Quantum Node
-    def __init__(self, semi_quantum_node_id, classical_memory):
+    def __init__(self, semi_quantum_node_id):
 
         # The ID of the IBM Qiskit's Semi-Quantum Node
         self.semi_quantum_node_id = semi_quantum_node_id
@@ -29,10 +45,13 @@ class QiskitSemiQuantumNode:
         # the IBM Qiskit's Semi-Quantum Node is currently being owned by some Client/Party
         self.owned_by_client_party = False
 
-        # The Classical Memory of the IBM Qiskit's Semi-Quantum Node
-        self.classical_memory = classical_memory
+        # The Memory Hardware Module of the IBM Qiskit's Semi-Quantum Node
+        self.memory_hardware_module = \
+            QiskitMemoryModule.QiskitMemoryModule(MemoryModuleTypes.CLASSICAL_MEMORY_ENUM)
 
-        # TODO - Communication Module
+        # The Communication Hardware Interface of the IBM Qiskit's Semi-Quantum Node
+        self.communication_hardware_module = \
+            QiskitCommunicationModule.QiskitCommunicationModule(CommunicationModuleTypes.QUANTUM_COMMUNICATION_ENUM)
 
     # Attach some Owner Client Party to the IBM Qiskit's Semi-Quantum Node
     def attach_owner_client_party(self, owner_client_party):
@@ -61,9 +80,18 @@ class QiskitSemiQuantumNode:
         return self.semi_quantum_node_id
 
     # Return the Owner Client Party, using the IBM Qiskit's Semi-Quantum Node
-    def get_quantum_client_name(self):
+    def get_owner_client_party(self):
         return self.owner_client_party
 
-    # Return the Classical Memory of the IBM Qiskit's Semi-Quantum Node
-    def get_classical_memory(self):
-        return self.classical_memory
+    # Return the Boolean Flag, to keep the information about
+    # the IBM Qiskit's Semi-Quantum Node is currently being owned by some Client/Party
+    def is_owned_by_client_party(self):
+        return self.owned_by_client_party
+
+    # Return the Memory Hardware Module of the IBM Qiskit's Semi-Quantum Node
+    def get_memory_hardware_module(self):
+        return self.memory_hardware_module
+
+    # Return the Communication Hardware Interface of the IBM Qiskit's Semi-Quantum Node
+    def get_communication_hardware_module(self):
+        return self.communication_hardware_module
