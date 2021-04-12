@@ -88,10 +88,285 @@ class QiskitCommunicationModule:
     # Add an abstract IBM Qiskit's Communication Hardware to the IBM Qiskit's Communication Interface Hardware Module
     def add_communication_interface(self, qiskit_communication_interface_to_add):
 
+        # If the IBM Qiskit's Communication Hardware Module is Hybrid,
+        # all the type of Communication Interface Hardware
+        # (Quantum with Discrete Variables, Quantum with Continuous Variables and Classical) can be added
+        if self.communication_module_type_tag == CommunicationModuleTypes.HYBRID_COMMUNICATION_ENUM:
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Discrete Variables, by Fiber Optics Interface, being given
+            if isinstance(qiskit_communication_interface_to_add,
+                          QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface
+                          .QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_discrete_variable_fiber_optic_interfaces\
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Discrete Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_discrete_variable_satellite_interfaces \
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface
+                            .QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Hardware Interface Module
+                self.qiskit_quantum_communication_continuous_variable_fiber_optic_interfaces\
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitQuantumCommunicationContinuousVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationContinuousVariablesSatelliteInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_continuous_variable_satellite_interfaces\
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitClassicalCommunicationFiberOpticInterface
+                            .QiskitClassicalCommunicationFiberOpticInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_fiber_optic_interfaces\
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitClassicalCommunicationSatelliteInterface
+                            .QiskitClassicalCommunicationSatelliteInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_satellite_interfaces\
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of an
+            # Unknown Communication Interface Hardware being given
+            else:
+
+                # Raise a Value Error
+                raise ValueError("It is not possible to add an Unknown Hardware for Communication Interface!!!")
+
+        # If the IBM Qiskit's Communication Hardware Module is Hybrid,
+        # with Discrete Variables, only the type of Communication Interface Hardware
+        # (Quantum with Discrete Variables and Classical) can be added
+        elif self.communication_module_type_tag == \
+                CommunicationModuleTypes.HYBRID_COMMUNICATION_DISCRETE_VARIABLES_ENUM:
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Discrete Variables, by Fiber Optics Interface, being given
+            if isinstance(qiskit_communication_interface_to_add,
+                          QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface
+                          .QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_discrete_variable_fiber_optic_interfaces \
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Discrete Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_discrete_variable_satellite_interfaces \
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface
+                            .QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
+                raise ValueError("It is not possible to add a Quantum Communication Interface "
+                                 "with Continuous Variables to "
+                                 "a Hybrid Communication Interface Hardware Module with Discrete Variables!!!")
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitQuantumCommunicationContinuousVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationContinuousVariablesSatelliteInterface):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
+                raise ValueError("It is not possible to add a Quantum Communication Interface "
+                                 "with Continuous Variables to "
+                                 "a Hybrid Communication Interface Hardware Module with Discrete Variables!!!")
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitClassicalCommunicationFiberOpticInterface
+                            .QiskitClassicalCommunicationFiberOpticInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_fiber_optic_interfaces \
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitClassicalCommunicationSatelliteInterface
+                            .QiskitClassicalCommunicationSatelliteInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_satellite_interfaces \
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of an
+            # Unknown Communication Interface Hardware being given
+            else:
+
+                # Raise a Value Error
+                raise ValueError("It is not possible to add an Unknown Hardware for Communication Interface!!!")
+
+        # If the IBM Qiskit's Communication Hardware Module is Hybrid,
+        # with Continuous Variables, only the type of Communication Interface Hardware
+        # (Quantum with Continuous Variables and Classical) can be added
+        elif self.communication_module_type_tag == \
+                CommunicationModuleTypes.HYBRID_COMMUNICATION_CONTINUOUS_VARIABLES_ENUM:
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Discrete Variables, by Fiber Optics Interface, being given
+            if isinstance(qiskit_communication_interface_to_add,
+                          QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface
+                          .QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
+                raise ValueError("It is not possible to add a Quantum Communication Interface "
+                                 "with Discrete Variables to "
+                                 "a Hybrid Communication Interface Hardware Module with Continuous Variables!!!")
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Discrete Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
+                raise ValueError("It is not possible to add a Quantum Communication Interface "
+                                 "with Discrete Variables to "
+                                 "a Hybrid Communication Interface Hardware Module with Continuous Variables!!!")
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface
+                            .QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_continuous_variable_fiber_optic_interfaces \
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitQuantumCommunicationContinuousVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationContinuousVariablesSatelliteInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_continuous_variable_satellite_interfaces \
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitClassicalCommunicationFiberOpticInterface
+                            .QiskitClassicalCommunicationFiberOpticInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_fiber_optic_interfaces \
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_add,
+                            QiskitClassicalCommunicationSatelliteInterface
+                            .QiskitClassicalCommunicationSatelliteInterface):
+
+                # Add the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_satellite_interfaces \
+                    .append(qiskit_communication_interface_to_add)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of an
+            # Unknown Communication Interface Hardware being given
+            else:
+
+                # Raise a Value Error
+                raise ValueError("It is not possible to add an Unknown Hardware for Communication Interface!!!")
+
         # If the IBM Qiskit's Communication Hardware Module is Quantum, only the type of
         # Communication Interface Hardware being Quantum, Quantum with Discrete Variables and
         # Quantum with Continuous Variables can be added
-        if self.communication_module_type_tag == CommunicationModuleTypes.QUANTUM_COMMUNICATION_ENUM:
+        elif self.communication_module_type_tag == CommunicationModuleTypes.QUANTUM_COMMUNICATION_ENUM:
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
             # the type of Communication Interface Hardware, for the case of a
@@ -450,10 +725,273 @@ class QiskitCommunicationModule:
     # the IBM Qiskit's Communication Interface Hardware Module
     def remove_communication_interface(self, qiskit_communication_interface_to_remove):
 
+        # If the IBM Qiskit's Communication Hardware Module is Hybrid,
+        # all the type of Communication Interface Hardware
+        # (Quantum with Discrete Variables, Quantum with Continuous Variables and Classical) can be removed
+        if self.communication_module_type_tag == CommunicationModuleTypes.HYBRID_COMMUNICATION_ENUM:
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Discrete Variables, by Fiber Optics Interface, being given
+            if isinstance(qiskit_communication_interface_to_remove,
+                          QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface
+                          .QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_discrete_variable_fiber_optic_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Discrete Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_discrete_variable_satellite_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface
+                            .QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Hardware Interface Module
+                self.qiskit_quantum_communication_continuous_variable_fiber_optic_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitQuantumCommunicationContinuousVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationContinuousVariablesSatelliteInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_continuous_variable_satellite_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitClassicalCommunicationFiberOpticInterface
+                            .QiskitClassicalCommunicationFiberOpticInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_fiber_optic_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitClassicalCommunicationSatelliteInterface
+                            .QiskitClassicalCommunicationSatelliteInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_satellite_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of an
+            # Unknown Communication Interface Hardware being given
+            else:
+
+                # Raise a Value Error
+                raise ValueError("It is not possible to remove an Unknown Hardware for Communication Interface!!!")
+
+        # If the IBM Qiskit's Communication Hardware Module is Hybrid,
+        # only the type of Communication Interface Hardware being
+        # Quantum with Discrete Variables and Classical can be removed
+        elif self.communication_module_type_tag == \
+                CommunicationModuleTypes.HYBRID_COMMUNICATION_DISCRETE_VARIABLES_ENUM:
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Discrete Variables, by Fiber Optics Interface, being given
+            if isinstance(qiskit_communication_interface_to_remove,
+                          QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface
+                          .QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_discrete_variable_fiber_optic_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Discrete Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_discrete_variable_satellite_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface
+                            .QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
+                raise ValueError("It is not possible to remove a Quantum Communication Interface "
+                                 "with Continuous Variables from "
+                                 "a Hybrid Communication Interface Hardware Module with Discrete Variables!!!")
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitQuantumCommunicationContinuousVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationContinuousVariablesSatelliteInterface):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
+                raise ValueError("It is not possible to remove a Quantum Communication Interface "
+                                 "with Continuous Variables from "
+                                 "a Hybrid Communication Interface Hardware Module with Discrete Variables!!!")
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitClassicalCommunicationFiberOpticInterface
+                            .QiskitClassicalCommunicationFiberOpticInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_fiber_optic_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitClassicalCommunicationSatelliteInterface
+                            .QiskitClassicalCommunicationSatelliteInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_satellite_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of an
+            # Unknown Communication Interface Hardware being given
+            else:
+
+                # Raise a Value Error
+                raise ValueError("It is not possible to remove an Unknown Hardware for Communication Interface!!!")
+
+        # If the IBM Qiskit's Communication Hardware Module is Hybrid,
+        # only the type of Communication Interface Hardware being
+        # Quantum with Continuous Variables and Classical can be removed
+        elif self.communication_module_type_tag == \
+                CommunicationModuleTypes.HYBRID_COMMUNICATION_CONTINUOUS_VARIABLES_ENUM:
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Discrete Variables, by Fiber Optics Interface, being given
+            if isinstance(qiskit_communication_interface_to_remove,
+                          QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface
+                          .QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
+                raise ValueError("It is not possible to remove a Quantum Communication Interface "
+                                 "with Discrete Variables from "
+                                 "a Hybrid Communication Interface Hardware Module with Discrete Variables!!!")
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Discrete Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationDiscreteVariablesSatelliteInterface):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
+                raise ValueError("It is not possible to remove a Quantum Communication Interface "
+                                 "with Discrete Variables from "
+                                 "a Hybrid Communication Interface Hardware Module with Discrete Variables!!!")
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface
+                            .QiskitQuantumCommunicationContinuousVariablesFiberOpticInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_continuous_variable_fiber_optic_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitQuantumCommunicationContinuousVariablesSatelliteInterface
+                            .QiskitQuantumCommunicationContinuousVariablesSatelliteInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_quantum_communication_continuous_variable_satellite_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Hardware, for the case of a Quantum Communication Interface Hardware with
+            # Continuous Variables, by Fiber Optics Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitClassicalCommunicationFiberOpticInterface
+                            .QiskitClassicalCommunicationFiberOpticInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_fiber_optic_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of a
+            # Quantum Communication Interface Hardware with
+            # Continuous Variables, by Satellite Interface, being given
+            elif isinstance(qiskit_communication_interface_to_remove,
+                            QiskitClassicalCommunicationSatelliteInterface
+                            .QiskitClassicalCommunicationSatelliteInterface):
+
+                # Remove the given abstract IBM Qiskit's Communication Interface Hardware to
+                # the IBM Qiskit's Communication Interface Hardware Module
+                self.qiskit_classical_communication_satellite_interfaces \
+                    .remove(qiskit_communication_interface_to_remove)
+
+            # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
+            # the type of Communication Interface Hardware, for the case of an
+            # Unknown Communication Interface Hardware being given
+            else:
+
+                # Raise a Value Error
+                raise ValueError("It is not possible to remove an Unknown Hardware for Communication Interface!!!")
+
         # If the IBM Qiskit's Communication Hardware Module is Quantum, only the type of
         # Communication Interface Hardware being Quantum, Quantum with Discrete Variables and
         # Quantum with Continuous Variables can be removed
-        if self.communication_module_type_tag == CommunicationModuleTypes.QUANTUM_COMMUNICATION_ENUM:
+        elif self.communication_module_type_tag == CommunicationModuleTypes.QUANTUM_COMMUNICATION_ENUM:
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
             # the type of Communication Interface Hardware, for the case of a
@@ -512,7 +1050,7 @@ class QiskitCommunicationModule:
                             .QiskitClassicalCommunicationFiberOpticInterface):
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
-                raise ValueError("It is not possible to remove a Classical Communication Interface to "
+                raise ValueError("It is not possible to remove a Classical Communication Interface from "
                                  "a Quantum Communication Interface Hardware Module!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -524,7 +1062,7 @@ class QiskitCommunicationModule:
                             .QiskitClassicalCommunicationSatelliteInterface):
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
-                raise ValueError("It is not possible to remove a Classical Communication Interface to "
+                raise ValueError("It is not possible to remove a Classical Communication Interface from "
                                  "a Quantum Communication Interface Hardware Module!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -575,7 +1113,7 @@ class QiskitCommunicationModule:
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
                 raise ValueError("It is not possible to remove a Quantum Communication Interface "
-                                 "with Continuous Variables to "
+                                 "with Continuous Variables from "
                                  "a Quantum Communication Interface Hardware Module with Discrete Variables!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -588,7 +1126,7 @@ class QiskitCommunicationModule:
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
                 raise ValueError("It is not possible to remove a Quantum Communication Interface "
-                                 "with Continuous Variables to "
+                                 "with Continuous Variables from "
                                  "a Quantum Communication Interface Hardware Module with Discrete Variables!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -599,7 +1137,7 @@ class QiskitCommunicationModule:
                             .QiskitClassicalCommunicationFiberOpticInterface):
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
-                raise ValueError("It is not possible to remove a Classical Communication Interface to "
+                raise ValueError("It is not possible to remove a Classical Communication Interface from "
                                  "a Quantum Communication Interface Hardware Module with Discrete Variables!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -610,7 +1148,7 @@ class QiskitCommunicationModule:
                             .QiskitClassicalCommunicationSatelliteInterface):
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
-                raise ValueError("It is not possible to remove a Classical Communication Interface to "
+                raise ValueError("It is not possible to remove a Classical Communication Interface from "
                                  "a Quantum Communication Interface Hardware Module with Discrete Variables!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -635,7 +1173,7 @@ class QiskitCommunicationModule:
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
                 raise ValueError("It is not possible to remove a Quantum Communication Interface "
-                                 "with Discrete Variables to "
+                                 "with Discrete Variables from "
                                  "a Quantum Communication Interface Hardware Module with Continuous Variables!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -647,7 +1185,7 @@ class QiskitCommunicationModule:
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
                 raise ValueError("It is not possible to remove a Quantum Communication Interface "
-                                 "with Discrete Variables to "
+                                 "with Discrete Variables from "
                                  "a Quantum Communication Interface Hardware Module with Continuous Variables!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -685,7 +1223,7 @@ class QiskitCommunicationModule:
                             .QiskitClassicalCommunicationFiberOpticInterface):
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
-                raise ValueError("It is not possible to remove a Classical Communication Interface to "
+                raise ValueError("It is not possible to remove a Classical Communication Interface from "
                                  "a Quantum Communication Interface Hardware Module with Continuous Variables!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -697,7 +1235,7 @@ class QiskitCommunicationModule:
                             .QiskitClassicalCommunicationSatelliteInterface):
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
-                raise ValueError("It is not possible to remove a Classical Communication Interface to "
+                raise ValueError("It is not possible to remove a Classical Communication Interface from "
                                  "a Quantum Communication Interface Hardware Module with Continuous Variables!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -723,7 +1261,7 @@ class QiskitCommunicationModule:
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
                 raise ValueError("It is not possible to remove a Quantum Communication Interface "
-                                 "with Discrete Variables to "
+                                 "with Discrete Variables from "
                                  "a Classical Communication Interface Hardware Module!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -736,7 +1274,7 @@ class QiskitCommunicationModule:
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
                 raise ValueError("It is not possible to remove a Quantum Communication Interface "
-                                 "with Discrete Variables to "
+                                 "with Discrete Variables from "
                                  "a Classical Communication Interface Hardware Module!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -749,7 +1287,7 @@ class QiskitCommunicationModule:
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication Interface
                 raise ValueError("It is not possible to remove a Quantum Communication Interface "
-                                 "with Continuous Variables to "
+                                 "with Continuous Variables from "
                                  "a Classical Communication Interface Hardware Module!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -762,7 +1300,7 @@ class QiskitCommunicationModule:
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Communication
                 raise ValueError("It is not possible to remove a Quantum Communication Interface "
-                                 "with Continuous Variables to "
+                                 "with Continuous Variables from "
                                  "a Classical Communication Interface Hardware Module!!!")
 
             # Check if the abstract IBM Qiskit's Communication Interface Hardware is compatible with
@@ -804,7 +1342,7 @@ class QiskitCommunicationModule:
         else:
 
             # Raise a Value Error
-            raise ValueError("It is impossible to remove any type of Communication Interface Hardware to "
+            raise ValueError("It is impossible to remove any type of Communication Interface Hardware from "
                              "this Communication Interface Hardware Module, due to an Unknown Hardware type of "
                              "Communication Interface Hardware Module!!!")
 
