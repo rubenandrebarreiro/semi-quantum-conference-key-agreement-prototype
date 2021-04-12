@@ -14,14 +14,25 @@ Acknowledgments:
 
 # The Enumerations and Constants
 
+# The tag enumeration for Hybrid (Quantum and Classical) Communication
+HYBRID_COMMUNICATION_ENUM = "HYBRID_COMMUNICATION"
+
+# The tag enumeration for Hybrid (Quantum and Classical) Communication
+# with Discrete Variables (for the Quantum ones)
+HYBRID_COMMUNICATION_DISCRETE_VARIABLES_ENUM = "HYBRID_COMMUNICATION_DISCRETE_VARIABLES"
+
+# The tag enumeration for Hybrid (Quantum and Classical) Communication
+# with Continuous Variables (for the Quantum ones)
+HYBRID_COMMUNICATION_CONTINUOUS_VARIABLES_ENUM = "HYBRID_COMMUNICATION_CONTINUOUS_VARIABLES"
+
+# The tag enumeration for Quantum Communication
+QUANTUM_COMMUNICATION_ENUM = "QUANTUM_COMMUNICATION"
+
 # The tag enumeration for Quantum Communication with Discrete Variables
 QUANTUM_COMMUNICATION_DISCRETE_VARIABLES_ENUM = "QUANTUM_COMMUNICATION_DISCRETE_VARIABLES"
 
 # The tag enumeration for Quantum Communication with Continuous Variables
 QUANTUM_COMMUNICATION_CONTINUOUS_VARIABLES_ENUM = "QUANTUM_COMMUNICATION_CONTINUOUS_VARIABLES"
-
-# The tag enumeration for Quantum Communication (with Discrete Variables, by default)
-QUANTUM_COMMUNICATION_ENUM = "QUANTUM_COMMUNICATION"
 
 # The tag enumeration for Classical Communication
 CLASSICAL_COMMUNICATION_ENUM = "CLASSICAL_COMMUNICATION"
