@@ -17,7 +17,9 @@ Acknowledgments:
 # Import the possible Bipartite and Multipartite Quantum Entanglement Types and
 # the Possible Configurations for Bell States
 from src.common.enumerations.QuantumEntanglementTypes \
-    import POSSIBLE_QUANTUM_ENTANGLEMENT_TYPES, POSSIBLE_CONFIGURATIONS_BELL_STATES
+    import POSSIBLE_QUANTUM_ENTANGLEMENT_TYPES, POSSIBLE_CONFIGURATIONS_BELL_STATES, \
+    BELL_STATE, EPR_PAIR_STATE, BELL_STATE_PHI_PLUS, BELL_STATE_PHI_MINUS, BELL_STATE_PSI_PLUS, BELL_STATE_PSI_MINUS,\
+    GHZ_STATE, W_STATE, DICKE_STATE, RESOURCE_STATE, GRAPH_STATE, CLUSTER_STATE
 
 
 # Import Packages and Libraries
@@ -211,7 +213,7 @@ class QiskitSQCKAProtocolParty:
             if quantum_entanglement_type.upper() in POSSIBLE_QUANTUM_ENTANGLEMENT_TYPES:
 
                 # If the Quantum Entanglement to prepare is a Bell State
-                if quantum_entanglement_type.upper() == "BELL_STATE":
+                if quantum_entanglement_type.upper() == BELL_STATE:
 
                     # If the number of parties involved is higher than 2
                     if num_parties > 2:
@@ -224,12 +226,12 @@ class QiskitSQCKAProtocolParty:
 
                                 # If the Bipartite Entangled State is Bell State (EPR Pair):
                                 # - |ϕ^+⟩ = 1/sqrt(2) x (|00⟩ + |11⟩)
-                                if (bell_state_type == "EPR_PAIR_STATE") or (bell_state_type == "BELL_STATE_PHI_PLUS"):
+                                if (bell_state_type == EPR_PAIR_STATE) or (bell_state_type == BELL_STATE_PHI_PLUS):
 
                                     # Prepare the EPR Pair (Bell State) for 2 Qubits
                                     qiskit_quantum_circuit_epr_pair_bell_state_phi_plus = QiskitBellState \
-                                        .QiskitBellState("bell_state_phi_plus_epr_pair",
-                                                         "BELL_STATE_PHI_PLUS",
+                                        .QiskitBellState((BELL_STATE_PHI_PLUS+"_"+EPR_PAIR_STATE).lower(),
+                                                         BELL_STATE_PHI_PLUS,
                                                          quantum_circuit,
                                                          0, 1).prepare_bipartite_entanglement()
 
@@ -238,12 +240,12 @@ class QiskitSQCKAProtocolParty:
 
                                 # If the Bipartite Entangled State is Bell State:
                                 # - |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩)
-                                elif bell_state_type == "BELL_STATE_PHI_MINUS":
+                                elif bell_state_type == BELL_STATE_PHI_MINUS:
 
                                     # Prepare the Bell State: |ϕ^-⟩ = 1/sqrt(2) x (|00⟩ - |11⟩), for 2 Qubits
                                     qiskit_quantum_circuit_bell_state_phi_minus = QiskitBellState \
-                                        .QiskitBellState("bell_state_phi_minus",
-                                                         "BELL_STATE_PHI_MINUS",
+                                        .QiskitBellState(BELL_STATE_PHI_MINUS.lower(),
+                                                         BELL_STATE_PHI_MINUS,
                                                          quantum_circuit,
                                                          0, 1).prepare_bipartite_entanglement()
 
@@ -252,12 +254,12 @@ class QiskitSQCKAProtocolParty:
 
                                 # If the Bipartite Entangled State is Bell State:
                                 # - |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩)
-                                elif bell_state_type == "BELL_STATE_PSI_PLUS":
+                                elif bell_state_type == BELL_STATE_PSI_PLUS:
 
                                     # Prepare the Bell State: |ψ^+⟩ = 1/sqrt(2) x (|01⟩ + |10⟩), for 2 Qubits
                                     qiskit_quantum_circuit_bell_state_psi_plus = QiskitBellState \
-                                        .QiskitBellState("bell_state_psi_plus",
-                                                         "BELL_STATE_PSI_PLUS",
+                                        .QiskitBellState(BELL_STATE_PSI_PLUS.lower(),
+                                                         BELL_STATE_PSI_PLUS,
                                                          quantum_circuit,
                                                          0, 1).prepare_bipartite_entanglement()
 
@@ -266,12 +268,12 @@ class QiskitSQCKAProtocolParty:
 
                                 # If the Bipartite Entangled State is Bell State:
                                 # - |ψ^-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩)
-                                elif bell_state_type == "BELL_STATE_PSI_MINUS":
+                                elif bell_state_type == BELL_STATE_PSI_MINUS:
 
                                     # Prepare the Bell State: |ψ^+-⟩ = 1/sqrt(2) x (|01⟩ - |10⟩), for 2 Qubits
                                     qiskit_quantum_circuit_bell_state_psi_minus = QiskitBellState \
-                                        .QiskitBellState("bell_state_psi_minus",
-                                                         "BELL_STATE_PSI_MINUS",
+                                        .QiskitBellState(BELL_STATE_PSI_MINUS.lower(),
+                                                         BELL_STATE_PSI_MINUS,
                                                          quantum_circuit,
                                                          0, 1).prepare_bipartite_entanglement()
 
@@ -298,7 +300,7 @@ class QiskitSQCKAProtocolParty:
                                          "Semi-Quantum Conference Key Agreement (SQCKA) with less than 3 Parties!!!")
 
                 # If the Quantum Entanglement to prepare is a GHZ State
-                elif quantum_entanglement_type.upper() == "GHZ_STATE":
+                elif quantum_entanglement_type.upper() == GHZ_STATE:
 
                     # If the number of parties involved is higher than 2
                     if num_parties > 2:
@@ -327,7 +329,7 @@ class QiskitSQCKAProtocolParty:
                     return qiskit_quantum_circuit_ghz_state
 
                 # If the Quantum Entanglement to prepare is a W State
-                elif quantum_entanglement_type.upper() == "W_STATE":
+                elif quantum_entanglement_type.upper() == W_STATE:
 
                     # If the number of parties involved is higher than 2
                     if num_parties > 2:
@@ -352,8 +354,14 @@ class QiskitSQCKAProtocolParty:
                     # Return the Quantum Circuit for the W State for n parties
                     return qiskit_quantum_circuit_w_state
 
+                # If the Quantum Entanglement to prepare is a Dicke State
+                elif quantum_entanglement_type.upper() == DICKE_STATE:
+
+                    # TODO - Handle this situation
+                    return
+
                 # If the Quantum Entanglement to prepare is a Resource State
-                elif quantum_entanglement_type.upper() == "RESOURCE_STATE":
+                elif quantum_entanglement_type.upper() == RESOURCE_STATE:
 
                     # If the number of parties involved is higher than 1
                     if num_parties > 1:
@@ -380,7 +388,7 @@ class QiskitSQCKAProtocolParty:
                     return qiskit_quantum_circuit_resource_state
 
                 # If the Quantum Entanglement to prepare is a Graph State
-                elif quantum_entanglement_type.upper() == "GRAPH_STATE":
+                elif quantum_entanglement_type.upper() == GRAPH_STATE:
 
                     # If the number of parties involved is higher than 1
                     if num_parties > 1:
@@ -407,7 +415,7 @@ class QiskitSQCKAProtocolParty:
                     return qiskit_quantum_circuit_graph_state
 
                 # If the Quantum Entanglement to prepare is a Cluster State
-                elif quantum_entanglement_type.upper() == "CLUSTER_STATE":
+                elif quantum_entanglement_type.upper() == CLUSTER_STATE:
 
                     # TODO - Handle this situation
                     return
