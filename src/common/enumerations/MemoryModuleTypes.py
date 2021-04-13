@@ -17,6 +17,9 @@ Acknowledgments:
 # The tag enumeration for Hybrid Memory
 HYBRID_MEMORY_ENUM = "HYBRID_MEMORY"
 
+# The tag enumeration for Semi-Quantum Memory
+SEMI_QUANTUM_MEMORY_ENUM = "SEMI_QUANTUM_MEMORY"
+
 # The tag enumeration for Quantum Memory
 QUANTUM_MEMORY_ENUM = "QUANTUM_MEMORY"
 
