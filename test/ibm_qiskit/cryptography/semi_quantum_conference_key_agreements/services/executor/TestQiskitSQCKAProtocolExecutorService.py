@@ -185,40 +185,40 @@ class MyTestCase(unittest.TestCase):
             # If all the names of the Parties owners of the Bipartite Pre-Shared Key Pairs were fulfilled
             if len(bipartite_party_pairs_names) == (qiskit_sqcka_protocol_num_parties - 1):
 
-                # For each Pair of names of the Party owners of the Bipartite Pre-Shared Key Pair
-                for bipartite_party_pair_names in bipartite_party_pairs_names:
+                # Create the IBM Qiskit's Quantum True Random Binary String Generator
+                qiskit_quantum_true_random_binary_string_generator = \
+                    QiskitQuantumTrueRandomBinaryStringGenerator \
+                    .QiskitQuantumTrueRandomBinaryStringGenerator(
+                        "qiskit_quantum_true_random_binary_string_generator",
+                        num_rounds, QISKIT_DEFAULT_NUM_COUNTS
+                    )
 
-                    # Create the IBM Qiskit's Quantum True Random Binary String Generator
-                    qiskit_quantum_true_random_binary_string_generator = \
-                        QiskitQuantumTrueRandomBinaryStringGenerator\
-                        .QiskitQuantumTrueRandomBinaryStringGenerator(
-                            "qiskit_quantum_true_random_binary_string_generator",
-                            num_rounds, QISKIT_DEFAULT_NUM_COUNTS
-                        )
+                # Forever loop, to be broken when the Hamming Weight is equal to
+                # the number of Rounds that each Party will reflect the Qubits,
+                # without performing Z-Basis Measurement
+                while True:
 
-                    # Forever loop, to be broken when the Hamming Weight is equal to
+                    # Create the Bipartite Pre-Shared Key, in binary,
+                    # from the IBM Qiskit's Quantum True Random Binary String Generator
+                    bipartite_pre_shared_key = \
+                        qiskit_quantum_true_random_binary_string_generator.generate_true_random_binary_string()
+
+                    # Compute the Hamming Weight of the previously created Bipartite Pre-Shared Key, in binary,
+                    # from the IBM Qiskit's Quantum True Random Binary String Generator
+                    bipartite_pre_shared_key_hamming_weight = \
+                        Utilities.compute_hamming_weight(bipartite_pre_shared_key)
+
+                    # If the Hamming Weight of the previously created Bipartite Pre-Shared Key, in binary,
+                    # from the IBM Qiskit's Quantum True Random Binary String Generator, is equal to
                     # the number of Rounds that each Party will reflect the Qubits,
                     # without performing Z-Basis Measurement
-                    while True:
+                    if bipartite_pre_shared_key_hamming_weight == qiskit_sqcka_protocol_num_reflect_rounds:
 
-                        # Create the Bipartite Pre-Shared Key, in binary,
-                        # from the IBM Qiskit's Quantum True Random Binary String Generator
-                        bipartite_pre_shared_key = \
-                            qiskit_quantum_true_random_binary_string_generator.generate_true_random_binary_string()
+                        # Break the forever loop
+                        break
 
-                        # Compute the Hamming Weight of the previously created Bipartite Pre-Shared Key, in binary,
-                        # from the IBM Qiskit's Quantum True Random Binary String Generator
-                        bipartite_pre_shared_key_hamming_weight = \
-                            Utilities.compute_hamming_weight(bipartite_pre_shared_key)
-
-                        # If the Hamming Weight of the previously created Bipartite Pre-Shared Key, in binary,
-                        # from the IBM Qiskit's Quantum True Random Binary String Generator, is equal to
-                        # the number of Rounds that each Party will reflect the Qubits,
-                        # without performing Z-Basis Measurement
-                        if bipartite_pre_shared_key_hamming_weight == qiskit_sqcka_protocol_num_reflect_rounds:
-
-                            # Break the forever loop
-                            break
+                # For each Pair of names of the Party owners of the Bipartite Pre-Shared Key Pair
+                for bipartite_party_pair_names in bipartite_party_pairs_names:
 
                     # Initialise the names of the Parties of the Pair of Owners
                     party_name_1 = party_name_2 = None
@@ -257,7 +257,7 @@ class MyTestCase(unittest.TestCase):
                             user_client_1 = users_clients[num_user_client]
 
                         # If the current User/Client has the same name of the Party #2
-                        if users_clients[num_user_client].get_user_client_name() == party_name_1.lower():
+                        if users_clients[num_user_client].get_user_client_name() == party_name_2.lower():
 
                             # Set the User/Client #2
                             user_client_2 = users_clients[num_user_client]
@@ -330,7 +330,7 @@ class MyTestCase(unittest.TestCase):
         # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol,
         # alongside the Bipartite Pre-Shared Keys they own/possess
         qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state\
-            .set_protocol_parties(parties_names, master_party_name, bipartite_pre_shared_keys)
+            .set_protocol_parties(users_clients, parties_names, master_party_name, bipartite_pre_shared_keys)
 
         # If the boolean flag for the Logging printing is set to True
         if LOGGING_FLAG:
@@ -344,7 +344,7 @@ class MyTestCase(unittest.TestCase):
             # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
             num_protocol_parties = len(protocol_parties)
 
-            # Print the header of the 3rd Logging
+            # Print the header of the 4th Logging
             print("\n\n--- 4) PARTIES INVOLVED IN THE PROTOCOL ---\n")
 
             # For each Party of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol

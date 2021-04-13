@@ -48,15 +48,15 @@ NUM_COUNTS_FOR_SIMULATION = 1000
 class QiskitSQCKAProtocolParty:
 
     # Constructor of the IBM Qiskit's Party for the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-    def __init__(self, user_client, party_id, master_status_flag, bipartite_pre_shared_keys):
-
-        # Set the User/Client for the IBM Qiskit's Party for
-        # the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-        self.user_client = user_client
+    def __init__(self, party_id, party_user_client, master_status_flag, bipartite_pre_shared_keys):
 
         # Set the ID for the IBM Qiskit's Party for
         # the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
         self.party_id = party_id
+
+        # Set the User/Client for the IBM Qiskit's Party for
+        # the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        self.party_user_client = party_user_client
 
         # Set the boolean flag, responsible to keep the information about if the Party is
         # the Distributor of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
@@ -65,10 +65,15 @@ class QiskitSQCKAProtocolParty:
         # Set the Pre-Shared Key, previously established between the parties
         self.bipartite_pre_shared_keys = bipartite_pre_shared_keys
 
+    # Return the ID for the IBM Qiskit's Party for
+    # the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+    def get_party_id(self):
+        return self.party_id
+
     # Return the User/Client for the IBM Qiskit's Party for
     # the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-    def get_user_client(self):
-        return self.user_client
+    def get_party_user_client(self):
+        return self.party_user_client
 
     # Retrieve the boolean flag, responsible to keep the information about if the Party is
     # the Distributor of the Semi-Quantum Conference Key Agreement (SQCKA) Protocol or not
@@ -88,17 +93,17 @@ class QiskitSQCKAProtocolParty:
         print("|")
         print("|")
 
-        # Print the UUID of the User/Client of the Party involved on the
-        # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-        print(" - User/Client's UUID: {}".format(self.get_user_client().get_user_client_uuid()))
-
-        # Print the Name of the User/Client of the Party involved on the
-        # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-        print(" - User/Client's Name: {}".format(self.get_user_client().get_user_client_name()))
-
         # Print the ID of the User/Client of the Party involved on the
         # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
         print(" - Party's ID: {}".format(self.party_id))
+
+        # Print the UUID of the User/Client of the Party involved on the
+        # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        print(" - Party's User/Client's UUID: {}".format(self.get_party_user_client().get_user_client_uuid()))
+
+        # Print the Name of the User/Client of the Party involved on the
+        # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        print(" - Party's User/Client's Name: {}".format(self.get_party_user_client().get_user_client_name()))
 
         # Print the Distributor status of the Party involved on the
         # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol

@@ -61,82 +61,112 @@ class QiskitSQCKAProtocolExecutorService:
         self.qiskit_sqcka_protocol_parameters_initialised = False
 
     # Set the Parties of the Protocol
-    def set_protocol_parties(self, parties_names, master_party_name, bipartite_pre_shared_keys):
+    def set_protocol_parties(self, users_clients, parties_names, master_party_name, bipartite_pre_shared_keys):
 
         # If the Bipartite Pre-Shared Keys were already be established
         if self.qiskit_sqcka_protocol_bipartite_pre_shared_keys_initialised:
 
-            # Create the list of Parties' Names
-            parties_names_lower = []
+            # Retrieve the number of Users/Clients
+            num_users_clients = len(users_clients)
 
-            # For each Party Name
-            for party_name in parties_names:
+            # Retrieve the number of Parties
+            num_parties = len(parties_names)
 
-                # Append the Party Name, in lowercase, to the list of Parties' Names
-                parties_names_lower.append(party_name.lower())
+            # If the number of Parties and Users/Clients are the same
+            if num_parties == num_users_clients:
 
-            # Change the Party's Name, for the lowercase
-            master_party_name_lower = master_party_name.lower()
+                # Create the list of Parties' Names
+                parties_names_lower = []
 
-            # If the Party Name, responsible for the distribution of the Common Secret Key (Conference Key),
-            # is not present in the list of Parties' Names involved
-            if master_party_name_lower not in parties_names_lower:
+                # For each Party Name
+                for party_name in parties_names:
 
-                # Raise the Value Error exception
-                raise ValueError("The Party Name specified to be the Master "
-                                 "(i.e., the party responsible for the distribution of the Common Secret Key "
-                                 "(Conference Key) between the parties involved is not present in "
-                                 "the list of Parties' Names involved on the Protocol!!!")
+                    # Append the Party Name, in lowercase, to the list of Parties' Names
+                    parties_names_lower.append(party_name.lower())
 
-            # Retrieve the number of parties involved in the Protocol
-            num_parties = len(parties_names_lower)
+                # Change the Party's Name, for the lowercase
+                master_party_name_lower = master_party_name.lower()
 
-            # Redefine the list of the Parties involved in the Protocol, according to the number of them
-            self.qiskit_sqcka_protocol_parties = [None] * num_parties
+                # If the Party Name, responsible for the distribution of the Common Secret Key (Conference Key),
+                # is not present in the list of Parties' Names involved
+                if master_party_name_lower not in parties_names_lower:
 
-            # For each Party involved in the Protocol
-            for current_party_id in range(num_parties):
+                    # Raise the Value Error exception
+                    raise ValueError("The Party Name specified to be the Master "
+                                     "(i.e., the party responsible for the distribution of the Common Secret Key "
+                                     "(Conference Key) between the parties involved is not present in "
+                                     "the list of Parties' Names involved on the Protocol!!!")
 
-                # Retrieve the name of the current Party
-                current_party_name = parties_names_lower[current_party_id]
+                # Redefine the list of the Parties involved in the Protocol, according to the number of them
+                self.qiskit_sqcka_protocol_parties = ([None] * num_parties)
 
-                # If the current Party is the Master Party
-                if current_party_name.lower() == master_party_name_lower.lower():
+                # For each Party involved in the Protocol
+                for current_party_id in range(num_parties):
 
-                    # Initialize the object of the Party, as the Master Party
-                    # noinspection PyTypeChecker
-                    self.qiskit_sqcka_protocol_parties[current_party_id] = \
-                        QiskitSQCKAProtocolParty(current_party_id, current_party_name.lower(),
-                                                 True, bipartite_pre_shared_keys)
+                    # Retrieve the name of the current Party
+                    current_party_name = parties_names_lower[current_party_id]
 
-                    self.set_protocol_master_party(self.qiskit_sqcka_protocol_parties[current_party_id])
+                    # Initialise the User/Client for the current Party
+                    current_party_user_client = None
 
-                # If the current Party is not the Master Party
-                else:
+                    # For each User/Client involved in the Protocol
+                    for current_num_user_client in range(num_users_clients):
 
-                    # Initialise the bipartite Pre-Shared Key
-                    bipartite_pre_shared_key = None
+                        # If the name of the current Party corresponds to
+                        # the current User/Client
+                        if current_party_name == \
+                                users_clients[current_num_user_client].get_user_client_name().lower():
 
-                    # For each bipartite Pre-Shared Key
-                    for current_bipartite_pre_shared_key in range(len(bipartite_pre_shared_keys)):
+                            # Retrieve the current User/Client
+                            current_party_user_client = users_clients[current_num_user_client]
 
-                        # Retrieve the current bipartite Pre-Shared Key
-                        bipartite_pre_shared_key = bipartite_pre_shared_keys[current_bipartite_pre_shared_key]
-
-                        # If the current bipartite Pre-Shared Key is owned by the current Party
-                        if bipartite_pre_shared_key.get_party_name_2() == current_party_name:
-
-                            # The pretended bipartite Pre-Shared Key was found, so the loop can be broken
+                            # The pretended User/Client was found, so the loop can be broken
                             break
 
-                    # Initialize the object of the Party, as a Normal Party
-                    # noinspection PyTypeChecker
-                    self.qiskit_sqcka_protocol_parties[current_party_id] = \
-                        QiskitSQCKAProtocolParty(current_party_id, current_party_name.lower(),
-                                                 False, bipartite_pre_shared_key)
+                    # If the current Party is the Master Party
+                    if current_party_name.lower() == master_party_name_lower.lower():
 
-            # Set the boolean flag for the initialisation of the Parties of the Protocol, as True
-            self.qiskit_sqcka_protocol_parties_initialised = True
+                        # Initialize the object of the Party, as the Master Party
+                        # noinspection PyTypeChecker
+                        self.qiskit_sqcka_protocol_parties[current_party_id] = \
+                            QiskitSQCKAProtocolParty(current_party_id, current_party_user_client,
+                                                     True, bipartite_pre_shared_keys)
+
+                        self.set_protocol_master_party(self.qiskit_sqcka_protocol_parties[current_party_id])
+
+                    # If the current Party is not the Master Party
+                    else:
+
+                        # Initialise the bipartite Pre-Shared Key
+                        bipartite_pre_shared_key = None
+
+                        # For each bipartite Pre-Shared Key
+                        for current_bipartite_pre_shared_key in range(len(bipartite_pre_shared_keys)):
+
+                            # Retrieve the current bipartite Pre-Shared Key
+                            bipartite_pre_shared_key = bipartite_pre_shared_keys[current_bipartite_pre_shared_key]
+
+                            # If the current bipartite Pre-Shared Key is owned by the current Party
+                            if bipartite_pre_shared_key \
+                                    .get_user_client_2().get_user_client_name() == current_party_name:
+
+                                # The pretended bipartite Pre-Shared Key was found, so the loop can be broken
+                                break
+
+                        # Initialize the object of the Party, as a Normal Party
+                        # noinspection PyTypeChecker
+                        self.qiskit_sqcka_protocol_parties[current_party_id] = \
+                            QiskitSQCKAProtocolParty(current_party_id, current_party_user_client,
+                                                     False, bipartite_pre_shared_key)
+
+                # Set the boolean flag for the initialisation of the Parties of the Protocol, as True
+                self.qiskit_sqcka_protocol_parties_initialised = True
+
+            # If the number of Users/Clients and Parties are not the same
+            else:
+
+                # Raise a Value Error
+                raise ValueError("The number of Users/Clients and Parties are not the same!!!")
 
         # If the Bipartite Pre-Shared Keys were not established yet
         else:

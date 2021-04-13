@@ -30,8 +30,7 @@ class QiskitSQCKAProtocolPreSharedKeyPair:
         self.timestamp = \
             TimestampGenerator.TimestampGenerator("pre-shared-key-{}-{}"
                                                   .format(self.user_client_1.get_user_client_name().lower(),
-                                                          self.user_client_2.get_user_client_name().lower()))\
-            .get_now_timestamp()
+                                                          self.user_client_2.get_user_client_name().lower()))
 
     # Return the User/Client #1
     def get_user_client_1(self):
@@ -45,8 +44,8 @@ class QiskitSQCKAProtocolPreSharedKeyPair:
     def get_bipartite_pre_shared_key(self):
         return self.bipartite_pre_shared_key
 
-    # Return the Timestamp of the generation of the Bipartite Pre-Shared Key
-    def get_timestamp(self):
+    # Return the Timestamp Generator of the Bipartite Pre-Shared Key
+    def get_timestamp_generator(self):
         return self.timestamp
 
     # Print the information about
@@ -54,4 +53,5 @@ class QiskitSQCKAProtocolPreSharedKeyPair:
     def print_info(self):
         print(" - ( {} , {} ) [{}]: {}\n".format(self.get_user_client_1().get_user_client_name(),
                                                  self.get_user_client_2().get_user_client_name(),
-                                                 self.timestamp, self.bipartite_pre_shared_key))
+                                                 self.timestamp.get_now_customised_format(),
+                                                 self.bipartite_pre_shared_key))
