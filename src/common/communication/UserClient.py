@@ -27,8 +27,8 @@ class UserClient:
         # The UUID (version 4) of the User/Client
         self.user_client_uuid = uuid4()
 
-        # The name of the User/Client
-        self.user_client_name = user_client_name
+        # The name of the User/Client, in lower case
+        self.user_client_name = user_client_name.lower()
 
     # Return the UUID (version 4) of the User/Client
     def get_user_client_uuid(self):
@@ -37,3 +37,7 @@ class UserClient:
     # Return the name of the User/Client
     def get_user_client_name(self):
         return self.user_client_name
+
+    # Print the information about the User/Client
+    def print_info(self):
+        print(" - [ {} ]: {};\n".format(self.user_client_uuid, self.user_client_name))
