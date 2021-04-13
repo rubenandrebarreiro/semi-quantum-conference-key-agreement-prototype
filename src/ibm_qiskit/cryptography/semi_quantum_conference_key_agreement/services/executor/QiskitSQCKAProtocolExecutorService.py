@@ -12,15 +12,26 @@ Acknowledgments:
 - Paulo Alexandre Mateus (pmat@math.ist.utl.pt)
 """
 
+# Import Packages and Libraries
+
+# Import QiskitSQCKAProtocol from IBM_Qiskit.Cryptography.Semi_Quantum_Conference_Key_Agreement
 from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreement import QiskitSQCKAProtocol
+
+# Import QiskitSQCKAProtocolParameters from IBM_Qiskit.Cryptography.Semi_Quantum_Conference_Key_Agreement.Common
 from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreement.common import QiskitSQCKAProtocolParameters
 
-from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreement.common.QiskitSQCKAProtocolParty import \
-    QiskitSQCKAProtocolParty
+# Import QiskitSQCKAProtocolParty from IBM_Qiskit.Cryptography.Semi_Quantum_Conference_Key_Agreement.Common
+from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreement.common import QiskitSQCKAProtocolParty
 
-from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreement\
-    .common.QiskitSQCKAProtocolPreSharedKeyPair import \
-    QiskitSQCKAProtocolPreSharedKeyPair
+# Import QiskitSQCKAProtocolParty from IBM_Qiskit.Cryptography.Semi_Quantum_Conference_Key_Agreement.Common
+from src.ibm_qiskit.cryptography.semi_quantum_conference_key_agreement.common \
+    import QiskitSQCKAProtocolPreSharedKeyPair
+
+# Import QiskitQuantumNode from IBM_Qiskit.Node.End_Node.Quantum
+from src.ibm_qiskit.node.end_node.quantum import QiskitQuantumNode
+
+# Import QiskitSemiQuantumNode from IBM_Qiskit.Node.End_Node.Semi_Quantum
+from src.ibm_qiskit.node.end_node.semi_quantum import QiskitSemiQuantumNode
 
 
 # Class for the Executor Service of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
@@ -57,8 +68,29 @@ class QiskitSQCKAProtocolExecutorService:
         # The Parameters of the Protocol
         self.qiskit_sqcka_protocol_parameters = None
 
-        # The boolean flag for the initialisation of Parameters of the Protocol
+        # The boolean flag for the initialisation of the Parameters of the Protocol
         self.qiskit_sqcka_protocol_parameters_initialised = False
+
+        # The Nodes of the Protocol
+        self.qiskit_sqcka_protocol_nodes = []
+
+        # The boolean flag for the configuration of the Nodes of the Protocol
+        self.qiskit_sqcka_protocol_nodes_configured = False
+
+    # Return the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+    def get_qiskit_sqcka_protocol(self):
+
+        # If the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol is already initialised
+        if self.qiskit_sqcka_protocol_initialised:
+
+            # Return the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            return self.qiskit_sqcka_protocol
+
+        # If the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol is not initialised yet
+        else:
+
+            # Return none
+            return None
 
     # Set the Parties of the Protocol
     def set_protocol_parties(self, users_clients, parties_names, master_party_name, bipartite_pre_shared_keys):
@@ -129,8 +161,9 @@ class QiskitSQCKAProtocolExecutorService:
                         # Initialize the object of the Party, as the Master Party
                         # noinspection PyTypeChecker
                         self.qiskit_sqcka_protocol_parties[current_party_id] = \
-                            QiskitSQCKAProtocolParty(current_party_id, current_party_user_client,
-                                                     True, bipartite_pre_shared_keys)
+                            QiskitSQCKAProtocolParty\
+                            .QiskitSQCKAProtocolParty(current_party_id, current_party_user_client,
+                                                      True, bipartite_pre_shared_keys)
 
                         self.set_protocol_master_party(self.qiskit_sqcka_protocol_parties[current_party_id])
 
@@ -156,8 +189,9 @@ class QiskitSQCKAProtocolExecutorService:
                         # Initialize the object of the Party, as a Normal Party
                         # noinspection PyTypeChecker
                         self.qiskit_sqcka_protocol_parties[current_party_id] = \
-                            QiskitSQCKAProtocolParty(current_party_id, current_party_user_client,
-                                                     False, bipartite_pre_shared_key)
+                            QiskitSQCKAProtocolParty\
+                            .QiskitSQCKAProtocolParty(current_party_id, current_party_user_client,
+                                                      False, bipartite_pre_shared_key)
 
                 # Set the boolean flag for the initialisation of the Parties of the Protocol, as True
                 self.qiskit_sqcka_protocol_parties_initialised = True
@@ -250,8 +284,9 @@ class QiskitSQCKAProtocolExecutorService:
 
                 # Create a Bipartite Pre-Shared Key object
                 qiskit_sqcka_protocol_bipartite_pre_shared_key = \
-                    QiskitSQCKAProtocolPreSharedKeyPair(user_client_1, user_client_2,
-                                                        bipartite_pre_shared_key_binary_string)
+                    QiskitSQCKAProtocolPreSharedKeyPair\
+                    .QiskitSQCKAProtocolPreSharedKeyPair(user_client_1, user_client_2,
+                                                         bipartite_pre_shared_key_binary_string)
 
                 # Add the previously created Bipartite Pre-Shared Key object to
                 # the list of the Bipartite Pre-Shared Keys
@@ -398,3 +433,119 @@ class QiskitSQCKAProtocolExecutorService:
 
         # Delete/Free the boolean flag for the initialisation of Parameters of the Protocol
         del self.qiskit_sqcka_protocol_parameters_initialised
+
+    # Configure the Nodes for each Party of the Protocol
+    def configure_protocol_nodes(self):
+
+        # If the Nodes of the Protocol are not configured and the Protocol is already initialised
+        if (not self.qiskit_sqcka_protocol_nodes_configured) and self.qiskit_sqcka_protocol_initialised:
+
+            # Retrieve the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            qiskit_sqcka_protocol = self.get_qiskit_sqcka_protocol()
+
+            # Retrieve the number of Parties involved in
+            # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            qiskit_sqcka_protocol_num_parties = qiskit_sqcka_protocol.get_parameters().get_num_parties()
+
+            # Retrieve all the Parties involved in
+            # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            qiskit_sqcka_protocol_parties = qiskit_sqcka_protocol.get_parties()
+
+            # Retrieve the Master Party of
+            # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            qiskit_sqcka_protocol_master_party = qiskit_sqcka_protocol.get_master_party()
+
+            # Retrieve the ID of the Master Party of
+            # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            qiskit_sqcka_protocol_master_party_id = qiskit_sqcka_protocol_master_party.get_party_id()
+
+            # Retrieve the User/Client of the Master Party of
+            # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            qiskit_sqcka_protocol_master_party_user_client = qiskit_sqcka_protocol_master_party.get_party_user_client()
+
+            # For each Party involved in the Protocol
+            for current_num_party in range(qiskit_sqcka_protocol_num_parties):
+
+                # Retrieve the current Party from the list of Parties involved in the Protocol
+                current_party = qiskit_sqcka_protocol_parties[current_num_party]
+
+                # Retrieve the ID of the current Party
+                current_party_id = current_party.get_party_id()
+
+                # Retrieve the User/Client of the current Party
+                current_party_user_client = current_party.get_party_user_client()
+
+                # If the current Party is the Master Party of the Protocol
+                if (current_party_id == qiskit_sqcka_protocol_master_party_id) and \
+                        (current_party_user_client.get_user_client_uuid() ==
+                         qiskit_sqcka_protocol_master_party_user_client.get_user_client_uuid()) and \
+                        (current_party_user_client.get_user_client_name() ==
+                         qiskit_sqcka_protocol_master_party_user_client.get_user_client_name()):
+
+                    # If the Master Party of the Protocol is really the Party responsible for
+                    # the distribution fo the Qubits on the Protocol
+                    if qiskit_sqcka_protocol_master_party.is_distributor():
+
+                        # Create a IBM Qiskit's Quantum Node for the Master Party of the Protocol
+                        qiskit_sqcka_protocol_node = QiskitQuantumNode.QiskitQuantumNode(current_num_party)
+
+                        # Attach the Master Party of the Protocol to
+                        # the IBM Qiskit's Quantum Node previously created
+                        qiskit_sqcka_protocol_node.attach_owner_client_party(qiskit_sqcka_protocol_master_party)
+
+                        # Append the previously created IBM Qiskit's Quantum Node to
+                        # the list of the Parties involved in the Protocol
+                        self.qiskit_sqcka_protocol_nodes.append(qiskit_sqcka_protocol_node)
+
+                    # If the Master Party of the Protocol is not the Party responsible for
+                    # the distribution for the Qubits/Particles on the Protocol
+                    else:
+
+                        # Raise a Value Error
+                        raise ValueError("The Master Party of the Protocol is not "
+                                         "the specified Distributor of the Protocol as it should be!!!")
+
+                # If the current Party is not the Master Party of the Protocol
+                elif (current_party_id != qiskit_sqcka_protocol_master_party_id) and \
+                        (current_party_user_client.get_user_client_uuid() !=
+                         qiskit_sqcka_protocol_master_party_user_client.get_user_client_uuid()) and \
+                        (current_party_user_client.get_user_client_name() !=
+                         qiskit_sqcka_protocol_master_party_user_client.get_user_client_name()):
+
+                    # Create a IBM Qiskit's Semi-Quantum Node for the current Party of the Protocol
+                    qiskit_sqcka_protocol_node = QiskitSemiQuantumNode.QiskitSemiQuantumNode(current_num_party)
+
+                    # Attach the current Party of the Protocol to
+                    # the IBM Qiskit's Semi-Quantum Node previously created Node
+                    qiskit_sqcka_protocol_node.attach_owner_client_party(current_party)
+
+                    # Append the previously created IBM Qiskit's Semi-Quantum Node to
+                    # the list of the Parties involved in the Protocol
+                    self.qiskit_sqcka_protocol_nodes.append(qiskit_sqcka_protocol_node)
+
+                # Set the boolean flag for the configuration of the Nodes of the Protocol, as True
+                self.qiskit_sqcka_protocol_nodes_configured = True
+
+        # If the Nodes of the Protocol are already configured
+        else:
+
+            # Raise a Value Error
+            raise ValueError("The Nodes of the Protocol are already configured!!!")
+
+    # Return the configured Nodes for the Parties involved in the Protocol
+    def get_protocol_configured_nodes(self):
+
+        # If the Protocol have the respective Nodes already configured for
+        # the Parties involved
+        if self.qiskit_sqcka_protocol_nodes_configured:
+
+            # Return the Nodes already configured for the Parties involved
+            return self.qiskit_sqcka_protocol_nodes
+
+        # If the Protocol does not have the respective Nodes already configured for
+        # the Parties involved
+        else:
+
+            # Raise a Value Error
+            raise ValueError("The Nodes for the Parties involved in the Protocol are not configured yet!!!")
+
