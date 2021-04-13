@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\src\common\utils\TimestampGenerator.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\ibm_qiskit\node\common\communication\modules\QiskitCommunicationModule.py">
           <value>
             <Attribute>
@@ -11,6 +18,13 @@
           </value>
         </entry>
         <entry key="\src\ibm_qiskit\node\end_node\semi_quantum\QiskitSemiQuantumWithDiscreteVariables.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\test\ibm_qiskit\cryptography\semi_quantum_conference_key_agreements\services\executor\TestQiskitSQCKAProtocolExecutorService.py">
           <value>
             <Attribute>
               <option name="separator" value="," />
