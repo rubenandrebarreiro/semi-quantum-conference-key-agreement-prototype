@@ -24,6 +24,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\ibm_qiskit\node\end_node\classical\QiskitClassicalNode.py">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\ibm_qiskit\node\end_node\semi_quantum\QiskitSemiQuantumWithDiscreteVariables.py">
           <value>
             <Attribute>
