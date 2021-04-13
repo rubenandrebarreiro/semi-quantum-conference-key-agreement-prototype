@@ -20,6 +20,9 @@ from src.common.enumerations import MemoryModuleTypes
 # Import the IBM Qiskit's Hybrid Memory from IBM_Qiskit.Node.Common.Memory.Hardware.Hybrid
 from src.ibm_qiskit.node.common.memory.hardware.hybrid import QiskitHybridMemory
 
+# Import the IBM Qiskit's Semi-Quantum Memory from IBM_Qiskit.Node.Common.Memory.Hardware.Semi_Quantum
+from src.ibm_qiskit.node.common.memory.hardware.semi_quantum import QiskitSemiQuantumMemory
+
 # Import the IBM Qiskit's Quantum Memory from IBM_Qiskit.Node.Common.Memory.Hardware.Quantum
 from src.ibm_qiskit.node.common.memory.hardware.quantum import QiskitQuantumMemory
 
@@ -38,6 +41,9 @@ class QiskitMemoryModule:
 
         # Initialise the IBM Qiskit's Hybrid Memories' Hardware of the IBM Qiskit's Memory Hardware Module
         self.qiskit_hybrid_memories = []
+
+        # Initialise the IBM Qiskit's Semi-Quantum Memories' Hardware of the IBM Qiskit's Memory Hardware Module
+        self.qiskit_semi_quantum_memories = []
 
         # Initialise the IBM Qiskit's Quantum Memories' Hardware of the IBM Qiskit's Memory Hardware Module
         self.qiskit_quantum_memories = []
@@ -64,6 +70,14 @@ class QiskitMemoryModule:
                 self.qiskit_hybrid_memories.append(qiskit_memory_to_add)
 
             # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
+            # for the case of a Semi-Quantum Memory Hardware being given
+            elif isinstance(qiskit_memory_to_add, QiskitSemiQuantumMemory.QiskitSemiQuantumMemory):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Memory Hardware
+                raise ValueError("It is not possible to add a Semi-Quantum Memory to "
+                                 "a Hybrid Memory Hardware Module!!!")
+
+            # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
             # for the case of a Quantum Memory Hardware being given
             elif isinstance(qiskit_memory_to_add, QiskitQuantumMemory.QiskitQuantumMemory):
 
@@ -84,6 +98,48 @@ class QiskitMemoryModule:
                 # Raise a Value Error
                 raise ValueError("It is not possible to add an Unknown Hardware Memory!!!")
 
+        # If the IBM Qiskit's Memory Hardware Module is Semi-Quantum,
+        # only Semi-Quantum Memory Hardware can be added
+        elif self.memory_module_type_tag == MemoryModuleTypes.SEMI_QUANTUM_MEMORY_ENUM:
+
+            # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
+            # for the case of a Hybrid Memory Hardware being given
+            if isinstance(qiskit_memory_to_add, QiskitHybridMemory.QiskitHybridMemory):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Memory Hardware
+                raise ValueError("It is not possible to add a Hybrid Memory to "
+                                 "a Semi-Quantum Memory Hardware Module!!!")
+
+            # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
+            # for the case of a Semi-Quantum Memory Hardware being given
+            elif isinstance(qiskit_memory_to_add, QiskitSemiQuantumMemory.QiskitSemiQuantumMemory):
+
+                # Add the given abstract IBM Qiskit's Memory Hardware to the IBM Qiskit's Memory Hardware Module
+                self.qiskit_semi_quantum_memories.append(qiskit_memory_to_add)
+
+            # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
+            # for the case of a Quantum Memory Hardware being given
+            elif isinstance(qiskit_memory_to_add, QiskitQuantumMemory.QiskitQuantumMemory):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Memory Hardware
+                raise ValueError("It is not possible to add a Quantum Memory to "
+                                 "a Semi-Quantum Memory Hardware Module!!!")
+
+            # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
+            # for the case of a Classical Memory Hardware being given
+            elif isinstance(qiskit_memory_to_add, QiskitClassicalMemory.QiskitClassicalMemory):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Memory Hardware
+                raise ValueError("It is not possible to add a Classical Memory to "
+                                 "a Semi-Quantum Memory Hardware Module!!!")
+
+            # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
+            # for the case of a Unknown Memory Hardware being given
+            else:
+
+                # Raise a Value Error
+                raise ValueError("It is not possible to add an Unknown Hardware Memory!!!")
+
         # If the IBM Qiskit's Memory Hardware Module is Quantum,
         # only Quantum Memory Hardware can be added
         elif self.memory_module_type_tag == MemoryModuleTypes.QUANTUM_MEMORY_ENUM:
@@ -93,7 +149,16 @@ class QiskitMemoryModule:
             if isinstance(qiskit_memory_to_add, QiskitHybridMemory.QiskitHybridMemory):
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Memory Hardware
-                raise ValueError("It is not possible to add a Hybrid Memory to a Quantum Memory Hardware Module!!!")
+                raise ValueError("It is not possible to add a Hybrid Memory to "
+                                 "a Quantum Memory Hardware Module!!!")
+
+            # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
+            # for the case of a Semi-Quantum Memory Hardware being given
+            elif isinstance(qiskit_memory_to_add, QiskitSemiQuantumMemory.QiskitSemiQuantumMemory):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Memory Hardware
+                raise ValueError("It is not possible to add a Semi-Quantum Memory to "
+                                 "a Quantum Memory Hardware Module!!!")
 
             # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
             # for the case of a Quantum Memory Hardware being given
@@ -107,7 +172,8 @@ class QiskitMemoryModule:
             elif isinstance(qiskit_memory_to_add, QiskitClassicalMemory.QiskitClassicalMemory):
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Memory Hardware
-                raise ValueError("It is not possible to add a Classical Memory to a Quantum Memory Hardware Module!!!")
+                raise ValueError("It is not possible to add a Classical Memory to "
+                                 "a Quantum Memory Hardware Module!!!")
 
             # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
             # for the case of a Unknown Memory Hardware being given
@@ -125,14 +191,24 @@ class QiskitMemoryModule:
             if isinstance(qiskit_memory_to_add, QiskitHybridMemory.QiskitHybridMemory):
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Memory Hardware
-                raise ValueError("It is not possible to add a Hybrid Memory to a Quantum Memory Hardware Module!!!")
+                raise ValueError("It is not possible to add a Hybrid Memory to "
+                                 "a Classical Memory Hardware Module!!!")
+
+            # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
+            # for the case of a Semi-Quantum Memory Hardware being given
+            elif isinstance(qiskit_memory_to_add, QiskitSemiQuantumMemory.QiskitSemiQuantumMemory):
+
+                # Raise a Value Error, according to the given abstract IBM Qiskit's Memory
+                raise ValueError("It is not possible to add a Semi-Quantum Memory to "
+                                 "a Classical Memory Hardware Module!!!")
 
             # Check if the abstract IBM Qiskit's Memory Hardware is compatible with the type of Memory Hardware,
             # for the case of a Quantum Memory Hardware being given
             elif isinstance(qiskit_memory_to_add, QiskitQuantumMemory.QiskitQuantumMemory):
 
                 # Raise a Value Error, according to the given abstract IBM Qiskit's Memory
-                raise ValueError("It is not possible to add a Classical Memory to a Quantum Memory Hardware Module!!!")
+                raise ValueError("It is not possible to add a Quantum Memory to "
+                                 "a Classical Memory Hardware Module!!!")
 
             # Check if the abstract IBM Qiskit's Memory is compatible with the type of Memory Hardware,
             # for the case of a Classical Memory Hardware being given
