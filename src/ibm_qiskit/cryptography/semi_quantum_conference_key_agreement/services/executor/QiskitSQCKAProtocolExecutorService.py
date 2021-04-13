@@ -125,6 +125,7 @@ class QiskitSQCKAProtocolExecutorService:
 
                         # If the current bipartite Pre-Shared Key is owned by the current Party
                         if bipartite_pre_shared_key.get_party_name_2() == current_party_name:
+
                             # The pretended bipartite Pre-Shared Key was found, so the loop can be broken
                             break
 
@@ -207,7 +208,7 @@ class QiskitSQCKAProtocolExecutorService:
                              "be configured in the Protocol!!!")
 
     # Add a Bipartite Pre-Shared Key to the Protocol
-    def add_protocol_bipartite_pre_shared_key(self, party_name_1, party_name_2,
+    def add_protocol_bipartite_pre_shared_key(self, user_client_1, user_client_2,
                                               bipartite_pre_shared_key_binary_string):
 
         # If the Parameters of the Protocol were already configured
@@ -219,7 +220,7 @@ class QiskitSQCKAProtocolExecutorService:
 
                 # Create a Bipartite Pre-Shared Key object
                 qiskit_sqcka_protocol_bipartite_pre_shared_key = \
-                    QiskitSQCKAProtocolPreSharedKeyPair(party_name_1, party_name_2,
+                    QiskitSQCKAProtocolPreSharedKeyPair(user_client_1, user_client_2,
                                                         bipartite_pre_shared_key_binary_string)
 
                 # Add the previously created Bipartite Pre-Shared Key object to

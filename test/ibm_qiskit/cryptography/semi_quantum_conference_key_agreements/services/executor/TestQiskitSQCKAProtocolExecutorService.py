@@ -35,10 +35,13 @@ from src.ibm_qiskit.utils.random_generator.binary.quantum import \
 # Import Qiskit_Default_Num_Counts from IBM_Qiskit.Common.QiskitLibraryParameters
 from src.ibm_qiskit.common.QiskitLibraryParameters import QISKIT_DEFAULT_NUM_COUNTS
 
-# Import GHZ_STATE ID from IBM_Qiskit.Common.QuantumEntanglementTypes
+# Import GHZ_STATE ID from Common.QuantumEntanglementTypes
 from src.common.enumerations.QuantumEntanglementTypes import GHZ_STATE
 
-# Import Utilities from IBM_Qiskit.Common.Utilities
+# Import the User/Client from Common.Communication
+from src.common.communication import UserClient
+
+# Import Utilities from Common.Utilities
 from src.common.utils.Utilities import Utilities
 
 
@@ -99,15 +102,51 @@ class MyTestCase(unittest.TestCase):
             # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Parameters
             qiskit_sqcka_protocol_parameters.print_info()
 
-        """ 2) Creation of 'artificial' Bipartite Pre-Shared Key Pairs, between the Parties """
+        """ 2) Creation of the User/Clients """
+
+        # The name of the Parties involved in the Protocol
+        parties_names = ["Alice", "Bob_1", "Bob_2"]
 
         # Retrieve the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Parameters
         qiskit_sqcka_protocol_parameters = \
             qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state \
             .get_protocol_parameters()
 
-        # The name of the Parties involved in the Protocol
-        parties_names = ["Alice", "Bob_1", "Bob_2"]
+        # Retrieve the number of Parties of the
+        # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Parameters
+        qiskit_sqcka_protocol_num_parties = qiskit_sqcka_protocol_parameters.get_num_parties()
+
+        # The User/Clients of the Parties involved in the Protocol
+        users_clients = []
+
+        # For each Party involved in the Protocol
+        for num_party in range(qiskit_sqcka_protocol_num_parties):
+
+            # Create the respective User/Client,
+            # with the name of the respective Party
+            user_client = UserClient.UserClient(parties_names[num_party])
+
+            # Append the previously created User/Client
+            users_clients.append(user_client)
+
+        # Print the header of the 2nd Logging
+        print("\n\n--- 2) CONFIGURED USERS/CLIENTS OF THE PROTOCOL ---\n")
+
+        # Print the sub-header for the information of the Users/Clients configured for the
+        # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Parameters
+        print("The information of the Users/Clients Configured:\n")
+
+        # For each User/Client involved in
+        # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        for num_user_client in range(len(users_clients)):
+
+            # Print the number of the current User/Client
+            print("User/Client #{}:".format((num_user_client + 1)))
+
+            # Print the information about the User/Client
+            users_clients[num_user_client].print_info()
+
+        """ 3) Creation of 'artificial' Bipartite Pre-Shared Key Pairs, between the Parties """
 
         # The name of the Master Party of the Protocol
         master_party_name = "Alice"
@@ -115,10 +154,6 @@ class MyTestCase(unittest.TestCase):
         # Retrieve the number of Rounds of the
         # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Parameters
         qiskit_sqcka_protocol_num_rounds = qiskit_sqcka_protocol_parameters.get_num_rounds()
-
-        # Retrieve the number of Parties of the
-        # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's Parameters
-        qiskit_sqcka_protocol_num_parties = qiskit_sqcka_protocol_parameters.get_num_parties()
 
         # Retrieve the probability of the all the receiving Parties reflect her destined Qubits,
         # in the same round of the Protocol, as the probability of occurrence of a X-Measurement Round happen
@@ -185,7 +220,7 @@ class MyTestCase(unittest.TestCase):
                             # Break the forever loop
                             break
 
-                    # The name of the Party #1 and #2
+                    # Initialise the names of the Parties of the Pair of Owners
                     party_name_1 = party_name_2 = None
 
                     # If the name of the Party #1 of the Pair of Owners is the name of the Master Party
@@ -208,10 +243,30 @@ class MyTestCase(unittest.TestCase):
                         # Set the name of the Party #2
                         party_name_2 = bipartite_party_pair_names[0]
 
+                    # Initialise the Users/Clients of the Pair of Owners
+                    user_client_1 = user_client_2 = None
+
+                    # For each User/Client involved in
+                    # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+                    for num_user_client in range(len(users_clients)):
+
+                        # If the current User/Client has the same name of the Party #1
+                        if users_clients[num_user_client].get_user_client_name() == party_name_1.lower():
+
+                            # Set the User/Client #1
+                            user_client_1 = users_clients[num_user_client]
+
+                        # If the current User/Client has the same name of the Party #2
+                        if users_clients[num_user_client].get_user_client_name() == party_name_1.lower():
+
+                            # Set the User/Client #2
+                            user_client_2 = users_clients[num_user_client]
+
                     # Add the previously created Bipartite Pre-Shared Key to
                     # the Semi-Quantum Conference Key Agreement (SQCKA) Protocol
                     qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state\
-                        .add_protocol_bipartite_pre_shared_key(party_name_1, party_name_2, bipartite_pre_shared_key)
+                        .add_protocol_bipartite_pre_shared_key(user_client_1, user_client_2,
+                                                               bipartite_pre_shared_key)
 
                 # Set the Bipartite Pre-Shared Keys of
                 # the Semi-Quantum Conference Key Agreement (SQCKA) Protocol, as initialised
@@ -244,8 +299,8 @@ class MyTestCase(unittest.TestCase):
             # Bipartite Pre-Shared Keys
             num_bipartite_pre_shared_keys = len(qiskit_sqcka_protocol_bipartite_pre_shared_keys)
 
-            # Print the header of the 2nd Logging
-            print("\n\n--- 2) BIPARTITE PRE-SHARED KEY PAIRS OF THE PROTOCOL ---\n")
+            # Print the header of the 3rd Logging
+            print("\n\n--- 3) BIPARTITE PRE-SHARED KEY PAIRS OF THE PROTOCOL ---\n")
 
             # For each Bipartite Pre-Shared Key
             for current_num_bipartite_pre_shared_key in range(num_bipartite_pre_shared_keys):
@@ -263,7 +318,7 @@ class MyTestCase(unittest.TestCase):
                 # current Bipartite Pre-Shared Key
                 current_bipartite_pre_shared_key.print_info()
 
-        """ 3) Creation of the Parties involved on the Protocol """
+        """ 4) Creation of the Parties involved on the Protocol """
 
         # Retrieve the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol's
         # Bipartite Pre-Shared Keys
@@ -290,7 +345,7 @@ class MyTestCase(unittest.TestCase):
             num_protocol_parties = len(protocol_parties)
 
             # Print the header of the 3rd Logging
-            print("\n\n--- 3) PARTIES INVOLVED IN THE PROTOCOL ---\n")
+            print("\n\n--- 4) PARTIES INVOLVED IN THE PROTOCOL ---\n")
 
             # For each Party of the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
             for current_num_protocol_party in range(num_protocol_parties):
