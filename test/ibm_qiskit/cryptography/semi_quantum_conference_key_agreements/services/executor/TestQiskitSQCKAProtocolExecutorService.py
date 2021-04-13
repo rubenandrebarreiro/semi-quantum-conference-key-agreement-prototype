@@ -366,11 +366,43 @@ class MyTestCase(unittest.TestCase):
             # IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
             protocol_master_party.print_info()
 
-        """ 4) Creation of the final object for
+        """ 5) Initialisation of the final object for
         the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol """
 
         # Initialise the final object for the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
         qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state.initialise_protocol()
+
+        # Print the header of the 5th Logging
+        print("\n\n--- 5) THE PROTOCOL WAS INITIALISED ---\n")
+
+        """ 6) Configuration of the Nodes for the parties involved in
+        the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol """
+
+        # Configure the Nodes for the final Parties of
+        # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state\
+            .configure_protocol_nodes()
+
+        # Print the header of the 6th Logging
+        print("\n\n--- 6) NODES CONFIGURED FOR THE PARTIES INVOLVED IN THE PROTOCOL ---\n")
+
+        # Retrieve the previously configured Nodes for the Parties involved in
+        # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        protocol_configured_nodes = \
+            qiskit_sqcka_protocol_executor_service_16_rounds_3_parties_2_bases_1_channel_ghz_state\
+            .get_protocol_configured_nodes()
+
+        # Retrieve the number of previously configured Nodes for the Parties involved in
+        # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        num_protocol_configured_nodes = len(protocol_configured_nodes)
+
+        # For the previously configured Nodes for each Party involved in
+        # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+        for current_num_protocol_configured_node in range(num_protocol_configured_nodes):
+
+            # Print the information of the current configured Node for the respective Party involved in
+            # the IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
+            protocol_configured_nodes[current_num_protocol_configured_node].print_info()
 
         # Dummy Assert Equal for Unittest
         self.assertEqual(True, True)
