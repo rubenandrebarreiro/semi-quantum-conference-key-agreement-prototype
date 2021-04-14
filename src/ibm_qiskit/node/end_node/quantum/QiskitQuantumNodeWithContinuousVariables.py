@@ -20,6 +20,10 @@ from src.ibm_qiskit.node.common.memory.modules import QiskitMemoryModule
 # the IBM_Qiskit.Node.Common.Communication.Modules
 from src.ibm_qiskit.node.common.communication.modules import QiskitCommunicationModule
 
+# Import the Enumeration for the Node Types from
+# the Common.Enumerations
+from src.common.enumerations import NodeTypes
+
 # Import the Enumeration for the Memory Module Types from
 # the Common.Enumerations
 from src.common.enumerations import MemoryModuleTypes
@@ -37,6 +41,11 @@ class QiskitQuantumNodeWithContinuousVariables:
 
         # The ID of the IBM Qiskit's Quantum Node with Continuous Variables
         self.quantum_node_with_continuous_variables_id = quantum_node_with_continuous_variables_id
+
+        # The Tag of the Type of the IBM Qiskit's Quantum Node,
+        # with Continuous Variables
+        self.quantum_node_with_continuous_variables_type_tag = \
+            NodeTypes.QUANTUM_NODE_CONTINUOUS_VARIABLES_ENUM
 
         # The Owner Client Party of the IBM Qiskit's Quantum Node with Continuous Variables
         self.owner_client_party = None
@@ -81,6 +90,10 @@ class QiskitQuantumNodeWithContinuousVariables:
     # Return the ID of the IBM Qiskit's Quantum Node with Continuous Variables
     def get_quantum_node_with_continuous_variables_id(self):
         return self.quantum_node_with_continuous_variables_id
+
+    # Return the Tag of the Type of the IBM Qiskit's Quantum Node with Continuous Variables
+    def get_quantum_node_with_continuous_variables_type_tag(self):
+        return self.quantum_node_with_continuous_variables_type_tag
 
     # Return the Owner Client Party, using the IBM Qiskit's Quantum Node with Continuous Variables
     def get_owner_client_party(self):
@@ -131,6 +144,9 @@ class QiskitQuantumNodeWithContinuousVariables:
             # the IBM Qiskit's Quantum Node, with Continuous Variables
             print("   -   Not owned by no Client/Party;")
 
+        # Print the Tag of the Type of the IBM Qiskit's Quantum Node, with Continuous Variables
+        print("   - Node's Type Tag: {};".format(self.get_quantum_node_with_continuous_variables_type_tag()))
+
         # Print the Tag for the Memory Module Type of
         # the IBM Qiskit's Quantum Node, with Continuous Variables
         print("   - Memory Module Type's Tag: {};"
@@ -144,4 +160,3 @@ class QiskitQuantumNodeWithContinuousVariables:
         # Some prints to draw a bottom left-side corner
         print("|")
         print("|__")
-

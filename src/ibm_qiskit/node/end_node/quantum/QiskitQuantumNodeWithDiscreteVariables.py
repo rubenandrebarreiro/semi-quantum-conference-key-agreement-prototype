@@ -20,6 +20,10 @@ from src.ibm_qiskit.node.common.memory.modules import QiskitMemoryModule
 # the IBM_Qiskit.Node.Common.Communication.Modules
 from src.ibm_qiskit.node.common.communication.modules import QiskitCommunicationModule
 
+# Import the Enumeration for the Node Types from
+# the Common.Enumerations
+from src.common.enumerations import NodeTypes
+
 # Import the Enumeration for the Memory Module Types from
 # the Common.Enumerations
 from src.common.enumerations import MemoryModuleTypes
@@ -37,6 +41,11 @@ class QiskitQuantumNodeWithDiscreteVariables:
 
         # The ID of the IBM Qiskit's Quantum Node with Discrete Variables
         self.quantum_node_with_discrete_variables_id = quantum_node_with_discrete_variables_id
+
+        # The Tag of the Type of the IBM Qiskit's Quantum Node,
+        # with Discrete Variables
+        self.quantum_node_with_discrete_variables_type_tag = \
+            NodeTypes.QUANTUM_NODE_DISCRETE_VARIABLES_ENUM
 
         # The Owner Client Party of the IBM Qiskit's Quantum Node with Discrete Variables
         self.owner_client_party = None
@@ -81,6 +90,10 @@ class QiskitQuantumNodeWithDiscreteVariables:
     # Return the ID of the IBM Qiskit's Quantum Node with Discrete Variables
     def get_quantum_node_with_discrete_variables_id(self):
         return self.quantum_node_with_discrete_variables_id
+
+    # Return the Tag of the Type of the IBM Qiskit's Quantum Node with Discrete Variables
+    def get_quantum_node_with_discrete_variables_type_tag(self):
+        return self.quantum_node_with_discrete_variables_type_tag
 
     # Return the Owner Client Party, using the IBM Qiskit's Quantum Node with Discrete Variables
     def get_owner_client_party(self):
@@ -130,6 +143,9 @@ class QiskitQuantumNodeWithDiscreteVariables:
             # Print the information about none Owner Client/Party for
             # the IBM Qiskit's Quantum Node, with Discrete Variables
             print("   -   Not owned by no Client/Party;")
+
+        # Print the Tag of the Type of the IBM Qiskit's Quantum Node, with Discrete Variables
+        print("   - Node's Type Tag: {};".format(self.get_quantum_node_with_discrete_variables_type_tag()))
 
         # Print the Tag for the Memory Module Type of
         # the IBM Qiskit's Quantum Node, with Discrete Variables

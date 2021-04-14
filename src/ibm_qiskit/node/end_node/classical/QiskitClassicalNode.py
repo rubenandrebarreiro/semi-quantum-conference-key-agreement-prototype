@@ -20,6 +20,10 @@ from src.ibm_qiskit.node.common.memory.modules import QiskitMemoryModule
 # the IBM_Qiskit.Node.Common.Communication.Modules
 from src.ibm_qiskit.node.common.communication.modules import QiskitCommunicationModule
 
+# Import the Enumeration for the Node Types from
+# the Common.Enumerations
+from src.common.enumerations import NodeTypes
+
 # Import the Enumeration for the Memory Module Types from
 # the Common.Enumerations
 from src.common.enumerations import MemoryModuleTypes
@@ -37,6 +41,10 @@ class QiskitClassicalNode:
 
         # The ID of the IBM Qiskit's Classical Node
         self.classical_node_id = classical_node_id
+
+        # The Tag of the Type of the IBM Qiskit's Classical Node
+        self.classical_node_type_tag = \
+            NodeTypes.CLASSICAL_NODE_ENUM
 
         # The Owner Client Party of the IBM Qiskit's Classical Node
         self.owner_client_party = None
@@ -80,6 +88,10 @@ class QiskitClassicalNode:
 
     # Return the ID of the IBM Qiskit's Classical Node
     def get_classical_node_id(self):
+        return self.classical_node_id
+
+    # Return the Tag of the Type of the IBM Qiskit's Classical Node
+    def get_classical_node_type_tag(self):
         return self.classical_node_id
 
     # Return the Owner Client Party, using the IBM Qiskit's Classical Node
@@ -131,14 +143,17 @@ class QiskitClassicalNode:
             # the IBM Qiskit's Classical Node
             print("   -   Not owned by no Client/Party;")
 
+        # Print the Tag of the Type of the IBM Qiskit's Classical Node
+        print("   - Node's Type Tag: {};".format(self.classical_node_type_tag))
+
         # Print the Tag for the Memory Module Type of
         # the IBM Qiskit's Classical Node
-        print("   - Memory Module Type's Tag: {};"
+        print("     - Memory Module Type's Tag: {};"
               .format(self.get_memory_hardware_module().get_memory_module_type_tag().lower()))
 
         # Print the Tag for the Communication Module Type of
         # the IBM Qiskit's Classical Node
-        print("   - Communication Module Type's Tag: {};"
+        print("     - Communication Module Type's Tag: {};"
               .format(self.get_communication_hardware_module().get_communication_module_type_tag().lower()))
 
         # Some prints to draw a bottom left-side corner
