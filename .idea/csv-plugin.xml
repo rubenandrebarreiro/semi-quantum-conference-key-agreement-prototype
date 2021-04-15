@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\ibm_qiskit\communication\channel\quantum\discrete_variable\QiskitQuantumChannelDiscreteVariablesByFiberOptic.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\ibm_qiskit\cryptography\semi_quantum_conference_key_agreement\services\executor\QiskitSQCKAProtocolExecutorService.py">
           <value>
             <Attribute>
