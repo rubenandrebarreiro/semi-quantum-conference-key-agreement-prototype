@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\ibm_qiskit\node\common\communication\hardware\quantum\discrete_variable\fiber_optic\QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\ibm_qiskit\node\common\communication\modules\QiskitCommunicationModule.py">
           <value>
             <Attribute>
