@@ -33,3 +33,6 @@ class QiskitSQCKAProtocolRound:
     # Return the Party's Owner Times for the Slots of the Rounds of the Protocol
     def get_party_owner_times(self):
         return self.party_owner_times
+
+    def print_info(self):
+        print
