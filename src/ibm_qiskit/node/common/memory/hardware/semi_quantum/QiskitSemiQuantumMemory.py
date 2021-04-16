@@ -57,7 +57,7 @@ class QiskitSemiQuantumMemory:
             QiskitClassicalRegister.QiskitClassicalRegister("crsemiquantummemory{}".format(self.semi_quantum_memory_id),
                                                             semi_quantum_memory_num_bits)
 
-        # The Quantum Circuit for this IBM Qiskit's Semi-Quantum Memory
+        # The Quantum Circuit for the IBM Qiskit's Semi-Quantum Memory
         self.qiskit_quantum_circuit_semi_quantum_memory = \
             QiskitQuantumCircuit\
             .QiskitQuantumCircuit("qcsemiquantummemory{}".format(self.semi_quantum_memory_id),
@@ -81,3 +81,7 @@ class QiskitSemiQuantumMemory:
     # Return the tag for the Memory Type for the IBM Qiskit's Semi-Quantum Memory
     def get_semi_quantum_memory_type_tag(self):
         return self.semi_quantum_memory_type_tag
+
+    # Return the Quantum Circuit for the IBM Qiskit's Semi-Quantum Memory
+    def get_qiskit_quantum_circuit_semi_quantum_memory(self):
+        return self.qiskit_quantum_circuit_semi_quantum_memory

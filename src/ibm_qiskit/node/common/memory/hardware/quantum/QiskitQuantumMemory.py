@@ -46,7 +46,7 @@ class QiskitQuantumMemory:
             QiskitQuantumRegister.QiskitQuantumRegister("qrquantummemory{}".format(self.quantum_memory_id),
                                                         quantum_memory_num_qubits)
 
-        # The Quantum Circuit for this IBM Qiskit's Quantum Memory
+        # The Quantum Circuit for the IBM Qiskit's Quantum Memory
         self.qiskit_quantum_circuit_quantum_memory = \
             QiskitQuantumCircuit\
             .QiskitQuantumCircuit("qcquantummemory{}".format(self.quantum_memory_id),
@@ -66,3 +66,7 @@ class QiskitQuantumMemory:
     # Return the tag for the Memory Type for the IBM Qiskit's Quantum Memory
     def get_quantum_memory_type_tag(self):
         return self.quantum_memory_type_tag
+
+    # Return the Quantum Circuit for this IBM Qiskit's Quantum Memory
+    def get_qiskit_quantum_circuit_quantum_memory(self):
+        return self.qiskit_quantum_circuit_quantum_memory
