@@ -216,11 +216,11 @@ class QiskitQuantumCommunicationChannelDiscreteVariablesByFiberOptic:
             # Apply the SWAP Gate between the Sender's Qubit and Medium's Qubit
             self.quantum_communication_channel_discrete_variables_fiber_optic\
                 .apply_swap(CommunicationInterfacesModesTypes.SENDER_INTERFACE_ID,
-                            CommunicationInterfacesModesTypes.MEDIUM_INTERFACE)
+                            CommunicationInterfacesModesTypes.MEDIUM_INTERFACE_ID)
 
             # Apply the SWAP Gate between the Medium's Qubit and Receiver's Qubit
             self.quantum_communication_channel_discrete_variables_fiber_optic\
-                .apply_swap(CommunicationInterfacesModesTypes.MEDIUM_INTERFACE,
+                .apply_swap(CommunicationInterfacesModesTypes.MEDIUM_INTERFACE_ID,
                             CommunicationInterfacesModesTypes.RECEIVER_INTERFACE_ID)
 
         # If the Quantum Communication Channel with Discrete Variables, by Fiber Optic is Idle
