@@ -57,7 +57,7 @@ class QiskitHybridMemory:
             QiskitClassicalRegister.QiskitClassicalRegister("crhybridmemory{}".format(self.hybrid_memory_id),
                                                             hybrid_memory_num_bits)
 
-        # The Quantum Circuit for this IBM Qiskit's Hybrid Memory
+        # The Quantum Circuit for the IBM Qiskit's Hybrid Memory
         self.qiskit_quantum_circuit_hybrid_memory = \
             QiskitQuantumCircuit\
             .QiskitQuantumCircuit("qchybridmemory{}".format(self.hybrid_memory_id),
@@ -81,3 +81,7 @@ class QiskitHybridMemory:
     # Return the tag for the Memory Type for the IBM Qiskit's Hybrid Memory
     def get_hybrid_memory_type_tag(self):
         return self.hybrid_memory_type_tag
+
+    # Return the Quantum Circuit for the IBM Qiskit's Hybrid Memory
+    def get_qiskit_quantum_circuit_hybrid_memory(self):
+        return self.qiskit_quantum_circuit_hybrid_memory

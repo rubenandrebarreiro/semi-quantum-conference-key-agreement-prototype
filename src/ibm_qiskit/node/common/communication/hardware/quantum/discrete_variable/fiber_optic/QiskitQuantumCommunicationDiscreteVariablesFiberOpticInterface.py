@@ -66,13 +66,13 @@ class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
 
             # Initialise the IBM Qiskit's Quantum Circuit, Quantum Register and Classical Register,
             # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
-            self.qiskit_quantum_register_quantum_communication_fiber_optic_interface = None
-            self.qiskit_classical_register_quantum_communication_fiber_optic_interface = None
-            self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface = None
+            self.qiskit_quantum_register_quantum_communication_discrete_variables_fiber_optic_interface = None
+            self.qiskit_classical_register_quantum_communication_discrete_variables_fiber_optic_interface = None
+            self.qiskit_quantum_circuit_quantum_communication_discrete_variables_fiber_optic_interface = None
 
             # Initialise the Boolean Flag, responsible to keep the information about the Idle status of
             # the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface, itself
-            self.quantum_communication_fiber_optic_interface_idle = True
+            self.quantum_communication_discrete_variables_fiber_optic_interface_idle = True
 
         # If the Port Flag for the IBM Qiskit's Quantum Communication,
         # using Discrete Variables, by Fiber Optic Interface, is not valid
@@ -135,23 +135,33 @@ class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
 
     # Return the IBM Qiskit's Quantum Register from the IBM Qiskit's Quantum Communication,
     # using Discrete Variables, by Fiber Optic Interface
-    def get_qiskit_quantum_register_quantum_communication_fiber_optic_interface(self):
-        return self.qiskit_quantum_register_quantum_communication_fiber_optic_interface
+    def get_qiskit_quantum_register_quantum_communication_discrete_variables_fiber_optic_interface(self):
+        return self.qiskit_quantum_register_quantum_communication_discrete_variables_fiber_optic_interface
 
     # Return the IBM Qiskit's Classical Register from the IBM Qiskit's Quantum Communication,
     # using Discrete Variables, by Fiber Optic Interface
-    def get_qiskit_classical_register_quantum_communication_fiber_optic_interface(self):
-        return self.qiskit_classical_register_quantum_communication_fiber_optic_interface
+    def get_qiskit_classical_register_quantum_communication_discrete_variables_fiber_optic_interface(self):
+        return self.qiskit_classical_register_quantum_communication_discrete_variables_fiber_optic_interface
 
     # Return the IBM Qiskit's Quantum Circuit from the IBM Qiskit's Quantum Communication,
     # using Discrete Variables, by Fiber Optic Interface
-    def get_qiskit_quantum_circuit_quantum_communication_fiber_optic_interface(self):
-        return self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface
+    def get_qiskit_quantum_circuit_quantum_communication_discrete_variables_fiber_optic_interface(self):
+        return self.qiskit_quantum_circuit_quantum_communication_discrete_variables_fiber_optic_interface
 
     # Return the Boolean Flag, responsible to keep the information about the Idle status of
     # the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface itself
     def is_quantum_communication_fiber_optic_interface_idle(self):
-        return self.quantum_communication_fiber_optic_interface_idle
+        return self.quantum_communication_discrete_variables_fiber_optic_interface_idle
+
+    # Set the Boolean Flag, responsible to keep the information about the Idle status of
+    # the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface itself, as False
+    def set_quantum_communication_discrete_variables_fiber_optic_interface_busy(self):
+        self.quantum_communication_discrete_variables_fiber_optic_interface_idle = False
+
+    # Set the Boolean Flag, responsible to keep the information about the Idle status of
+    # the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface itself, as True
+    def set_quantum_communication_discrete_variables_fiber_optic_interface_idle(self):
+        self.quantum_communication_discrete_variables_fiber_optic_interface_idle = True
 
     # Initialise the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
     def initialise_interface(self):
@@ -161,7 +171,7 @@ class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
 
         # Creation of the IBM Qiskit's Quantum Register,
         # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
-        self.qiskit_quantum_register_quantum_communication_fiber_optic_interface = \
+        self.qiskit_quantum_register_quantum_communication_discrete_variables_fiber_optic_interface = \
             QiskitQuantumRegister\
             .QiskitQuantumRegister("qrquantumcommunicationdiscretevariablesfiberopticinterfaceidle{}"
                                    .format(self.quantum_communication_discrete_variables_fiber_optic_interface_id),
@@ -169,7 +179,7 @@ class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
 
         # Creation of the IBM Qiskit's Classical Register,
         # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface
-        self.qiskit_classical_register_quantum_communication_fiber_optic_interface = \
+        self.qiskit_classical_register_quantum_communication_discrete_variables_fiber_optic_interface = \
             QiskitClassicalRegister\
             .QiskitClassicalRegister("crquantumcommunicationdiscretevariablesfiberopticinterfaceidle{}"
                                      .format(self.quantum_communication_discrete_variables_fiber_optic_interface_id),
@@ -178,10 +188,15 @@ class QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface:
         # Creation of the IBM Qiskit's Quantum Circuit,
         # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface,
         # with one Quantum and Classical Registers
-        self.qiskit_quantum_circuit_quantum_communication_fiber_optic_interface = \
+        self.qiskit_quantum_circuit_quantum_communication_discrete_variables_fiber_optic_interface = \
             QiskitQuantumCircuit\
-            .QiskitQuantumCircuit("qcquantumcommunicationdiscretevariablesfiberopticinterfaceidle{}"
-                                  .format(self.quantum_communication_discrete_variables_fiber_optic_interface_id),
-                                  self.qiskit_quantum_register_quantum_communication_fiber_optic_interface,
-                                  self.qiskit_classical_register_quantum_communication_fiber_optic_interface,
-                                  global_phase=0)
+            .QiskitQuantumCircuit(
+                "qcquantumcommunicationdiscretevariablesfiberopticinterfaceidle{}"
+                .format(self.quantum_communication_discrete_variables_fiber_optic_interface_id),
+                self.qiskit_quantum_register_quantum_communication_discrete_variables_fiber_optic_interface,
+                self.qiskit_classical_register_quantum_communication_discrete_variables_fiber_optic_interface,
+                global_phase=0)
+
+        # Initialise the Boolean Flag, responsible to keep the information about the Idle status of
+        # the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface, itself
+        self.quantum_communication_discrete_variables_fiber_optic_interface_idle = True

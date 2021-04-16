@@ -42,24 +42,24 @@ class QiskitQuantumCommunicationChannelDiscreteVariablesByFiberOptic:
 
     # Constructor of the IBM Qiskit's Quantum Channel with Discrete Variables, By Fiber Optic
     def __init__(self, fiber_optic_cable,
-                 quantum_communication_interface_fiber_optic_sender,
-                 quantum_communication_interface_fiber_optic_receiver):
+                 quantum_communication_discrete_variables_fiber_optic_interface_sender,
+                 quantum_communication_discrete_variables_fiber_optic_interface_receiver):
 
         # If the Quantum Communication Interfaces are
         # IBM Qiskit's Quantum Communication with Discrete Variables, by Fiber Optic Interfaces
-        if (isinstance(quantum_communication_interface_fiber_optic_sender,
+        if (isinstance(quantum_communication_discrete_variables_fiber_optic_interface_sender,
                        QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface
                        .QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface)) and \
-            (isinstance(quantum_communication_interface_fiber_optic_receiver,
+            (isinstance(quantum_communication_discrete_variables_fiber_optic_interface_receiver,
                         QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface
                         .QiskitQuantumCommunicationDiscreteVariablesFiberOpticInterface)):
 
             # If the respective IBM Qiskit's Quantum Communication with Discrete Variables, by Fiber Optic Interfaces,
             # are set correctly, as Out and In Ports, regarding the Sender and the Receiver, respectively
-            if (quantum_communication_interface_fiber_optic_sender
+            if (quantum_communication_discrete_variables_fiber_optic_interface_sender
                     .get_quantum_communication_discrete_variables_fiber_optic_interface_port_flag().upper() ==
                     CommunicationInterfacesModesTypes.OUT_PORT) and \
-                (quantum_communication_interface_fiber_optic_receiver
+                (quantum_communication_discrete_variables_fiber_optic_interface_receiver
                  .get_quantum_communication_discrete_variables_fiber_optic_interface_port_flag() ==
                  CommunicationInterfacesModesTypes.IN_PORT):
 
@@ -67,12 +67,12 @@ class QiskitQuantumCommunicationChannelDiscreteVariablesByFiberOptic:
                 self.fiber_optic_cable = fiber_optic_cable
 
                 # The Sender of the Quantum Communication, using Discrete Variables, by Fiber Optic Interface
-                self.quantum_communication_interface_fiber_optic_sender = \
-                    quantum_communication_interface_fiber_optic_sender
+                self.quantum_communication_discrete_variables_fiber_optic_interface_sender = \
+                    quantum_communication_discrete_variables_fiber_optic_interface_sender
 
                 # The Receiver of the Quantum Communication, using Discrete Variables, by Fiber Optic Interface
-                self.quantum_communication_interface_fiber_optic_receiver = \
-                    quantum_communication_interface_fiber_optic_receiver
+                self.quantum_communication_discrete_variables_fiber_optic_interface_receiver = \
+                    quantum_communication_discrete_variables_fiber_optic_interface_receiver
 
                 # Initialise the Quantum Register for
                 # the IBM Qiskit's Quantum Communication Channel with Discrete Variables, By Fiber Optic Medium
@@ -84,7 +84,7 @@ class QiskitQuantumCommunicationChannelDiscreteVariablesByFiberOptic:
 
                 # Initialise the Quantum Circuit for
                 # the IBM Qiskit's Quantum Communication Channel with Discrete Variables, By Fiber Optic Medium
-                self.quantum_communication_channel_discrete_variables_fiber_optic = None
+                self.quantum_circuit_quantum_communication_channel_discrete_variables_fiber_optic = None
 
                 # Set the boolean flag of the Idle Status of
                 # the IBM Qiskit's Quantum Channel with Discrete Variables, By Fiber Optic, as True
@@ -131,7 +131,7 @@ class QiskitQuantumCommunicationChannelDiscreteVariablesByFiberOptic:
         # Initialisation of the IBM Qiskit's Quantum Register,
         # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Medium,
         # with one Quantum and Classical Registers
-        self.quantum_communication_channel_discrete_variables_fiber_optic = \
+        self.quantum_circuit_quantum_communication_channel_discrete_variables_fiber_optic = \
             QiskitQuantumCircuit \
             .QiskitQuantumCircuit("qcquantumcommunicationchanneldiscretevariablesfiberopticmediumidle{}"
                                   .format(self.fiber_optic_cable.get_fiber_optic_cable_id()),
@@ -146,12 +146,12 @@ class QiskitQuantumCommunicationChannelDiscreteVariablesByFiberOptic:
         # Reset (initialise) the IBM Qiskit's Quantum Circuit, Quantum Register and Classical Register,
         # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface,
         # for the Sender Party
-        self.quantum_communication_interface_fiber_optic_sender.initialise_interface()
+        self.quantum_communication_discrete_variables_fiber_optic_interface_sender.initialise_interface()
 
         # Reset (initialise) the IBM Qiskit's Quantum Circuit, Quantum Register and Classical Register,
         # for the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic Interface,
         # for the Receiver Party
-        self.quantum_communication_interface_fiber_optic_receiver.initialise_interface()
+        self.quantum_communication_discrete_variables_fiber_optic_interface_receiver.initialise_interface()
 
         # Set the boolean flag of the Idle Status of
         # the IBM Qiskit's Quantum Channel with Discrete Variables, By Fiber Optic, as True
@@ -162,38 +162,55 @@ class QiskitQuantumCommunicationChannelDiscreteVariablesByFiberOptic:
     # using Discrete Variables, by Fiber Optic Interface, between two Users/Clients
     def start_quantum_communication(self):
 
-        # If the IBM Qiskit's Quantum Communication, using Discrete Variables, by Fiber Optic is currently Idle
+        # If the IBM Qiskit's Quantum Communication Channel,
+        # using Discrete Variables, by Fiber Optic is currently Idle
         if self.quantum_communication_channel_discrete_variables_fiber_optic_idle:
 
-            quantum_circuit_quantum_communication_interface_fiber_optic_sender = \
-                self.quantum_communication_interface_fiber_optic_sender\
+            # Set the Quantum Communication Interface with Discrete Variables, by Fiber Optic Interface,
+            # for the Sender, as Busy, at the moment
+            self.quantum_communication_discrete_variables_fiber_optic_interface_sender\
+                .set_quantum_communication_fiber_optic_interface_busy()
+
+            # Set the Quantum Communication Interface with Discrete Variables, by Fiber Optic Interface,
+            # for the Receiver, as Busy, at the moment
+            self.quantum_communication_discrete_variables_fiber_optic_interface_receiver\
+                .set_quantum_communication_fiber_optic_interface_busy()
+
+            # Retrieve the Quantum Circuit for the Quantum Communication,
+            # with Discrete Variables, by Fiber Optic, for the Sender
+            quantum_circuit_quantum_communication_discrete_variables_fiber_optic_interface_sender = \
+                self.quantum_communication_discrete_variables_fiber_optic_interface_sender\
                 .get_qiskit_quantum_circuit_quantum_communication_fiber_optic_interface()
 
-            quantum_circuit_quantum_communication_interface_fiber_optic_receiver = \
-                self.quantum_communication_interface_fiber_optic_receiver\
+            # Retrieve the Quantum Circuit for the Quantum Communication,
+            # with Discrete Variables, by Fiber Optic, for the Receiver
+            quantum_circuit_quantum_communication_discrete_variables_fiber_optic_interface_receiver = \
+                self.quantum_communication_discrete_variables_fiber_optic_interface_receiver\
                 .get_qiskit_quantum_circuit_quantum_communication_fiber_optic_interface()
 
             # Create the temporary IBM Qiskit's Circuit, representing the first connection
             # (Sender -> Quantum Communication Fiber Optic)
             qiskit_quantum_circuit_temporary = \
-                quantum_circuit_quantum_communication_interface_fiber_optic_sender \
-                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablesfiberopticinterfacetemp{}"
-                                         .format(
-                                                self.fiber_optic_cable.get_fiber_optic_cable_id()
-                                         ),
-                                         self.quantum_communication_channel_discrete_variables_fiber_optic,
-                                         global_phase=0)
+                quantum_circuit_quantum_communication_discrete_variables_fiber_optic_interface_sender \
+                .combine_quantum_circuit(
+                    "qcquantumcommunicationdiscretevariablesfiberopticinterfacetemp{}"
+                    .format(
+                        self.fiber_optic_cable.get_fiber_optic_cable_id()
+                    ),
+                    self.quantum_circuit_quantum_communication_channel_discrete_variables_fiber_optic,
+                    global_phase=0)
 
             # Create the final IBM Qiskit's Circuit, representing the second and last connection
             # (Sender -> Quantum Communication Fiber Optic -> Receiver)
-            self.quantum_communication_channel_discrete_variables_fiber_optic = \
+            self.quantum_circuit_quantum_communication_channel_discrete_variables_fiber_optic = \
                 qiskit_quantum_circuit_temporary \
-                .combine_quantum_circuit("qcquantumcommunicationdiscretevariablesfiberopticinterfacestarted{}"
-                                         .format(
-                                            self.fiber_optic_cable.get_fiber_optic_cable_id()
-                                         ),
-                                         quantum_circuit_quantum_communication_interface_fiber_optic_receiver,
-                                         global_phase=0)
+                .combine_quantum_circuit(
+                    "qcquantumcommunicationdiscretevariablesfiberopticinterfacestarted{}"
+                    .format(
+                        self.fiber_optic_cable.get_fiber_optic_cable_id()
+                    ),
+                    quantum_circuit_quantum_communication_discrete_variables_fiber_optic_interface_receiver,
+                    global_phase=0)
 
             # Set the boolean flag of the Idle Status of
             # the IBM Qiskit's Quantum Channel with Discrete Variables, By Fiber Optic, as True
@@ -214,12 +231,12 @@ class QiskitQuantumCommunicationChannelDiscreteVariablesByFiberOptic:
         if not self.quantum_communication_channel_discrete_variables_fiber_optic_idle:
 
             # Apply the SWAP Gate between the Sender's Qubit and Medium's Qubit
-            self.quantum_communication_channel_discrete_variables_fiber_optic\
+            self.quantum_circuit_quantum_communication_channel_discrete_variables_fiber_optic\
                 .apply_swap(CommunicationInterfacesModesTypes.SENDER_INTERFACE_ID,
                             CommunicationInterfacesModesTypes.MEDIUM_INTERFACE_ID)
 
             # Apply the SWAP Gate between the Medium's Qubit and Receiver's Qubit
-            self.quantum_communication_channel_discrete_variables_fiber_optic\
+            self.quantum_circuit_quantum_communication_channel_discrete_variables_fiber_optic\
                 .apply_swap(CommunicationInterfacesModesTypes.MEDIUM_INTERFACE_ID,
                             CommunicationInterfacesModesTypes.RECEIVER_INTERFACE_ID)
 

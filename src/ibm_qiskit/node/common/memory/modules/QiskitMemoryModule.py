@@ -358,6 +358,23 @@ class QiskitMemoryModule:
             # Raise a Value Error
             raise ValueError("Only Hybrid Memory Modules' Hardware can have Hybrid Memory Hardware!!!")
 
+    # Return the IBM Qiskit's Semi-Quantum Memories' Hardware of the IBM Qiskit's Memory Hardware Module
+    def get_qiskit_semi_quantum_memories(self):
+
+        # If the IBM Qiskit's Memory Module Hardware is Semi-Quantum,
+        # then it can have IBM Qiskit's Semi-Quantum Memories' Hardware
+        if self.memory_module_type_tag == MemoryModuleTypes.SEMI_QUANTUM_MEMORY_ENUM:
+
+            # Return the IBM Qiskit's Hybrid Memories' Hardware
+            return self.qiskit_semi_quantum_memories
+
+        # If the IBM Qiskit's Memory Module Hardware is not Semi-Quantum,
+        # then it cannot have IBM Qiskit's Semi-Quantum Memories' Hardware
+        else:
+
+            # Raise a Value Error
+            raise ValueError("Only Semi-Quantum Memory Modules' Hardware can have Semi-Quantum Memory Hardware!!!")
+
     # Return the IBM Qiskit's Quantum Memories' Hardware of the IBM Qiskit's Memory Hardware Module
     def get_qiskit_quantum_memories(self):
 
@@ -405,3 +422,5 @@ class QiskitMemoryModule:
 
             # Raise a Value Error
             raise ValueError("Only Hybrid and Classical Memory Modules' Hardware can have Quantum Memory Hardware!!!")
+
+
