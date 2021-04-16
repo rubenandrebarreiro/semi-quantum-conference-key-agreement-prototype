@@ -20,6 +20,10 @@ from src.ibm_qiskit.node.common.memory.modules import QiskitMemoryModule
 # the IBM_Qiskit.Node.Common.Communication.Modules
 from src.ibm_qiskit.node.common.communication.modules import QiskitCommunicationModule
 
+# Import the IBM Qiskit's Communication Module from
+# the IBM_Qiskit.Node.Common.Data_Bus.Modules
+from src.ibm_qiskit.node.common.data_bus.modules import QiskitDataBusModule
+
 # Import the Enumeration for the Node Types from
 # the Common.Enumerations
 from src.common.enumerations import NodeTypes
@@ -31,6 +35,10 @@ from src.common.enumerations import MemoryModuleTypes
 # Import the Enumeration for the Communication Module Types from
 # the Common.Enumerations
 from src.common.enumerations import CommunicationModuleTypes
+
+# Import the Enumeration for the Data/Information Bus Module Types from
+# the Common.Enumerations
+from src.common.enumerations import DataBusTypes
 
 
 # Class of the IBM Qiskit's Hybrid Node with Continuous Variables
@@ -63,6 +71,10 @@ class QiskitHybridNodeWithContinuousVariables:
         self.communication_hardware_module = \
             QiskitCommunicationModule\
             .QiskitCommunicationModule(CommunicationModuleTypes.QUANTUM_COMMUNICATION_CONTINUOUS_VARIABLES_ENUM)
+
+        # The Data/Information Bus Module of the IBM Qiskit's Hybrid Node, for Continuous Variables
+        self.data_bus_hardware_continuous_variables_module = \
+            QiskitDataBusModule.QiskitDataBusModule(DataBusTypes.QUANTUM_DATA_CONTINUOUS_VARIABLES_BUS_ENUM)
 
     # Attach some Owner Client Party to the IBM Qiskit's Hybrid Node with Continuous Variables
     def attach_owner_client_party(self, owner_client_party):
@@ -112,6 +124,11 @@ class QiskitHybridNodeWithContinuousVariables:
     def get_communication_hardware_module(self):
         return self.communication_hardware_module
 
+    # Return the Quantum Data/Information Bus Hardware, with Continuous Variables Module of
+    # the IBM Qiskit's Hybrid Node
+    def get_quantum_data_bus_continuous_variables_hardware_module(self):
+        return self.data_bus_hardware_continuous_variables_module
+
     # Print the information about the IBM Qiskit's Quantum Node, with Continuous Variables
     def print_info(self):
 
@@ -156,6 +173,12 @@ class QiskitHybridNodeWithContinuousVariables:
         # the IBM Qiskit's Hybrid Node, with Continuous Variables
         print("   - Communication Module Type's Tag: {};"
               .format(self.get_communication_hardware_module().get_communication_module_type_tag().lower()))
+
+        # Print the Tag for the Quantum Data/Information Bus, with Continuous Variables Module Type of
+        # the IBM Qiskit's Hybrid Node
+        print("   - Quantum Communication with Continuous Variables Module Type's Tag: {};"
+              .format(self.get_quantum_data_bus_continuous_variables_hardware_module()
+                      .get_data_bus_module_type_tag().lower()))
 
         # Some prints to draw a bottom left-side corner
         print("|")

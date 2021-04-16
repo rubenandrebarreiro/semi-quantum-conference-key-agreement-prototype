@@ -20,6 +20,10 @@ from src.ibm_qiskit.node.common.memory.modules import QiskitMemoryModule
 # the IBM_Qiskit.Node.Common.Communication.Modules
 from src.ibm_qiskit.node.common.communication.modules import QiskitCommunicationModule
 
+# Import the IBM Qiskit's Communication Module from
+# the IBM_Qiskit.Node.Common.Data_Bus.Modules
+from src.ibm_qiskit.node.common.data_bus.modules import QiskitDataBusModule
+
 # Import the Enumeration for the Node Types from
 # the Common.Enumerations
 from src.common.enumerations import NodeTypes
@@ -31,6 +35,10 @@ from src.common.enumerations import MemoryModuleTypes
 # Import the Enumeration for the Communication Module Types from
 # the Common.Enumerations
 from src.common.enumerations import CommunicationModuleTypes
+
+# Import the Enumeration for the Data/Information Bus Module Types from
+# the Common.Enumerations
+from src.common.enumerations import DataBusTypes
 
 
 # Class of the IBM Qiskit's Hybrid Node with Discrete Variables
@@ -63,6 +71,10 @@ class QiskitHybridNodeWithDiscreteVariables:
         self.communication_hardware_module = \
             QiskitCommunicationModule\
             .QiskitCommunicationModule(CommunicationModuleTypes.QUANTUM_COMMUNICATION_DISCRETE_VARIABLES_ENUM)
+
+        # The Data/Information Bus Module of the IBM Qiskit's Hybrid Node, for Discrete Variables
+        self.data_bus_hardware_discrete_variables_module = \
+            QiskitDataBusModule.QiskitDataBusModule(DataBusTypes.QUANTUM_DATA_DISCRETE_VARIABLES_BUS_ENUM)
 
     # Attach some Owner Client Party to the IBM Qiskit's Hybrid Node with Discrete Variables
     def attach_owner_client_party(self, owner_client_party):
@@ -112,6 +124,11 @@ class QiskitHybridNodeWithDiscreteVariables:
     def get_communication_hardware_module(self):
         return self.communication_hardware_module
 
+    # Return the Quantum Data/Information Bus Hardware, with Discrete Variables Module of
+    # the IBM Qiskit's Hybrid Node
+    def get_quantum_data_bus_discrete_variables_hardware_module(self):
+        return self.data_bus_hardware_discrete_variables_module
+
     # Print the information about the IBM Qiskit's Hybrid Node, with Discrete Variables
     def print_info(self):
 
@@ -156,6 +173,12 @@ class QiskitHybridNodeWithDiscreteVariables:
         # the IBM Qiskit's Hybrid Node, with Discrete Variables
         print("   - Communication Module Type's Tag: {};"
               .format(self.get_communication_hardware_module().get_communication_module_type_tag().lower()))
+
+        # Print the Tag for the Quantum Data/Information Bus, with Discrete Variables Module Type of
+        # the IBM Qiskit's Hybrid Node
+        print("   - Quantum Communication with Discrete Variables Module Type's Tag: {};"
+              .format(self.get_quantum_data_bus_discrete_variables_hardware_module()
+                      .get_data_bus_module_type_tag().lower()))
 
         # Some prints to draw a bottom left-side corner
         print("|")

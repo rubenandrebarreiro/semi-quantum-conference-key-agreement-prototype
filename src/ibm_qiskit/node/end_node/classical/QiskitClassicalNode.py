@@ -20,6 +20,10 @@ from src.ibm_qiskit.node.common.memory.modules import QiskitMemoryModule
 # the IBM_Qiskit.Node.Common.Communication.Modules
 from src.ibm_qiskit.node.common.communication.modules import QiskitCommunicationModule
 
+# Import the IBM Qiskit's Communication Module from
+# the IBM_Qiskit.Node.Common.Data_Bus.Modules
+from src.ibm_qiskit.node.common.data_bus.modules import QiskitDataBusModule
+
 # Import the Enumeration for the Node Types from
 # the Common.Enumerations
 from src.common.enumerations import NodeTypes
@@ -31,6 +35,10 @@ from src.common.enumerations import MemoryModuleTypes
 # Import the Enumeration for the Communication Module Types from
 # the Common.Enumerations
 from src.common.enumerations import CommunicationModuleTypes
+
+# Import the Enumeration for the Data/Information Bus Module Types from
+# the Common.Enumerations
+from src.common.enumerations import DataBusTypes
 
 
 # Class of the IBM Qiskit's Classical Node
@@ -62,6 +70,10 @@ class QiskitClassicalNode:
         self.communication_hardware_module = \
             QiskitCommunicationModule\
             .QiskitCommunicationModule(CommunicationModuleTypes.CLASSICAL_COMMUNICATION_ENUM)
+
+        # The Classical Data/Information Bus Module of the IBM Qiskit's Classical Node
+        self.classical_data_bus_hardware_module = \
+            QiskitDataBusModule.QiskitDataBusModule(DataBusTypes.CLASSICAL_DATA_BUS_ENUM)
 
     # Attach some Owner Client Party to the IBM Qiskit's Classical Node
     def attach_owner_client_party(self, owner_client_party):
@@ -107,9 +119,13 @@ class QiskitClassicalNode:
     def get_memory_hardware_module(self):
         return self.memory_hardware_module
 
-    # Return the Communication Hardware Interface of the IBM Qiskit's Classical Node
+    # Return the Communication Hardware Module of the IBM Qiskit's Classical Node
     def get_communication_hardware_module(self):
         return self.communication_hardware_module
+
+    # Return the Classical Data/Information Bus Hardware Module of the IBM Qiskit's Classical Node
+    def get_classical_data_bus_hardware_module(self):
+        return self.classical_data_bus_hardware_module
 
     # Print the information about the IBM Qiskit's Classical Node
     def print_info(self):
@@ -155,6 +171,11 @@ class QiskitClassicalNode:
         # the IBM Qiskit's Classical Node
         print("     - Communication Module Type's Tag: {};"
               .format(self.get_communication_hardware_module().get_communication_module_type_tag().lower()))
+
+        # Print the Tag for the Data/Information Bus Module Type of
+        # the IBM Qiskit's Classical Node
+        print("     - Classical Data/Information Bus Module Type's Tag: {};"
+              .format(self.get_classical_data_bus_hardware_module().get_data_bus_module_type_tag().lower()))
 
         # Some prints to draw a bottom left-side corner
         print("|")
