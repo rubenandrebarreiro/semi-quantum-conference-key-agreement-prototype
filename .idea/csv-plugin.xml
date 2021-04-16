@@ -24,7 +24,21 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\ibm_qiskit\communication\channel\quantum\discrete_variable\QiskitQuantumCommunicationChannelDiscreteVariablesByFiberOptic.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\ibm_qiskit\cryptography\semi_quantum_conference_key_agreement\services\executor\QiskitSQCKAProtocolExecutorService.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\ibm_qiskit\node\common\bus\hardware\quantum\QiskitQuantumDataBus.py">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -39,6 +53,13 @@
           </value>
         </entry>
         <entry key="\src\ibm_qiskit\node\common\communication\modules\QiskitCommunicationModule.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\ibm_qiskit\node\common\memory\hardware\quantum\QiskitQuantumMemory.py">
           <value>
             <Attribute>
               <option name="separator" value="," />
