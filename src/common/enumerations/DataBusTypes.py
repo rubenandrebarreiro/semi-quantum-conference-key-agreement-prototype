@@ -14,9 +14,6 @@ Acknowledgments:
 
 # The Enumerations and Constants
 
-# The tag enumeration for Quantum Data/Information Bus
-QUANTUM_DATA_BUS_ENUM = "QUANTUM_DATA_BUS"
-
 # The tag enumeration for Quantum Data/Information, with Discrete Variables, Bus
 QUANTUM_DATA_DISCRETE_VARIABLES_BUS_ENUM = "QUANTUM_DATA_DISCRETE_VARIABLES_BUS"
 
