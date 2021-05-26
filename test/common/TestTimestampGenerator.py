@@ -190,7 +190,8 @@ class TimestampPseudoRandomGeneratorTests(unittest.TestCase):
                                         milliseconds_delta=0, microseconds_delta=0)
 
         # Print the initial Logging for the Pseudo Random Timestamps being generated
-        print("List of {} Pseudo Random Timestamps generated:\n".format(num_pseudo_random_timestamps_to_generate))
+        print("List of {} Pseudo Random Timestamps generated, "
+              "for the next 2 minutes:\n".format(num_pseudo_random_timestamps_to_generate))
 
         # Set the number of current Pseudo Random Timestamps, currently generated, as 1
         current_num_pseudo_random_timestamps_generated = 1
