@@ -52,10 +52,10 @@ class QiskitQuantumCircuit:
             if (quantum_registers is not None) and (classical_registers is not None):
 
                 # The Quantum Registers of the Qiskit's Quantum Circuit
-                self.quantum_registers = quantum_registers
+                self.quantum_registers = [quantum_registers]
 
                 # The Classical Registers of the Qiskit's Quantum Circuit
-                self.classical_registers = classical_registers
+                self.classical_registers = [classical_registers]
 
                 # The Global Phase of the Qiskit's Quantum Circuit
                 self.global_phase = global_phase
@@ -212,6 +212,7 @@ class QiskitQuantumCircuit:
 
         # For each Qubit's index
         for qubit_index in qubit_indexes:
+
             # Apply a Barrier to the current Qubit's index
             self.quantum_circuit.barrier(qubit_index)
 
@@ -223,8 +224,62 @@ class QiskitQuantumCircuit:
 
         # For each Qubit's index
         for qubit_index in range(num_qubits_quantum_circuit):
+
             # Apply a Barrier to the current Qubit's index
             self.quantum_circuit.barrier(qubit_index)
+
+    # Reset a given Qubit's index
+    def reset(self, qubit_index):
+
+        # The number of Qubits of the Quantum Circuit
+        num_qubits_quantum_circuit = self.get_num_qubits()
+
+        # If the Qubit's index is higher or equal than the number of Qubits of the Quantum Circuit,
+        # a Value Error exception will be raised
+        if qubit_index >= num_qubits_quantum_circuit:
+            raise ValueError("The Qubits' indexes must be strictly lower than {}!!!"
+                             .format(num_qubits_quantum_circuit))
+
+        # Reset the given Qubit's index
+        self.quantum_circuit.reset(qubit_index)
+
+    # Reset a given interval of Qubits' indexes
+    def reset_interval(self, qubit_indexes):
+
+        # The number of Qubits of the Quantum Circuit
+        num_qubits_quantum_circuit = self.get_num_qubits()
+
+        # Remove duplicated Qubits' indexes (just for the case)
+        qubit_indexes = list(dict.fromkeys(qubit_indexes))
+
+        # The maximum index of the given interval of Qubits' indexes
+        max_qubit_index = max(qubit_indexes)
+
+        # If the maximum Qubit's index is higher or equal than the number of Qubits of the Quantum Circuit,
+        # a Value Error exception will be raised
+        if max_qubit_index >= num_qubits_quantum_circuit:
+
+            # Raise the Value Error exception
+            raise ValueError("The Qubits' indexes must be strictly lower than {}!!!"
+                             .format(num_qubits_quantum_circuit))
+
+        # For each Qubit's index
+        for qubit_index in qubit_indexes:
+
+            # Reset the current Qubit's index
+            self.quantum_circuit.reset(qubit_index)
+
+    # Reset all Qubits' indexes
+    def reset_all(self):
+
+        # The number of Qubits of the Quantum Circuit
+        num_qubits_quantum_circuit = self.get_num_qubits()
+
+        # For each Qubit's index
+        for qubit_index in range(num_qubits_quantum_circuit):
+
+            # Reset the current Qubit's index
+            self.quantum_circuit.reset(qubit_index)
 
     # 2) Measurements:
 
@@ -247,7 +302,7 @@ class QiskitQuantumCircuit:
                                      self.classical_registers[classical_register_index].classical_register[bit_index])
 
     # Measure a given interval of Qubits' indexes
-    def measure_qubits_interval(self, qubit_indexes, bit_indexes):
+    def measure_qubits_interval(self, quantum_register_index, classical_register_index, qubit_indexes, bit_indexes):
 
         # The number of Qubits of the Quantum Circuit
         num_qubits_quantum_circuit = self.get_num_qubits()
@@ -270,6 +325,7 @@ class QiskitQuantumCircuit:
         # If the maximum Qubit's index is higher or equal than the number of Qubits of the Quantum Circuit,
         # a Value Error exception will be raised
         if max_qubit_index >= num_qubits_quantum_circuit:
+
             # Raise the Value Error exception
             raise ValueError("The Qubits' indexes must be strictly lower than {}!!!"
                              .format(num_qubits_quantum_circuit))
@@ -277,23 +333,26 @@ class QiskitQuantumCircuit:
         # If the maximum Bit's index is higher or equal than the number of Bits of the Quantum Circuit,
         # a Value Error exception will be raised
         if max_bit_index >= num_bits_quantum_circuit:
+
             # Raise the Value Error exception
             raise ValueError("The Bits' indexes must be strictly lower than {}!!!"
                              .format(num_bits_quantum_circuit))
 
         # If the number of Qubits' and Bits' indexes is different
         if len(qubit_indexes) != len(bit_indexes):
+
             # Raise the Value Error exception
             raise ValueError("The number of Qubits' and Bits' indexes must be equal!!!")
 
         # For each Qubit's and Bit's index
         for qubit_index, bit_index in zip(qubit_indexes, bit_indexes):
+
             # Measure the given Qubit's index to the given Bit's index
-            self.quantum_circuit.measure(self.quantum_registers.quantum_register[qubit_index],
-                                         self.classical_registers.classical_register[bit_index])
+            self.quantum_circuit.measure(self.quantum_registers[quantum_register_index].quantum_register[qubit_index],
+                                         self.classical_registers[classical_register_index].classical_register[bit_index])
 
     # Measure all Qubits' indexes to all Bits' indexes
-    def measure_all_qubits(self):
+    def measure_all_qubits(self, quantum_register_index, classical_register_index):
 
         # The number of Qubits of the Quantum Circuit
         num_qubits_quantum_circuit = self.get_num_qubits()
@@ -303,9 +362,10 @@ class QiskitQuantumCircuit:
 
         # For each Qubit's and Bit's index
         for qubit_index, bit_index in zip(range(num_qubits_quantum_circuit), range(num_bits_quantum_circuit)):
+
             # Measure the given Qubit's index to the given Bit's index
-            self.quantum_circuit.measure(self.quantum_registers.quantum_register[qubit_index],
-                                         self.classical_registers.classical_register[bit_index])
+            self.quantum_circuit.measure(self.quantum_registers[quantum_register_index].quantum_register[qubit_index],
+                                         self.classical_registers[classical_register_index].classical_register[bit_index])
 
     # Measure all Qubits' (predefined by IBM Qiskit)
     def measure_all_qubits_predefined(self):
@@ -375,7 +435,8 @@ class QiskitQuantumCircuit:
         return self.quantum_circuit
 
     # Prepare/Measure all the Qubits in the X-Basis
-    def measure_all_qubits_in_x_basis(self, is_final_measurement=True):
+    def measure_all_qubits_in_x_basis(self, quantum_register_index, classical_register_index,
+                                      is_final_measurement=True):
 
         # For each indexed Qubit
         for qubit_index in range(self.get_num_qubits()):
@@ -389,13 +450,14 @@ class QiskitQuantumCircuit:
         if is_final_measurement:
 
             # Measure all Qubits to their respective Bits
-            self.measure_all_qubits()
+            self.measure_all_qubits(quantum_register_index, classical_register_index)
 
         # Return the Quantum Circuit with all the Qubits prepared/measured in the X-Basis
         return self.quantum_circuit
 
     # Prepare/Measure all the Qubits in the Y-Basis
-    def measure_all_qubits_in_y_basis(self, is_final_measurement=True):
+    def measure_all_qubits_in_y_basis(self, quantum_register_index, classical_register_index,
+                                      is_final_measurement=True):
 
         # For each indexed Qubit
         for qubit_index in range(self.get_num_qubits()):
@@ -413,13 +475,14 @@ class QiskitQuantumCircuit:
         if is_final_measurement:
 
             # Measure all Qubits to their respective Bits
-            self.measure_all_qubits()
+            self.measure_all_qubits(quantum_register_index, classical_register_index)
 
         # Return the Quantum Circuit with all the Qubits prepared/measured in the Y-Basis
         return self.quantum_circuit
 
     # Prepare/Measure all the Qubits in the Z-Basis
-    def measure_all_qubits_in_z_basis(self, is_final_measurement=True):
+    def measure_all_qubits_in_z_basis(self, quantum_register_index, classical_register_index,
+                                      is_final_measurement=True):
 
         # For each indexed Qubit
         for qubit_index in range(self.get_num_qubits()):
@@ -432,8 +495,9 @@ class QiskitQuantumCircuit:
 
         # If it is the final measurement, measure all the Qubits in the Z-Basis
         if is_final_measurement:
+
             # Measure all Qubits to their respective Bits
-            self.measure_all_qubits()
+            self.measure_all_qubits(quantum_register_index, classical_register_index)
 
         # Return the Quantum Circuit with all the Qubits prepared/measured in the Z-Basis
         return self.quantum_circuit
