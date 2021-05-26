@@ -17,27 +17,30 @@ Acknowledgments:
 class QiskitSQCKAProtocol:
 
     # Constructor for IBM Qiskit's Semi-Quantum Conference Key Agreement (SQCKA) Protocol
-    def __init__(self, parties, master_party, bipartite_pre_shared_keys, parameters):
+    def __init__(self, party_entities, distributor_party_entity, bipartite_pre_shared_keys, parameters):
 
-        # The Parties involved in the Protocol
-        self.parties = parties
+        # Set the Party Entities involved in the Protocol
+        self.party_entities = party_entities
 
-        # The Master Party of the Protocol
-        self.master_party = master_party
+        # Set the Distributor Party Entity of the Protocol
+        self.distributor_party_entity = distributor_party_entity
 
-        # The Bipartite Pre-Shared Keys used between the Parties, involved in the Protocol
+        # Set the Bipartite Pre-Shared Keys used between the Parties, involved in the Protocol
         self.bipartite_pre_shared_keys = bipartite_pre_shared_keys
 
-        # The Parameters of the Protocol
+        # Set the Parameters of the Protocol
         self.parameters = parameters
 
-    # Return the Parties of the Protocol
-    def get_parties(self):
-        return self.parties
+        # Initialise the list of the Rounds of the Protocol
+        self.protocol_rounds = []
 
-    # Return the Master Party of the Protocol
-    def get_master_party(self):
-        return self.master_party
+    # Return the Party Entities of the Protocol
+    def get_party_entities(self):
+        return self.party_entities
+
+    # Return the Distributor Party Entity of the Protocol
+    def get_distributor_party_entity(self):
+        return self.distributor_party_entity
 
     # Return the Bipartite Pre-Shared Keys, being used on the Protocol
     def get_bipartite_pre_shared_keys(self):
@@ -46,3 +49,11 @@ class QiskitSQCKAProtocol:
     # Return the Parameters of the Protocol
     def get_parameters(self):
         return self.parameters
+
+    # Return the list of the Rounds of the Protocol
+    def get_protocol_rounds(self):
+        return self.parameters
+
+    # Add a Round of the Protocol
+    def add_protocol_round(self, protocol_round):
+        self.protocol_rounds.append(protocol_round)
