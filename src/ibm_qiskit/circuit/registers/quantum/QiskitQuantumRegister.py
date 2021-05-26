@@ -22,7 +22,7 @@ from qiskit import QuantumRegister
 class QiskitQuantumRegister:
 
     # Constructor for IBM Qiskit's Quantum Register
-    def __init__(self, name, num_qubits):
+    def __init__(self, name, num_qubits, quantum_register=None):
 
         # The name of the Qiskit's Quantum Register
         self.name = name
@@ -30,5 +30,14 @@ class QiskitQuantumRegister:
         # The number of the Qubits of the Qiskit's Quantum Register
         self.num_qubits = num_qubits
 
-        # The Quantum Register of the Qiskit's Quantum Register
-        self.quantum_register = QuantumRegister(name=name, size=num_qubits)
+        # If the Quantum Register is None
+        if quantum_register is None:
+
+            # The Quantum Register of the Qiskit's Quantum Register
+            self.quantum_register = QuantumRegister(name=name, size=num_qubits)
+
+        # If the Quantum Register is not None
+        else:
+
+            # The Quantum Register of the Qiskit's Quantum Register
+            self.quantum_register = quantum_register
