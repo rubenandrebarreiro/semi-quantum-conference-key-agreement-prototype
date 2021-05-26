@@ -99,10 +99,10 @@ class QiskitGHZState:
         if is_final_measurement:
 
             # Measure the Control-Qubit of the Quantum Circuit, for the GHZ State
-            self.quantum_circuit.measure_single_qubit(self.control_qubit_index, control_bit_index)
+            self.quantum_circuit.measure_single_qubit(0, 0, self.control_qubit_index, control_bit_index)
 
             # Measure the Target-Qubits of the Quantum Circuit, for the GHZ State
-            self.quantum_circuit.measure_qubits_interval(self.target_qubits_indexes,
+            self.quantum_circuit.measure_qubits_interval(0, 0, self.target_qubits_indexes,
                                                          target_bits_indexes)
 
         # Return the IBM Qiskit's GHZ State, as a multipartite entanglement
