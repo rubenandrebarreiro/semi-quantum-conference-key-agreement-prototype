@@ -22,7 +22,7 @@ from qiskit import ClassicalRegister
 class QiskitClassicalRegister:
 
     # Constructor for IBM Qiskit's Classical Register
-    def __init__(self, name, num_bits):
+    def __init__(self, name, num_bits, classical_register=None):
 
         # The name of the Qiskit's Classical Register
         self.name = name
@@ -30,5 +30,14 @@ class QiskitClassicalRegister:
         # The number of the Bits of the Qiskit's Classical Register
         self.num_bits = num_bits
 
-        # The Classical Register of the Qiskit's Classical Register
-        self.classical_register = ClassicalRegister(name=name, size=num_bits)
+        # If the Classical Register is None
+        if classical_register is None:
+
+            # The Classical Register of the Qiskit's Classical Register
+            self.classical_register = ClassicalRegister(name=name, size=num_bits)
+
+        # If the Classical Register is not None
+        else:
+
+            # The Classical Register of the Qiskit's Classical Register
+            self.classical_register = classical_register
