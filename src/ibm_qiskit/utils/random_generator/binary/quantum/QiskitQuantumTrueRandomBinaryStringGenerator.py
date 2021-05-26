@@ -51,7 +51,7 @@ class QiskitQuantumTrueRandomBinaryStringGenerator:
         self.num_counts = num_counts
 
     # Generate a True Random Binary String
-    def generate_true_random_binary_string(self):
+    def generate_true_random_binary_string(self, quantum_register_index, classical_register_index):
 
         # The number of Qubits and Bits, for Quantum and Classical Registers, respectively
         num_qubits = num_bits = self.binary_string_length
@@ -79,11 +79,12 @@ class QiskitQuantumTrueRandomBinaryStringGenerator:
                                             qubit_indexes).apply_transform()
 
         # Measure all the Qubits of the Quantum Circuit
-        qiskit_quantum_hadamard_transform_circuit_true_random_binary_string.measure_all_qubits()
+        qiskit_quantum_hadamard_transform_circuit_true_random_binary_string\
+            .measure_all_qubits(quantum_register_index, classical_register_index)
 
         # Getting the Backend for the QASM (Quantum ASseMbly) for the simulation of the Quantum Circuit
         # (i.e., the Measurement Results as a Dictionary Object, for a frequency counting)
-        qasm_backend = Aer.get_backend('qasm_simulator')
+        qasm_backend = Aer.get_backend("qasm_simulator")
 
         # Execute the Quantum Circuit and store the Measurement results in a Dictionary Object,
         # for a frequency counting
