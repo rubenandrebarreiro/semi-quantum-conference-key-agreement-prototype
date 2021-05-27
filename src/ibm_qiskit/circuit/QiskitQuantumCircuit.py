@@ -661,6 +661,14 @@ class QiskitQuantumCircuit:
 
         self.quantum_circuit.unitary(controlled_phase_t_unitary_operator, [control_qubit_index, target_qubit_index])
 
+    # Apply the Controlled-SWAP Gate to given Qubits' indexes (1 Control-Qubit and 2 Target-Qubits)
+    def apply_controlled_swap(self, control_qubit_index, target_qubit_index_1, target_qubit_index_2):
+        self.quantum_circuit.cswap(control_qubit_index, target_qubit_index_1, target_qubit_index_2)
+
+    # Apply the Fredkin (Controlled-SWAP) Gate to given Qubits' indexes (1 Control-Qubit and 2 Target-Qubits)
+    def apply_fredkin(self, control_qubit_index, target_qubit_index_1, target_qubit_index_2):
+        self.apply_controlled_swap(control_qubit_index, target_qubit_index_1, target_qubit_index_2)
+
     # Apply the Controlled-S-Adjoint Gate (-pi/2) to given Qubits' indexes (1 Control-Qubit and 1 Target-Qubit)
     def apply_controlled_phase_s_adjoint(self, control_qubit_index, target_qubit_index):
         controlled_phase_s_unitary_operator = Operator([
