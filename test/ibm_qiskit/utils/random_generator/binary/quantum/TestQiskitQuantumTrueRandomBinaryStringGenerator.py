@@ -46,7 +46,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
         # Generate one single Quantum True Random Binary String (QTRBS), with a length of 10 bits and 1 count
         final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_10_bits = \
-            qiskit_quantum_true_random_binary_string_generator_10_bits.generate_true_random_binary_string()
+            qiskit_quantum_true_random_binary_string_generator_10_bits.generate_true_random_binary_string(0, 0)
 
         # Print the initial Logging information for the Test #1
         print("\n\nTEST #1 for the IBM Qiskit's True Random Binary String Generation:\n")
@@ -86,7 +86,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
         # Generate one single Quantum True Random Binary String (QTRBS), with a length of 10 bits and 1000 counts
         final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_10_bits = \
-            qiskit_quantum_true_random_binary_string_generator_10_bits.generate_true_random_binary_string()
+            qiskit_quantum_true_random_binary_string_generator_10_bits.generate_true_random_binary_string(0, 0)
 
         # Print the initial Logging information for the Test #2
         print("\n\nTEST #2 for the IBM Qiskit's True Random Binary String Generation:\n")
@@ -126,7 +126,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
         # Generate one single Quantum True Random Binary String (QTRBS), with a length of 20 bits and 1 count
         final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_20_bits = \
-            qiskit_quantum_true_random_binary_string_generator_20_bits.generate_true_random_binary_string()
+            qiskit_quantum_true_random_binary_string_generator_20_bits.generate_true_random_binary_string(0, 0)
 
         # Print the initial Logging information for the Test #3
         print("\n\nTEST #3 for the IBM Qiskit's True Random Binary String Generation:\n")
@@ -166,7 +166,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
         # Generate one single Quantum True Random Binary String (QTRBS), with a length of 20 bits and 1000 counts
         final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_20_bits = \
-            qiskit_quantum_true_random_binary_string_generator_20_bits.generate_true_random_binary_string()
+            qiskit_quantum_true_random_binary_string_generator_20_bits.generate_true_random_binary_string(0, 0)
 
         # Print the initial Logging information for the Test #4
         print("\n\nTEST #4 for the IBM Qiskit's True Random Binary String Generation:\n")
@@ -206,7 +206,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
         # Generate one single Quantum True Random Binary String (QTRBS), with a length of 30 bits and 1 count
         final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_30_bits = \
-            qiskit_quantum_true_random_binary_string_generator_30_bits.generate_true_random_binary_string()
+            qiskit_quantum_true_random_binary_string_generator_30_bits.generate_true_random_binary_string(0, 0)
 
         # Print the initial Logging information for the Test #5
         print("\n\nTEST #5 for the IBM Qiskit's True Random Binary String Generation:\n")
@@ -246,7 +246,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
         # Generate one single Quantum True Random Binary String (QTRBS), with a length of 30 bits and 1000 counts
         final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_30_bits = \
-            qiskit_quantum_true_random_binary_string_generator_30_bits.generate_true_random_binary_string()
+            qiskit_quantum_true_random_binary_string_generator_30_bits.generate_true_random_binary_string(0, 0)
 
         # Print the initial Logging information for the Test #6
         print("\n\nTEST #6 for the IBM Qiskit's True Random Binary String Generation:\n")
@@ -292,7 +292,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
             # Generate one single Quantum True Random Binary String (QTRBS), with a length of 10 bits and 1 count
             final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_10_bits = \
-                qiskit_quantum_true_random_binary_string_generator_10_bits.generate_true_random_binary_string()
+                qiskit_quantum_true_random_binary_string_generator_10_bits.generate_true_random_binary_string(0, 0)
 
             # Print the True Random Binary String, generated with a length of 10
             print("- True Random Binary String #{} ( length = {} ; counts = {} ): {}".format(
@@ -335,7 +335,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
             # Generate one single Quantum True Random Binary String (QTRBS), with a length of 10 bits and 1000 counts
             final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_10_bits = \
-                qiskit_quantum_true_random_binary_string_generator_10_bits.generate_true_random_binary_string()
+                qiskit_quantum_true_random_binary_string_generator_10_bits.generate_true_random_binary_string(0, 0)
 
             # Print the True Random Binary String, generated with a length of 10
             print("- True Random Binary String #{} ( length = {} ; counts = {} ): {}".format(
@@ -378,7 +378,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
             # Generate one single Quantum True Random Binary String (QTRBS), with a length of 20 bits and 1 count
             final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_20_bits = \
-                qiskit_quantum_true_random_binary_string_generator_20_bits.generate_true_random_binary_string()
+                qiskit_quantum_true_random_binary_string_generator_20_bits.generate_true_random_binary_string(0, 0)
 
             # Print the True Random Binary String, generated with a length of 20
             print("- True Random Binary String #{} ( length = {} ; counts = {} ): {}".format(
@@ -421,7 +421,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
             # Generate one single Quantum True Random Binary String (QTRBS), with a length of 20 bits and 1000 counts
             final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_20_bits = \
-                qiskit_quantum_true_random_binary_string_generator_20_bits.generate_true_random_binary_string()
+                qiskit_quantum_true_random_binary_string_generator_20_bits.generate_true_random_binary_string(0, 0)
 
             # Print the True Random Binary String, generated with a length of 20
             print("- True Random Binary String #{} ( length = {} ; counts = {} ): {}".format(
@@ -464,7 +464,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
             # Generate one single Quantum True Random Binary String (QTRBS), with a length of 30 bits and 1 count
             final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_30_bits = \
-                qiskit_quantum_true_random_binary_string_generator_30_bits.generate_true_random_binary_string()
+                qiskit_quantum_true_random_binary_string_generator_30_bits.generate_true_random_binary_string(0, 0)
 
             # Print the True Random Binary String, generated with a length of 30
             print("- True Random Binary String #{} ( length = {} ; counts = {} ): {}".format(
@@ -507,7 +507,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
             # Generate one single Quantum True Random Binary String (QTRBS), with a length of 30 bits and 1000 counts
             final_results_frequency_counting_for_qiskit_quantum_true_random_binary_string_generator_30_bits = \
-                qiskit_quantum_true_random_binary_string_generator_30_bits.generate_true_random_binary_string()
+                qiskit_quantum_true_random_binary_string_generator_30_bits.generate_true_random_binary_string(0, 0)
 
             # Print the True Random Binary String, generated with a length of 30
             print("- True Random Binary String #{} ( length = {} ; counts = {} ): {}".format(
