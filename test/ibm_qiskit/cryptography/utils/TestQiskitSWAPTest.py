@@ -114,7 +114,8 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
             print("\n")
             print("------ SWAP Test #1 (with no Eavesdropping) ------")
             print("     - Num. SWAP Tests performed: {}".format(1))
-            print("     - Num. SWAP Tests passed: {}".format(1))
+            print("     - Num. SWAP Tests expected to pass: {}".format(1))
+            print("     - Num. SWAP Tests really passed: {}".format(1))
             print("\n")
 
         # Verify if the Measurement Result of the Ancilla Qubit/Bit is equal to 0
@@ -137,7 +138,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
         # Set 6 attempts for the SWAP Test
         # (at average, in a 1/4 = 75% of the times, the Eavesdropping will be detected)
-        num_test_attempts = 6
+        num_test_attempts = 8
 
         # For each attempt of the SWAP Test
         for attempt in range(num_test_attempts):
@@ -219,6 +220,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
             print("\n")
             print("------ SWAP Test #2 (with no Eavesdropping) ------")
             print("     - Num. SWAP Tests performed: {}".format(num_test_attempts))
+            print("     - Num. SWAP Tests expected to pass: {}".format(num_test_attempts))
             print("     - Num. SWAP Tests passed: {}".format(num_tests_passed_with_no_eavesdropping))
             print("\n")
 
@@ -242,7 +244,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
 
         # Set 6 attempts for the SWAP Test
         # (at average, in a 1/4 = 75% of the times, the Eavesdropping will be detected)
-        num_test_attempts = 6
+        num_test_attempts = 8
 
         # For each attempt of the SWAP Test
         for attempt in range(num_test_attempts):
@@ -328,6 +330,7 @@ class QiskitQuantumTrueRandomBinaryStringGeneratorTests(unittest.TestCase):
             print("\n")
             print("------ SWAP Test #3 (with Eavesdropping) ------")
             print("     - Num. SWAP Tests performed: {}".format(num_test_attempts))
+            print("     - Num. SWAP Tests expected to pass: {}".format(round(0.25 * num_test_attempts)))
             print("     - Num. SWAP Tests passed: {}".format(num_tests_passed_with_no_eavesdropping))
             print("\n")
 
