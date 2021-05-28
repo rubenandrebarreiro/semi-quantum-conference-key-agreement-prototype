@@ -77,13 +77,22 @@ class QiskitSWAPTest:
     # Perform the SWAP Test itself, for the comparison of two Quantum States
     def perform_test_to_compare_quantum_states(self, is_final_measurement=True):
 
+        # Apply a Barrier to the Ancilla Qubit
+        self.quantum_circuit.apply_barrier(self.ancilla_qubit_index)
+
+        # Apply Barriers to the interval of Qubits of the Quantum State #1
+        self.quantum_circuit.apply_barriers_interval(self.quantum_state_qubits_indexes_1)
+
+        # Apply Barriers to the interval of Qubits of the Quantum State #2
+        self.quantum_circuit.apply_barriers_interval(self.quantum_state_qubits_indexes_2)
+
         # Apply the 1st Hadamard Gate to the Ancilla Qubit of
         # the Quantum Circuit, for the SWAP Test
         self.quantum_circuit.apply_hadamard(self.ancilla_qubit_index)
 
         # For each Pair of Qubits in both Quantum States
         for quantum_state_qubit_index_1, quantum_state_qubit_index_2 in \
-            zip(self.quantum_state_qubits_indexes_1, self.quantum_state_qubits_indexes_2):
+                zip(self.quantum_state_qubits_indexes_1, self.quantum_state_qubits_indexes_2):
 
             # Apply the Controlled-SWAP (Fredkin) to the Quantum Circuit,
             # for the SWAP Test, with the Ancilla Qubit, acting as Control-Qubit,
@@ -96,8 +105,20 @@ class QiskitSWAPTest:
         # the Quantum Circuit, for the SWAP Test
         self.quantum_circuit.apply_hadamard(self.ancilla_qubit_index)
 
+        # Apply a Barrier to the Ancilla Qubit
+        self.quantum_circuit.apply_barrier(self.ancilla_qubit_index)
+
+        # Apply Barriers to the interval of Qubits of the Quantum State #1
+        self.quantum_circuit.apply_barriers_interval(self.quantum_state_qubits_indexes_1)
+
+        # Apply Barriers to the interval of Qubits of the Quantum State #2
+        self.quantum_circuit.apply_barriers_interval(self.quantum_state_qubits_indexes_2)
+
         # If is a final measurement
         if is_final_measurement:
 
             # Measure the Ancilla Qubit of the Quantum Circuit, for the SWAP Test
             self.quantum_circuit.measure_single_qubit(0, 0, self.ancilla_qubit_index, self.ancilla_bit_index)
+
+        # Return the IBM Qiskit's SWAP Test
+        return self.quantum_circuit
